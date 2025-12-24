@@ -9,7 +9,7 @@ export function Header() {
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">
-              <span className="block h-11 w-32 rounded bg-gray-100" />
+              <span className="block h-11 w-32 rounded" />
             </Link>
 
             {/* Navigation placeholder */}
