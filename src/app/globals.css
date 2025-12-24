@@ -1,12 +1,12 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: #ffffff;
   --color-foreground: #1a1a2e;
-  --color-primary: #1e3a5f;
+  --color-primary: #080d2c;
   --color-primary-foreground: #ffffff;
   --color-border: #e2e8f0;
 
