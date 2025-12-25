@@ -42,7 +42,7 @@ export function Categories() {
               <Link
                 key={category.title}
                 href={category.href}
-                className="group relative block h-50 md:h-100 overflow-hidden rounded-xl bg-gray-200"
+                className="group relative block h-70 md:h-100 overflow-hidden rounded-xl bg-gray-200"
               >
                 <Image
                   src={category.image}

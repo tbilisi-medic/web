@@ -1,10 +1,11 @@
-import { Hero, Categories } from '@/components/sections/home';
+import { Hero, Categories, TechnicalService } from '@/components/sections/home';
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Categories />
+      <TechnicalService />
     </>
   );
 }
