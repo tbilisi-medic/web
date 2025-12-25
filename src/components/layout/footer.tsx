@@ -3,9 +3,9 @@ import { Globe, Phone, Mail } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white mt-150">
+    <footer className="bg-primary text-white mt-20">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl py-25">
+        <div className="mx-auto max-w-7xl py-24">
           <div className="grid gap-10 lg:grid-cols-13">
             {/* Left side - Addresses & Contact */}
             <div className="lg:col-span-4">
