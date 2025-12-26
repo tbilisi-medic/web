@@ -3,6 +3,7 @@ import {
   Categories,
   TechnicalService,
   BlogPreview,
+  Testimonials,
 } from '@/components/sections/home';
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <Categories />
       <TechnicalService />
       <BlogPreview />
+      <Testimonials />
     </>
   );
 }

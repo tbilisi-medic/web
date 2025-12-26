@@ -33,7 +33,7 @@ const posts = [
 
 export function BlogPreview() {
   return (
-    <section className="lg:py-6">
+    <section className="lg:pt-6">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
