@@ -33,7 +33,7 @@ const posts = [
 
 export function BlogPreview() {
   return (
-    <section className="py-8 lg:py-6">
+    <section className="lg:py-6">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
@@ -54,11 +54,11 @@ export function BlogPreview() {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-12 mb-10"
+                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
               >
                 {/* Image */}
                 <div className="lg:col-span-4">
-                  <div className="relative h-70 overflow-hidden rounded-xl bg-gray-200">
+                  <div className="relative h-60 overflow-hidden rounded-xl bg-gray-200">
                     <Image
                       src={post.image}
                       alt={post.title}
