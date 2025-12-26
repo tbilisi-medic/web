@@ -1,4 +1,9 @@
-import { Hero, Categories, TechnicalService } from '@/components/sections/home';
+import {
+  Hero,
+  Categories,
+  TechnicalService,
+  BlogPreview,
+} from '@/components/sections/home';
 
 export default function Home() {
   return (
@@ -6,6 +11,7 @@ export default function Home() {
       <Hero />
       <Categories />
       <TechnicalService />
+      <BlogPreview />
     </>
   );
 }
