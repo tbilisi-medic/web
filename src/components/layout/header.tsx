@@ -22,7 +22,7 @@ export function Header() {
                 <ChevronDown size={15} />
               </Link>
               <Link
-                href="/"
+                href="/about"
                 className="flex items-center gap-1 text-base font-medium text-gray-700 hover:text-primary"
               >
                 ჩვენ

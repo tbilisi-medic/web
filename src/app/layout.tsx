@@ -10,8 +10,8 @@ const notoSansGeorgian = Noto_Sans_Georgian({
 });
 
 export const metadata: Metadata = {
-  title: 'tbilisi-medic',
-  description: 'tbilisi-medic',
+  title: 'თბილისი მედიკ',
+  description: '',
 };
 
 export default function RootLayout({

@@ -1,1 +1,1 @@
-// Shared sections will be exported here
+export { Hero } from './hero';
