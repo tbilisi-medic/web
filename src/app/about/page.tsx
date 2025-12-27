@@ -1,4 +1,4 @@
-import { Hero } from '@/components/sections/shared';
+import { Hero, BlogPreview, Testimonials } from '@/components/sections/shared';
 import { Metadata } from 'next';
 import { AboutContent, Mission } from '@/components/sections/about';
 
@@ -13,6 +13,8 @@ export default function AboutPage() {
       <Hero />
       <AboutContent />
       <Mission />
+      <BlogPreview />
+      <Testimonials />
     </>
   );
 }
