@@ -1,6 +1,6 @@
 import { Hero } from '@/components/sections/shared';
 import { Metadata } from 'next';
-import { AboutContent } from '@/components/sections/about';
+import { AboutContent, Mission } from '@/components/sections/about';
 
 export const metadata: Metadata = {
   title: 'კომპანიის შესახებ',
@@ -12,6 +12,7 @@ export default function AboutPage() {
     <>
       <Hero />
       <AboutContent />
+      <Mission />
     </>
   );
 }

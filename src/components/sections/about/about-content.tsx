@@ -27,11 +27,11 @@ export function AboutContent() {
 
             {/* Right: Text content */}
             <div>
-              <h2 className="text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
+              <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
                 ჩვენს შესახებ
               </h2>
 
-              <div className="mt-8 space-y-6 text-base text-foreground/80 lg:text-lg">
+              <div className="mt-8 space-y-6 text-lg text-foreground/80">
                 <p>
                   საქართველოს მასშტაბით თბილისი მედიკი წარმოადგენს ერთ-ერთ
                   უმსხვილეს კონტრიბუტორს სამედიცინო პროდუქციის დისტრიბუციისა და
