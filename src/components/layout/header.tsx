@@ -15,7 +15,7 @@ export function Header() {
             {/* Navigation placeholder */}
             <nav className="hidden items-center gap-5 md:flex">
               <Link
-                href="/"
+                href="/products"
                 className="flex items-center gap-1 text-base font-medium text-gray-700 hover:text-primary"
               >
                 კლინიკებისთვის
