@@ -29,8 +29,8 @@ export function Categories() {
     <section className="py-16 lg:py-24">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
+          {/* Headline */}
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
-            {/* Headline */}
             აღმოაჩინეთ მრავალფეროვანი
             <br />
             სამედიცინო პროდუქცია თქვენი კლინიკისთვის
