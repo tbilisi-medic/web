@@ -1,6 +1,8 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const categories = [
   {
@@ -42,6 +44,72 @@ const categories = [
     id: 'aesthetics',
     name: 'ესთეტიკა',
     subcategories: ['ყველა', 'ლაზერები', 'ინექციები', 'აპარატურა'],
+  },
+];
+
+const products = [
+  {
+    id: '1',
+    slug: 'sonoscape-e2',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '2',
+    slug: 'sonoscape-e3',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '3',
+    slug: 'sonoscape-e4',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '4',
+    slug: 'sonoscape-e5',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '5',
+    slug: 'sonoscape-e6',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '6',
+    slug: 'sonoscape-e6',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '7',
+    slug: 'sonoscape-e7',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '8',
+    slug: 'sonoscape-e8',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '9',
+    slug: 'sonoscape-e9',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
   },
 ];
 
@@ -108,10 +176,44 @@ export function ProductCatalog() {
               </ul>
             </div>
 
-            {/* Right Content - Product Grid Placeholder */}
+            {/* Right Content */}
             <div className="lg:col-span-9">
-              <div className="flex h-100 items-center justify-center rounded-xl border-2 border-dashed border-gray-200">
-                <p className="text-lg text-foreground/40">პროდუქტები</p>
+              {/* Products Grid */}
+              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                {products.map((product) => (
+                  <Link
+                    key={product.id}
+                    href={`/products/${product.slug}`}
+                    className="group block"
+                  >
+                    {/* Image */}
+                    <div className="relative h-70 overflow-hidden rounded-xl">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Info */}
+                    <div className="mt-8">
+                      <h3 className="font-semibold text-lg text-foreground">
+                        {product.name}
+                      </h3>
+                      <p className="mt-2 text-md text-foreground/60">
+                        {product.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Load More Button */}
+              <div className="mt-14 md:mt-20">
+                <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12">
+                  სრულად
+                </button>
               </div>
             </div>
           </div>
