@@ -210,7 +210,7 @@ export function ProductCatalog() {
               </div>
 
               {/* Load More Button */}
-              <div className="mt-14 md:mt-20">
+              <div className="mt-14 md:mt-16">
                 <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12">
                   სრულად
                 </button>
