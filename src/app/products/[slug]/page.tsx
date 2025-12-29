@@ -1,12 +1,19 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
+import { ProductDetails } from '@/components/sections/products';
 
 const getProduct = (slug: string) => {
   return {
     slug,
     name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    subtitle: 'ექოსკოპიის პორტატული მოწყობილობა',
     subcategory: 'ექოსკოპია',
+    stats: 'იყენებენ 890 კლინიკაში',
+    shortDescription:
+      'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა',
+    fullDescription:
+      'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
+    image: '/images/products/1.jpg',
   };
 };
 
@@ -19,8 +26,8 @@ export async function nagenerateMetadatame({
   const product = getProduct(slug);
 
   return {
-    title: `${product.name} | კლინიკა`,
-    description: product.description,
+    title: product.name,
+    description: product.shortDescription,
   };
 }
 
@@ -35,14 +42,7 @@ export default async function ProductPage({
   return (
     <>
       <PageHeader title={product.subcategory} />
-
-      <section className="py-16 lg:py-24">
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-center text-foreground/60">პროდუქტის დეტალები</p>
-          </div>
-        </div>
-      </section>
+      <ProductDetails product={product} />
     </>
   );
 }
