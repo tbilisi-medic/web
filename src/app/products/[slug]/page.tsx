@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
-import { ProductDetails } from '@/components/sections/products';
+import {
+  ProductDetails,
+  RelatedProducts,
+} from '@/components/sections/products';
 
 const getProduct = (slug: string) => {
   return {
@@ -17,7 +20,40 @@ const getProduct = (slug: string) => {
   };
 };
 
-export async function nagenerateMetadatame({
+const getRelatedProducts = () => {
+  return [
+    {
+      id: '1',
+      slug: 'sonoscape-e3',
+      name: 'SONOSCAPE E2',
+      description: 'ექოსკოპიის პორტატული მოწყობილობა',
+      image: '/images/products/1.jpg',
+    },
+    {
+      id: '2',
+      slug: 'sonoscape-e4',
+      name: 'SONOSCAPE E2',
+      description: 'ექოსკოპიის პორტატული მოწყობილობა',
+      image: '/images/products/1.jpg',
+    },
+    {
+      id: '3',
+      slug: 'sonoscape-e5',
+      name: 'SONOSCAPE E2',
+      description: 'ექოსკოპიის პორტატული მოწყობილობა',
+      image: '/images/products/1.jpg',
+    },
+    {
+      id: '4',
+      slug: 'sonoscape-e6',
+      name: 'SONOSCAPE E2',
+      description: 'ექოსკოპიის პორტატული მოწყობილობა',
+      image: '/images/products/1.jpg',
+    },
+  ];
+};
+
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -38,11 +74,13 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
   const product = getProduct(slug);
+  const relatedProducts = getRelatedProducts();
 
   return (
     <>
       <PageHeader title={product.subcategory} />
       <ProductDetails product={product} />
+      <RelatedProducts products={relatedProducts} />
     </>
   );
 }
