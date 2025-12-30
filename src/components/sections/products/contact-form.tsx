@@ -35,29 +35,29 @@ export function ContactForm() {
 
             {/* Right - Form */}
             <div className="flex flex-col justify-end">
-              <p className="text-foreground text-xl font-bold">
+              <p className="text-foreground text-2xl font-bold">
                 შეიყვანეთ საკონტაქტო ინფორმაცია
               </p>
 
-              <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+              <form onSubmit={handleSubmit} className="mt-8 space-y-4">
                 <Input
                   type="text"
                   placeholder="სახელი, გვარი"
-                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50"
+                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50 !text-base placeholder:!text-base"
                 />
                 <Input
                   type="tel"
                   placeholder="ტელეფონის ნომერი"
-                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-foreground/50"
+                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
                 />
                 <Input
                   type="email"
                   placeholder="ელ. ფოსტა"
-                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-foreground/50"
+                  className="h-13 rounded-lg border-0 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
                 />
                 <Button
                   type="submit"
-                  className="h-13 cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90"
+                  className="h-13 text-md cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90"
                 >
                   მოთხოვნის გაგზავნა
                 </Button>

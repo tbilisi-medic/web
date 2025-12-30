@@ -3,6 +3,14 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 interface ProductDetailsProps {
   product: {
@@ -17,6 +25,10 @@ interface ProductDetailsProps {
 
 export function ProductDetails({ product }: ProductDetailsProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <section className="py-16 lg:py-24">
@@ -67,9 +79,76 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
               {/* CTA Button */}
               <div className="mt-auto pt-8">
-                <Button className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 lg:w-auto lg:px-12">
-                  დაინტერესებული ვარ
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 lg:w-auto lg:px-12">
+                      დაინტერესებული ვარ
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[1100px] p-15 [&>button]:top-7 [&>button]:right-7">
+                    <div className="grid gap-20 lg:grid-cols-2">
+                      {/* Left - Form */}
+                      <div>
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-4xl">
+                            {product.name}
+                          </DialogTitle>
+                        </DialogHeader>
+
+                        <p className="mt-4 text-xl font-semibold text-primary lg:text-2xl">
+                          {product.subtitle}
+                        </p>
+
+                        <p className="mt-5 text-md text-foreground/60">
+                          {product.stats}
+                        </p>
+
+                        <p className="mt-15 font-semibold text-foreground">
+                          შეიყვანეთ საკონტაქტო ინფორმაცია
+                        </p>
+
+                        <form
+                          onSubmit={handleSubmit}
+                          className="mt-5 space-y-4"
+                        >
+                          <Input
+                            type="text"
+                            placeholder="სახელი, გვარი"
+                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                          />
+                          <Input
+                            type="tel"
+                            placeholder="ტელეფონის ნომერი"
+                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                          />
+                          <Input
+                            type="email"
+                            placeholder="ელ. ფოსტა"
+                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                          />
+                          <Button
+                            type="submit"
+                            className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90"
+                          >
+                            მოთხოვნის გაგზავნა
+                          </Button>
+                        </form>
+                      </div>
+
+                      {/* Right - Image */}
+                      <div className="hidden lg:flex lg:items-center">
+                        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-100">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
