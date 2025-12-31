@@ -1,4 +1,8 @@
-import { Hero, BlogPreview, Testimonials } from '@/components/sections/shared';
+import {
+  PageHeader,
+  BlogPreview,
+  Testimonials,
+} from '@/components/sections/shared';
 import { Metadata } from 'next';
 import { AboutContent, Mission, Branches } from '@/components/sections/about';
 
@@ -10,7 +14,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Hero />
+      <PageHeader title="ჩვენს შესახებ" />
       <AboutContent />
       <Mission />
       <BlogPreview />
