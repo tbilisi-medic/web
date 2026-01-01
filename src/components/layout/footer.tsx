@@ -167,7 +167,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:text-white">
+                  <Link href="/careers" className="hover:text-white">
                     ვაკანსიები
                   </Link>
                 </li>
