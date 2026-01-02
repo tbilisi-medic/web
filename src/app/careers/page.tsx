@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
-import { CareersContent } from '@/components/sections/careers';
+import { CareersContent, EmployeeStories } from '@/components/sections/careers';
 
 export const metadata: Metadata = {
   title: 'კარიერა',
@@ -12,6 +12,7 @@ export default function CareersPage() {
     <>
       <PageHeader title="კარიერა" />
       <CareersContent />
+      <EmployeeStories />
     </>
   );
 }
