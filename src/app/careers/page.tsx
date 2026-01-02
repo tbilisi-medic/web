@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
+import { CareersContent } from '@/components/sections/careers';
 
 export const metadata: Metadata = {
   title: 'კარიერა',
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function CareersPage() {
-  return <PageHeader title="კარიერა" />;
+  return (
+    <>
+      <PageHeader title="კარიერა" />
+      <CareersContent />
+    </>
+  );
 }
