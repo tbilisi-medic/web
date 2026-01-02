@@ -56,7 +56,7 @@ export function EmployeeStories() {
               >
                 {/* Image */}
                 <div className="lg:col-span-4">
-                  <div className="relative h-70 overflow-hidden rounded-xl bg-gray-200">
+                  <div className="relative h-60 overflow-hidden rounded-xl bg-gray-200">
                     <Image
                       src={post.image}
                       alt={post.title}

@@ -4,6 +4,7 @@ import {
   CareersContent,
   EmployeeStories,
   Benefits,
+  JobListings,
 } from '@/components/sections/careers';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function CareersPage() {
       <CareersContent />
       <EmployeeStories />
       <Benefits />
+      <JobListings />
     </>
   );
 }
