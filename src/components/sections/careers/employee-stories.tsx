@@ -30,7 +30,7 @@ const posts = [
 
 export function EmployeeStories() {
   return (
-    <section className="lg:pt-6">
+    <section className="lg:pt-6 mb-30">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
@@ -43,7 +43,7 @@ export function EmployeeStories() {
             გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად
             გამოცდილებაზე. ამ სტატიების საშუალებით მკითხველი გაეცნობა ადამიანებს
             კომპანიის მიღმა, მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის
-            უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციას შიდა კულტურის
+            უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის
             შესახებ.
           </p>
 
