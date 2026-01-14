@@ -78,7 +78,7 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="hover:text-white">
+                  <Link href="/blog" className="hover:text-white">
                     ბლოგი
                   </Link>
                 </li>
