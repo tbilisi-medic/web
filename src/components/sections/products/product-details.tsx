@@ -58,7 +58,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               </h2>
 
               {/* Stats */}
-              <p className="mt-5 text-md text-foreground/60">{product.stats}</p>
+              <p className="mt-5 text-md text-foreground/70">{product.stats}</p>
 
               {/* Description */}
               <div className="mt-6">
@@ -99,7 +99,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           {product.subtitle}
                         </p>
 
-                        <p className="mt-5 text-md text-foreground/60">
+                        <p className="mt-5 text-md text-foreground/70">
                           {product.stats}
                         </p>
 

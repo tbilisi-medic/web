@@ -46,7 +46,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
                   <h3 className="font-semibold text-lg text-foreground">
                     {product.name}
                   </h3>
-                  <p className="mt-2 text-md text-foreground/60">
+                  <p className="mt-2 text-md text-foreground/70">
                     {product.description}
                   </p>
                 </div>

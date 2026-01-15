@@ -133,7 +133,7 @@ export function Testimonials() {
                           <p className="font-semibold text-foreground text-lg">
                             {testimonial.name}
                           </p>
-                          <p className="text-md text-foreground/60">
+                          <p className="text-md text-foreground/70">
                             {testimonial.role}
                           </p>
                         </div>

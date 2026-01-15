@@ -96,7 +96,7 @@ export function JobListings() {
                         <h3 className="text-xl font-bold text-foreground">
                           {job.title}
                         </h3>
-                        <p className="mt-2 text-md text-foreground/60">
+                        <p className="mt-2 text-md text-foreground/70">
                           {job.location} | {job.date}
                         </p>
 
