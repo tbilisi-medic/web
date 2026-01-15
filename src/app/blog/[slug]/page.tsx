@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
-import { BlogPostContent } from '@/components/sections/blog';
+import { BlogPostContent, RelatedPosts } from '@/components/sections/blog';
 
 const getPost = (slug: string) => {
   return {
@@ -34,6 +34,35 @@ const getPost = (slug: string) => {
   };
 };
 
+const getRelatedPosts = () => {
+  return [
+    {
+      id: '1',
+      slug: 'post-1',
+      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
+      description:
+        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
+      image: '/images/categories/1.jpg',
+    },
+    {
+      id: '2',
+      slug: 'post-2',
+      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
+      description:
+        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
+      image: '/images/categories/2.jpg',
+    },
+    {
+      id: '3',
+      slug: 'post-3',
+      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
+      description:
+        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
+      image: '/images/categories/3.jpg',
+    },
+  ];
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -55,11 +84,13 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = getPost(slug);
+  const relatedPosts = getRelatedPosts();
 
   return (
     <>
       <PageHeader />
       <BlogPostContent post={post} />
+      <RelatedPosts posts={relatedPosts} />
     </>
   );
 }
