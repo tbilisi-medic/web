@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { PageHeader, Quote } from '@/components/sections/shared';
+import { PageHeader, Quote, Stats } from '@/components/sections/shared';
 
 export const metadata: Metadata = {
   title: 'თანამშრომლები ',
@@ -22,6 +22,29 @@ export default function EmployeesPage() {
         authorName="ლევან ხომერიკი"
         authorRole="გენერალური დირექტორი"
         image="/images/categories/1.jpg"
+      />
+      <Stats
+        title="თანამშრომლები რიცხვებში"
+        stats={[
+          {
+            id: 1,
+            value: '85',
+            label: 'თანამშრომელი',
+            image: '/images/categories/1.jpg',
+          },
+          {
+            id: 2,
+            value: '15',
+            label: 'დამოუკიდებელი გუნდი',
+            image: '/images/categories/2.jpg',
+          },
+          {
+            id: 3,
+            value: '92%',
+            label: 'ENPS ინდექსი',
+            image: '/images/categories/3.jpg',
+          },
+        ]}
       />
     </>
   );
