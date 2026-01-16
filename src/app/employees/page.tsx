@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-import { PageHeader, Quote, Stats } from '@/components/sections/shared';
+import {
+  PageHeader,
+  Quote,
+  Stats,
+  EmployeeStories,
+} from '@/components/sections/shared';
 
 export const metadata: Metadata = {
   title: 'თანამშრომლები ',
@@ -46,6 +51,7 @@ export default function EmployeesPage() {
           },
         ]}
       />
+      <EmployeeStories />
     </>
   );
 }

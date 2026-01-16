@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/sections/shared';
+import { PageHeader, EmployeeStories } from '@/components/sections/shared';
 import {
   CareersContent,
-  EmployeeStories,
   Benefits,
   JobListings,
 } from '@/components/sections/careers';
