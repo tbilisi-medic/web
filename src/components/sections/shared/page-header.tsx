@@ -1,8 +1,9 @@
 interface PageHeaderProps {
   title?: string;
+  description?: string;
 }
 
-export function PageHeader({ title }: PageHeaderProps) {
+export function PageHeader({ title, description }: PageHeaderProps) {
   return (
     <section className="-mt-24 bg-primary pt-24">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -11,6 +12,11 @@ export function PageHeader({ title }: PageHeaderProps) {
             <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-4xl">
               {title}
             </h1>
+          )}
+          {description && (
+            <p className="mt-5 text-lg text-white/80 sm:text-xl">
+              {description}
+            </p>
           )}
         </div>
       </div>
