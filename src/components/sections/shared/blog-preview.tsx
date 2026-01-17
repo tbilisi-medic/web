@@ -18,7 +18,7 @@ const posts = [
       'მსოფლიოში წამყვანი სამედიცინო ბრენდები და მწარმოებლები ერთ სივრცეში.',
     image: '/images/categories/2.jpg',
     stat: '100+',
-    href: '/',
+    href: '/partners',
   },
   {
     id: 3,
