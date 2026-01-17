@@ -1,6 +1,6 @@
 import {
   PageHeader,
-  BlogPreview,
+  Achievements,
   Testimonials,
 } from '@/components/sections/shared';
 import { Metadata } from 'next';
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <PageHeader title="ჩვენს შესახებ" />
       <AboutContent />
       <Mission />
-      <BlogPreview />
+      <Achievements />
       <Testimonials />
       <Branches />
     </>

@@ -1,5 +1,5 @@
 import { Categories, TechnicalService } from '@/components/sections/home';
-import { Hero, BlogPreview, Testimonials } from '@/components/sections/shared';
+import { Hero, Achievements, Testimonials } from '@/components/sections/shared';
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <Hero />
       <Categories />
       <TechnicalService />
-      <BlogPreview />
+      <Achievements />
       <Testimonials />
     </>
   );

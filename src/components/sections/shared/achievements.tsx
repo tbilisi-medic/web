@@ -31,7 +31,7 @@ const posts = [
   },
 ];
 
-export function BlogPreview() {
+export function Achievements() {
   return (
     <section className="lg:pt-6">
       <div className="px-4 sm:px-6 lg:px-8">
