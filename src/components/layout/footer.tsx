@@ -10,7 +10,7 @@ export function Footer() {
             {/* Left side - Addresses & Contact */}
             <div className="lg:col-span-4">
               {/* Addresses */}
-              <div className="space-y-2 text-white">
+              <div className="space-y-2 text-lg text-white">
                 <p>თბილისი, ლუბლიანას ქ. №28ა</p>
                 <p>ქუთაისი, გამსახურდიას ქ. №22</p>
                 <p>ბათუმი, აგრატიონის ქ. №196</p>
@@ -35,7 +35,7 @@ export function Footer() {
 
             {/* Company */}
             <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold">კომპანია</h4>
+              <h4 className="text-lg font-semibold">კომპანია</h4>
               <ul className="mt-4 space-y-3 text-white/80">
                 <li>
                   <Link href="/" className="hover:text-white">
@@ -87,7 +87,7 @@ export function Footer() {
 
             {/* Products */}
             <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold">პროდუქცია</h4>
+              <h4 className="text-lg font-semibold">პროდუქცია</h4>
               <ul className="mt-4 space-y-3 text-white/80">
                 <li>
                   <Link href="/" className="hover:text-white">
@@ -159,7 +159,7 @@ export function Footer() {
 
             {/* Contact */}
             <div className="lg:col-span-3">
-              <h4 className="text-base font-semibold">დაგვიკავშირდით</h4>
+              <h4 className="text-lg font-semibold">დაგვიკავშირდით</h4>
               <ul className="mt-4 space-y-2 text-white/80">
                 <li>
                   <Link href="/" className="hover:text-white">
@@ -174,7 +174,7 @@ export function Footer() {
               </ul>
 
               {/* Social icons */}
-              <h4 className="mt-8 text-base font-semibold">გამოგვყევით</h4>
+              <h4 className="mt-8 text-lg font-semibold">გამოგვყევით</h4>
               <div className="mt-4 flex items-center gap-1">
                 <a
                   href="#"
