@@ -1,10 +1,42 @@
-import { PageHeader, Quote, Stats } from '@/components/sections/shared';
+import {
+  PageHeader,
+  Quote,
+  Stats,
+  Stories,
+} from '@/components/sections/shared';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'საერთაშორისო პარტნიორები',
   description: '',
 };
+
+const partnerStories = [
+  {
+    id: 1,
+    title: 'ლუსი ლიუ | აღმასრულებელი დირექტორი, SNIBE DIAGNOSTIC',
+    description:
+      'გაიგეთ, თუ რას ფიქრობენ Snibe Diagnostic-ში თბილისი მედიკთან თანამშრომლობის შესახებ.',
+    image: '/images/categories/1.jpg',
+    href: '/',
+  },
+  {
+    id: 2,
+    title: 'მითსუა კიშიდა | აღმასრულებელი დირექტორი, NIDEK. INC',
+    description:
+      'გაიგეთ, თუ რას ფიქრობენ Nidek-ში თბილისი მედიკთან თანამშრომლობის შესახებ.',
+    image: '/images/categories/2.jpg',
+    href: '/',
+  },
+  {
+    id: 3,
+    title: 'ი მინგშენგი | პრეზიდენტი ,COMEN MEDICAL',
+    description:
+      'გაიგეთ, თუ რას ფიქრობენ Comen Medical-ში თბილისი მედიკთან თანამშრომლობის შესახებ.',
+    image: '/images/categories/3.jpg',
+    href: '/',
+  },
+];
 
 export default function PartnersPage() {
   return (
@@ -46,6 +78,11 @@ export default function PartnersPage() {
             image: '/images/categories/3.jpg',
           },
         ]}
+      />
+      <Stories
+        title="პარტნიორები ჩვენზე"
+        description="გაიგეთ, რას ყვებიან საერთაშორისო სამედიცინო მწარმოებლები ჩვენთან თანამშრომლობასა და იმ გამოცდილებაზე, რომელიც ერთად დაგვიგროვდა. ამ შეფასებებით გაეცნობით ხედვებს, სტანდარტებსა და ღირებულებებს, რომლებიც უზრუნველყოფს კომპანიებს შორის გრძელვადიან პარტნიორობას საერთაშორისო ასპარეზზე."
+        stories={partnerStories}
       />
     </>
   );

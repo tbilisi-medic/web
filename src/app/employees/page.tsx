@@ -3,13 +3,40 @@ import {
   PageHeader,
   Quote,
   Stats,
-  EmployeeStories,
+  Stories,
 } from '@/components/sections/shared';
 
 export const metadata: Metadata = {
   title: 'თანამშრომლები ',
   description: '',
 };
+
+const employeeStories = [
+  {
+    id: 1,
+    title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
+    description:
+      'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
+    image: '/images/categories/1.jpg',
+    href: '/',
+  },
+  {
+    id: 2,
+    title: 'დავით ჯიშკარიანი | მარკეტინგის გუნდის ხელმძღვანელი',
+    description:
+      'გაიგეთ მეტი თბილისი მედიკის მარკეტინგის ხელმძღვანელის, დავით ჯიშკარიანის მედიკური მოგზაურობის შესახებ.',
+    image: '/images/categories/2.jpg',
+    href: '/',
+  },
+  {
+    id: 3,
+    title: 'გოგა მაზიაშვილი | საოპერაციო დირექტორი',
+    description:
+      'გაიგეთ მეტი თბილისი მედიკის საოპერაციო დირექტორის, გოგა მაზიაშვილის მედიკური მოგზაურობის შესახებ.',
+    image: '/images/categories/3.jpg',
+    href: '/',
+  },
+];
 
 export default function EmployeesPage() {
   return (
@@ -51,7 +78,11 @@ export default function EmployeesPage() {
           },
         ]}
       />
-      <EmployeeStories />
+      <Stories
+        title="ადამიანების დღიურები"
+        description="გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად გამოცდილებაზე. ამ სტატიების საშუალებით მკითხველი გაეცნობა ადამიანებს კომპანიის მიღმა, მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის შესახებ."
+        stories={employeeStories}
+      />
     </>
   );
 }
