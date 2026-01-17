@@ -470,7 +470,7 @@ export function Header() {
               >
                 კლინიკებისთვის
                 <ChevronDown
-                  className={`h-5 w-5 mr-2 transition-transform duration-300 ${
+                  className={`h-5 w-5 transition-transform duration-300 ${
                     openSubmenu === 'products' ? 'rotate-180' : ''
                   }`}
                 />
@@ -633,7 +633,7 @@ export function Header() {
               >
                 ჩვენ
                 <ChevronDown
-                  className={`h-5 w-5 mr-2 transition-transform duration-300 ${
+                  className={`h-5 w-5 transition-transform duration-300 ${
                     openSubmenu === 'about' ? 'rotate-180' : ''
                   }`}
                 />

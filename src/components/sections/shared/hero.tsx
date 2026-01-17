@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export function Hero() {
   return (
@@ -31,8 +32,13 @@ export function Hero() {
 
             {/* Right: Image placeholder */}
             <div className="relative">
-              <div className="h-90 overflow-hidden rounded-xl bg-white/10">
-                {/* Actual image later */}
+              <div className="h-110 overflow-hidden rounded-xl bg-white/10">
+                <Image
+                  src="/images/categories/2.jpg"
+                  alt=""
+                  fill
+                  className="object-cover rounded-xl"
+                />
               </div>
             </div>
           </div>
