@@ -6,6 +6,184 @@ import { Phone, Menu, ChevronDown, X } from 'lucide-react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import Image from 'next/image';
 
+type MenuItem = {
+  label: string;
+  href: string;
+};
+
+type MenuSection = {
+  title: string;
+  items: MenuItem[];
+  subsection?: {
+    title: string;
+    items: MenuItem[];
+  };
+};
+
+const productsMenu: MenuSection[] = [
+  {
+    title: 'ტექნოლოგია',
+    items: [
+      { label: 'ექოსკოპიის აპარატები', href: '/products' },
+      { label: 'ენდოსკოპიის აპარატები', href: '/products' },
+      { label: 'ლაპარასკოპიის აპარატები', href: '/products' },
+      { label: 'ანესთეზიის აპარატები', href: '/products' },
+      { label: 'ხელოვნური სუნთქვის აპარატები', href: '/products' },
+      { label: 'პაციენტის დაკვირვების მონიტორი', href: '/products' },
+      { label: 'ოფთალმოლოგიური აპარატები', href: '/products' },
+      { label: 'სხვა', href: '#' },
+    ],
+  },
+  {
+    title: 'ავეჯი',
+    items: [
+      { label: 'პაციენტის საწოლები', href: '/products' },
+      { label: 'საპროცედურო მაგიდები', href: '/products' },
+      { label: 'საოპერაციო მაგიდები', href: '/products' },
+      { label: 'სავარძლები და ტახტები', href: '/products' },
+      { label: 'ურიკები და ტუმბოები', href: '/products' },
+      { label: 'კარადები და სათავსოები', href: '/products' },
+      { label: 'განათება', href: '/products' },
+    ],
+  },
+  {
+    title: 'სახარჯები',
+    items: [
+      { label: 'სამედიცინო სამოსი', href: '/products' },
+      { label: 'შპრიცები, კათეტერები და ნემსები', href: '/products' },
+      { label: 'იმპლანტები და აუგმენტაცია', href: '/products' },
+    ],
+    subsection: {
+      title: 'ლაბორატორია',
+      items: [
+        { label: 'ჰემატოლოგია', href: '/products' },
+        { label: 'იმუნოლოგია', href: '/products' },
+        { label: 'ბიოქიმია', href: '/products' },
+        { label: 'კოაგულაცია', href: '/products' },
+      ],
+    },
+  },
+];
+
+const aboutMenu: MenuSection[] = [
+  {
+    title: 'კომპანია',
+    items: [
+      { label: 'ჩვენს შესახებ', href: '/about' },
+      { label: 'მისია და ხედვა', href: '/' },
+      { label: 'მონაგარი', href: '/' },
+      { label: 'გამოხმაურება', href: '/' },
+    ],
+  },
+  {
+    title: 'ფილიალები',
+    items: [
+      { label: 'თბილისი', href: '/' },
+      { label: 'ქუთაისი', href: '/' },
+      { label: 'ბათუმი', href: '/' },
+    ],
+  },
+  {
+    title: 'კარიერა',
+    items: [
+      { label: 'ვაკანსიები', href: '/careers' },
+      { label: 'ადამიანების დღიურები', href: '/' },
+    ],
+  },
+  {
+    title: 'წასაკითხი',
+    items: [
+      { label: 'სიახლეები', href: '/blog' },
+      { label: 'ბლოგი', href: '/blog' },
+    ],
+  },
+];
+
+function DesktopMenuSection({ section }: { section: MenuSection }) {
+  return (
+    <div>
+      <h3 className="text-primary font-semibold mb-4">{section.title}</h3>
+      <ul className="space-y-2 text-md text-foreground/80">
+        {section.items.map((item) => (
+          <li key={item.label}>
+            <NavigationMenuPrimitive.Link asChild>
+              <Link href={item.href} className="hover:text-primary">
+                {item.label}
+              </Link>
+            </NavigationMenuPrimitive.Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* Subsection */}
+      {section.subsection && (
+        <div className="mt-8">
+          <h3 className="text-primary font-semibold mb-4">
+            {section.subsection.title}
+          </h3>
+          <ul className="space-y-2 text-md text-foreground/80">
+            {section.subsection.items.map((item) => (
+              <li key={item.label}>
+                <NavigationMenuPrimitive.Link asChild>
+                  <Link href={item.href} className="hover:text-primary">
+                    {item.label}
+                  </Link>
+                </NavigationMenuPrimitive.Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileMenuSection({
+  section,
+  onLinkClick,
+}: {
+  section: MenuSection;
+  onLinkClick: () => void;
+}) {
+  return (
+    <>
+      <div className="mt-7 first:mt-2">
+        <h3 className="text-foreground/60 font-medium mb-3 text-md">
+          {section.title}
+        </h3>
+        <ul className="space-y-2 text-md text-foreground/90">
+          {section.items.map((item) => (
+            <li key={item.label}>
+              <Link href={item.href} onClick={onLinkClick}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Subsection */}
+      {section.subsection && (
+        <div className="mt-7">
+          <h3 className="text-foreground/60 font-medium mb-3 text-md">
+            {section.subsection.title}
+          </h3>
+          <ul className="space-y-2 text-md text-foreground/90">
+            {section.subsection.items.map((item) => (
+              <li key={item.label}>
+                <Link href={item.href} onClick={onLinkClick}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
+}
+
+// Main Header Component
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
@@ -40,251 +218,13 @@ export function Header() {
                   </NavigationMenuPrimitive.Trigger>
                   <NavigationMenuPrimitive.Content className="w-full bg-white p-6 py-8 data-[motion=from-start]:animate-in data-[motion=from-start]:fade-in data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:animate-in data-[motion=from-end]:fade-in data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-start]:animate-out data-[motion=to-start]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:animate-out data-[motion=to-end]:fade-out data-[motion=to-end]:slide-out-to-right-52">
                     <div className="grid grid-cols-4 gap-8">
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-4">
-                          ტექნოლოგია
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ექოსკოპიის აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ენდოსკოპიის აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ლაპარასკოპიის აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ანესთეზიის აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ხელოვნური სუნთქვის აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                პაციენტის დაკვირვების მონიტორი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ოფთალმოლოგიური აპარატები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="#" className="hover:text-primary">
-                                სხვა
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-3">
-                          ავეჯი
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                პაციენტის საწოლები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                საპროცედურო მაგიდები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                საოპერაციო მაგიდები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                სავარძლები და ტახტები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                ურიკები და ტუმბოები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                კარადები და სათავსოები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                განათება
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-3">
-                          სახარჯები
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                სამედიცინო სამოსი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                შპრიცები, კათეტერები და ნემსები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/products"
-                                className="hover:text-primary"
-                              >
-                                იმპლანტები და აუგმენტაცია
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                        <div className="mt-8">
-                          <h3 className="text-primary text-lg font-semibold mb-3">
-                            ლაბორატორია
-                          </h3>
-                          <ul className="space-y-2 text-md text-foreground/80">
-                            <li>
-                              <NavigationMenuPrimitive.Link asChild>
-                                <Link
-                                  href="/products"
-                                  className="hover:text-primary"
-                                >
-                                  ჰემატოლოგია
-                                </Link>
-                              </NavigationMenuPrimitive.Link>
-                            </li>
-                            <li>
-                              <NavigationMenuPrimitive.Link asChild>
-                                <Link
-                                  href="/products"
-                                  className="hover:text-primary"
-                                >
-                                  იმუნოლოგია
-                                </Link>
-                              </NavigationMenuPrimitive.Link>
-                            </li>
-                            <li>
-                              <NavigationMenuPrimitive.Link asChild>
-                                <Link
-                                  href="/products"
-                                  className="hover:text-primary"
-                                >
-                                  ბიოქიმია
-                                </Link>
-                              </NavigationMenuPrimitive.Link>
-                            </li>
-                            <li>
-                              <NavigationMenuPrimitive.Link asChild>
-                                <Link
-                                  href="/products"
-                                  className="hover:text-primary"
-                                >
-                                  კოაგულაცია
-                                </Link>
-                              </NavigationMenuPrimitive.Link>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                      {productsMenu.map((section) => (
+                        <DesktopMenuSection
+                          key={section.title}
+                          section={section}
+                        />
+                      ))}
+                      {/* Image Column */}
                       <div>
                         <div className="relative h-full min-h-[300px] rounded-lg overflow-hidden">
                           <Image
@@ -307,117 +247,12 @@ export function Header() {
                   </NavigationMenuPrimitive.Trigger>
                   <NavigationMenuPrimitive.Content className="w-full bg-white p-6 py-8 data-[motion=from-start]:animate-in data-[motion=from-start]:fade-in data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:animate-in data-[motion=from-end]:fade-in data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-start]:animate-out data-[motion=to-start]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:animate-out data-[motion=to-end]:fade-out data-[motion=to-end]:slide-out-to-right-52">
                     <div className="grid grid-cols-4 gap-8">
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-4">
-                          კომპანია
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/about"
-                                className="hover:text-primary"
-                              >
-                                ჩვენს შესახებ
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                მისია და ხედვა
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                მონაგარი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                გამოხმაურება
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-3">
-                          ფილიალები
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                თბილისი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                ქუთაისი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                ბათუმი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-3">
-                          კარიერა
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link
-                                href="/careers"
-                                className="hover:text-primary"
-                              >
-                                ვაკანსიები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/" className="hover:text-primary">
-                                ადამიანების დღიურები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h3 className="text-primary text-lg font-semibold mb-3">
-                          წასაკითხი
-                        </h3>
-                        <ul className="space-y-2 text-md text-foreground/80">
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/blog" className="hover:text-primary">
-                                სიახლეები
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                          <li>
-                            <NavigationMenuPrimitive.Link asChild>
-                              <Link href="/blog" className="hover:text-primary">
-                                ბლოგი
-                              </Link>
-                            </NavigationMenuPrimitive.Link>
-                          </li>
-                        </ul>
-                      </div>
+                      {aboutMenu.map((section) => (
+                        <DesktopMenuSection
+                          key={section.title}
+                          section={section}
+                        />
+                      ))}
                     </div>
                   </NavigationMenuPrimitive.Content>
                 </NavigationMenuPrimitive.Item>
@@ -483,144 +318,13 @@ export function Header() {
                 }`}
               >
                 <div className="px-6 py-4 space-y-4">
-                  <div className="mt-2">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      ტექნოლოგია
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ექოსკოპიის აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ენდოსკოპიის აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ლაპარასკოპიის აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ანესთეზიის აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ხელოვნური სუნთქვის აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          პაციენტის დაკვირვების მონიტორი
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ოფთალმოლოგიური აპარატები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          სხვა
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      ავეჯი
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          პაციენტის საწოლები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          საპროცედურო მაგიდები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          საოპერაციო მაგიდები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          სავარძლები და ტახტები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ურიკები და ტუმბოები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          კარადები და სათავსოები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          განათება
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      სახარჯები
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          სამედიცინო სამოსი
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          შპრიცები, კათეტერები და ნემსები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          იმპლანტები და აუგმენტაცია
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7 mb-4">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      ლაბორატორია
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ჰემატოლოგია
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          იმუნოლოგია
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          ბიოქიმია
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/products" onClick={closeMobileMenu}>
-                          კოაგულაცია
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                  {productsMenu.map((section) => (
+                    <MobileMenuSection
+                      key={section.title}
+                      section={section}
+                      onLinkClick={closeMobileMenu}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -633,7 +337,7 @@ export function Header() {
               >
                 ჩვენ
                 <ChevronDown
-                  className={`h-5 w-5 transition-transform duration-300 ${
+                  className={`h-5 w-5 mr-2 transition-transform duration-300 ${
                     openSubmenu === 'about' ? 'rotate-180' : ''
                   }`}
                 />
@@ -646,89 +350,13 @@ export function Header() {
                 }`}
               >
                 <div className="px-6 py-4">
-                  <div className="mt-2">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      კომპანია
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/about" onClick={closeMobileMenu}>
-                          ჩვენს შესახებ
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          მისია და ხედვა
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          მონაგარი
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          გამოხმაურება
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      ფილიალები
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          თბილისი
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          ქუთაისი
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          ბათუმი
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      კარიერა
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/careers" onClick={closeMobileMenu}>
-                          ვაკანსიები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/" onClick={closeMobileMenu}>
-                          ადამიანების დღიურები
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="mt-7 mb-2">
-                    <h3 className="text-foreground/60 font-medium mb-3 text-md">
-                      წასაკითხი
-                    </h3>
-                    <ul className="space-y-2 text-md text-foreground/90">
-                      <li>
-                        <Link href="/blog" onClick={closeMobileMenu}>
-                          სიახლეები
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/blog" onClick={closeMobileMenu}>
-                          ბლოგი
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                  {aboutMenu.map((section) => (
+                    <MobileMenuSection
+                      key={section.title}
+                      section={section}
+                      onLinkClick={closeMobileMenu}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
