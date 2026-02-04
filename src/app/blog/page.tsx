@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
 import { BlogPosts } from '@/components/sections/blog';
+import { Header, Footer } from '@/components/layout';
 
 export const metadata: Metadata = {
   title: 'ბლოგი',
@@ -10,8 +11,10 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
+      <Header />
       <PageHeader title="ბლოგი" />
       <BlogPosts />
+      <Footer />
     </>
   );
 }

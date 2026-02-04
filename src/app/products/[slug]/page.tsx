@@ -4,6 +4,7 @@ import {
   ProductDetails,
   RelatedProducts,
 } from '@/components/sections/products';
+import { Header, Footer } from '@/components/layout';
 
 const getProduct = (slug: string) => {
   return {
@@ -78,9 +79,11 @@ export default async function ProductPage({
 
   return (
     <>
+      <Header />
       <PageHeader title={product.subcategory} />
       <ProductDetails product={product} />
       <RelatedProducts products={relatedProducts} />
+      <Footer />
     </>
   );
 }

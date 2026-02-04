@@ -5,6 +5,7 @@ import {
   Testimonials,
 } from '@/components/sections/shared';
 import { Metadata } from 'next';
+import { Header, Footer } from '@/components/layout';
 
 export const metadata: Metadata = {
   title: 'ადგილობრივი მომხმარებლები',
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function CustomersPage() {
   return (
     <>
+      <Header />
       <PageHeader
         title="ადგილობრივი მომხმარებლები"
         description="თბილისი მედიკში ვაერთიანებთ მომხმარებლებს, რომლებიც გვირჩევენ ნდობას, ხარისხსა და გრძელვადიან ურთიერთობას და ჩვენთან ერთად ქმნიან თანამედროვე, ადამიანზე ორიენტირებულ სამედიცინო გამოცდილებას."
@@ -53,6 +55,7 @@ export default function CustomersPage() {
         ]}
       />
       <Testimonials />
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
 import { BlogPostContent, RelatedPosts } from '@/components/sections/blog';
+import { Header, Footer } from '@/components/layout';
 
 const getPost = (slug: string) => {
   return {
@@ -88,9 +89,11 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <Header />
       <PageHeader />
       <BlogPostContent post={post} />
       <RelatedPosts posts={relatedPosts} />
+      <Footer />
     </>
   );
 }

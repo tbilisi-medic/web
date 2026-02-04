@@ -5,6 +5,7 @@ import {
   Stats,
   Stories,
 } from '@/components/sections/shared';
+import { Header, Footer } from '@/components/layout';
 
 export const metadata: Metadata = {
   title: 'თანამშრომლები ',
@@ -41,6 +42,7 @@ const employeeStories = [
 export default function EmployeesPage() {
   return (
     <>
+      <Header />
       <PageHeader
         title="თანამშრომლები"
         description="თბილისი მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან „მედიკელებად“ ჩამოყალიბდნენ."
@@ -83,6 +85,7 @@ export default function EmployeesPage() {
         description="გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად გამოცდილებაზე. ამ სტატიების საშუალებით მკითხველი გაეცნობა ადამიანებს კომპანიის მიღმა, მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის შესახებ."
         stories={employeeStories}
       />
+      <Footer />
     </>
   );
 }

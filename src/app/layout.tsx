@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_Georgian } from 'next/font/google';
 import './globals.css';
-import { Header, Footer } from '@/components/layout';
 
 const notoSansGeorgian = Noto_Sans_Georgian({
   variable: '--font-sans',
@@ -22,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="ka">
       <body className={`${notoSansGeorgian.variable} antialiased`}>
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

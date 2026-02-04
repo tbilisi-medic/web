@@ -5,6 +5,7 @@ import {
   Stories,
 } from '@/components/sections/shared';
 import { Metadata } from 'next';
+import { Header, Footer } from '@/components/layout';
 
 export const metadata: Metadata = {
   title: 'საერთაშორისო პარტნიორები',
@@ -41,6 +42,7 @@ const partnerStories = [
 export default function PartnersPage() {
   return (
     <>
+      <Header />
       <PageHeader
         title="საერთაშორისო პარტნიორები"
         description="თბილისი მედიკში ვაერთიანებთ საერთაშორისო პარტნიორებს, რომლებიც წამყვანი სამედიცინო ქვეყნიდან შემოგვიერთდნენ და ჩვენთან ერთად ქმნიან მზარდ ადგილობრივ სამედიცინო ეკოსისტემას."
@@ -84,6 +86,7 @@ export default function PartnersPage() {
         description="გაიგეთ, რას ყვებიან საერთაშორისო სამედიცინო მწარმოებლები ჩვენთან თანამშრომლობასა და იმ გამოცდილებაზე, რომელიც ერთად დაგვიგროვდა. ამ შეფასებებით გაეცნობით ხედვებს, სტანდარტებსა და ღირებულებებს, რომლებიც უზრუნველყოფს კომპანიებს შორის გრძელვადიან პარტნიორობას საერთაშორისო ასპარეზზე."
         stories={partnerStories}
       />
+      <Footer />
     </>
   );
 }
