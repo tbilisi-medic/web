@@ -12,14 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import { DeleteProductDialog } from './delete-product-dialog';
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  subcategory: string;
-  createdAt: string;
-}
+import { ProductFormModal, Product, categories } from './product-form-modal';
 
 interface ProductsTableProps {
   products: Product[];
@@ -34,9 +27,20 @@ export function ProductsTable({ products }: ProductsTableProps) {
     product: null,
   });
 
-  const handleEdit = (id: string) => {
-    // Will implement later
-    console.log('Edit product:', id);
+  const [editModal, setEditModal] = useState<{
+    open: boolean;
+    product: Product | null;
+  }>({
+    open: false,
+    product: null,
+  });
+
+  const getCategoryName = (categoryId: string) => {
+    return categories.find((c) => c.id === categoryId)?.name ?? categoryId;
+  };
+
+  const handleEditClick = (product: Product) => {
+    setEditModal({ open: true, product });
   };
 
   const handleDeleteClick = (product: Product) => {
@@ -78,7 +82,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
               products.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell className="font-medium">{product.name}</TableCell>
-                  <TableCell>{product.category}</TableCell>
+                  <TableCell>{getCategoryName(product.category)}</TableCell>
                   <TableCell>{product.subcategory}</TableCell>
                   <TableCell>{product.createdAt}</TableCell>
                   <TableCell className="text-right">
@@ -87,7 +91,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer"
-                        onClick={() => handleEdit(product.id)}
+                        onClick={() => handleEditClick(product)}
                       >
                         <Pencil className="h-4 w-4" />
                       </Button>
@@ -115,6 +119,15 @@ export function ProductsTable({ products }: ProductsTableProps) {
         }
         productName={deleteDialog.product?.name ?? ''}
         onConfirm={handleDeleteConfirm}
+      />
+
+      <ProductFormModal
+        mode="edit"
+        product={editModal.product ?? undefined}
+        open={editModal.open}
+        onOpenChange={(open) =>
+          setEditModal({ open, product: open ? editModal.product : null })
+        }
       />
     </>
   );

@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/select';
 import { Plus } from 'lucide-react';
 
-const categories = [
+export const categories = [
   {
     id: 'technology',
     name: 'ტექნოლოგია',
@@ -58,14 +58,55 @@ const categories = [
   },
 ];
 
+export interface Product {
+  id: string;
+  name: string;
+  category: string;
+  subcategory: string;
+  description?: string;
+  createdAt: string;
+}
+
 interface ProductFormModalProps {
+  mode: 'add' | 'edit';
+  product?: Product;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;
 }
 
-export function ProductFormModal({ children }: ProductFormModalProps) {
-  const [open, setOpen] = React.useState(false);
+export function ProductFormModal({
+  mode,
+  product,
+  open: controlledOpen,
+  onOpenChange,
+  children,
+}: ProductFormModalProps) {
+  const [internalOpen, setInternalOpen] = React.useState(false);
+
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+  const setOpen = isControlled ? onOpenChange! : setInternalOpen;
+
+  const [name, setName] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState('');
   const [selectedSubcategory, setSelectedSubcategory] = React.useState('');
+  const [description, setDescription] = React.useState('');
+
+  // Prefill form when editing
+  React.useEffect(() => {
+    if (mode === 'edit' && product && open) {
+      setName(product.name);
+      setSelectedCategory(product.category);
+      setSelectedSubcategory(product.subcategory);
+      setDescription(product.description || '');
+    } else if (mode === 'add' && open) {
+      setName('');
+      setSelectedCategory('');
+      setSelectedSubcategory('');
+      setDescription('');
+    }
+  }, [mode, product, open]);
 
   const currentCategory = categories.find((c) => c.id === selectedCategory);
 
@@ -76,27 +117,38 @@ export function ProductFormModal({ children }: ProductFormModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted');
+    console.log('Form submitted:', {
+      name,
+      selectedCategory,
+      selectedSubcategory,
+      description,
+    });
     setOpen(false);
   };
 
+  const isEdit = mode === 'edit';
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {children || (
-          <Button className="cursor-pointer">
-            <Plus />
-            დამატება
-          </Button>
-        )}
-      </DialogTrigger>
+      {!isControlled && (
+        <DialogTrigger asChild>
+          {children || (
+            <Button className="cursor-pointer">
+              <Plus />
+              დამატება
+            </Button>
+          )}
+        </DialogTrigger>
+      )}
       <DialogContent
         className="sm:max-w-[600px] p-0 gap-0 [&>button]:top-6 [&>button]:right-6"
         onPointerDownOutside={(e) => e.preventDefault()}
         onInteractOutside={(e) => e.preventDefault()}
       >
         <DialogHeader className="p-6 py-5 border-b">
-          <DialogTitle className="text-md">პროდუქტის დამატება</DialogTitle>
+          <DialogTitle className="text-md">
+            {isEdit ? 'პროდუქტის რედაქტირება' : 'პროდუქტის დამატება'}
+          </DialogTitle>
         </DialogHeader>
 
         <ScrollArea className="max-h-[75vh]">
@@ -108,6 +160,8 @@ export function ProductFormModal({ children }: ProductFormModalProps) {
                 id="name"
                 placeholder="პროდუქტის სახელი"
                 className="h-11 w-full"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
@@ -161,6 +215,8 @@ export function ProductFormModal({ children }: ProductFormModalProps) {
                 placeholder="პროდუქტის აღწერა"
                 rows={4}
                 className="w-full"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
 
@@ -183,7 +239,7 @@ export function ProductFormModal({ children }: ProductFormModalProps) {
                 გაუქმება
               </Button>
               <Button type="submit" className="cursor-pointer">
-                დამატება
+                {isEdit ? 'შენახვა' : 'დამატება'}
               </Button>
             </div>
           </form>
