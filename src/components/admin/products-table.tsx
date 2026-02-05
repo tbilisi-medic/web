@@ -35,7 +35,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
   };
 
   return (
-    <div className="rounded-lg border">
+    <div className="rounded-lg border shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>

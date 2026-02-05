@@ -1,7 +1,8 @@
-import { AdminHeader } from '@/components/admin';
-import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
-import { ProductsTable } from '@/components/admin/products-table';
+import {
+  AdminHeader,
+  ProductsTable,
+  ProductFormModal,
+} from '@/components/admin';
 
 // products data
 const products = [
@@ -53,10 +54,7 @@ export default function AdminProductsPage() {
             <p className="text-sm text-foreground/60">
               სულ: {products.length} პროდუქტი
             </p>
-            <Button className="cursor-pointer">
-              <Plus />
-              დამატება
-            </Button>
+            <ProductFormModal />
           </div>
 
           {/* Table */}
