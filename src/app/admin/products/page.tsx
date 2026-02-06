@@ -1,8 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import {
   AdminHeader,
   ProductsTable,
   ProductFormModal,
 } from '@/components/admin';
+import { Input } from '@/components/ui/input';
+import { Search } from 'lucide-react';
 
 // products data
 const products = [
@@ -53,23 +58,40 @@ const products = [
 ];
 
 export default function AdminProductsPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <>
       <AdminHeader title="პროდუქტები" />
       <div className="flex-1 p-4">
         <div className="mx-auto w-full max-w-7xl">
           {/* Actions */}
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-foreground/60">
-              სულ: {products.length} პროდუქტი
-            </p>
+          <div className="flex items-center justify-between gap-4">
+            <div className="relative w-full max-w-sm">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/60" />
+              <Input
+                placeholder="ძიება..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="h-10 pl-9"
+              />
+            </div>
             <ProductFormModal mode="add" />
           </div>
 
           {/* Table */}
           <div className="mt-5">
-            <ProductsTable products={products} />
+            <ProductsTable products={filteredProducts} />
           </div>
+
+          {/* Count */}
+          <p className="mt-5 text-sm text-foreground/60">
+            სულ: {filteredProducts.length} პროდუქტი
+          </p>
         </div>
       </div>
     </>

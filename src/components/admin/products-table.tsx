@@ -75,7 +75,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                   colSpan={5}
                   className="text-center text-foreground/60"
                 >
-                  პროდუქტები არ მოიძებნა
+                  <p className="p-2">პროდუქტები არ მოიძებნა</p>
                 </TableCell>
               </TableRow>
             ) : (
