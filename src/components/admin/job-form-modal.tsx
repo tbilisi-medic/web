@@ -142,7 +142,7 @@ export function JobFormModal({
                 value={description}
                 onChange={setDescription}
                 modules={quillModules}
-                placeholder="ვაკანსიის აღწერა..."
+                className="[&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
               />
             </div>
 

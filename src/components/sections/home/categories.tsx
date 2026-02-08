@@ -3,22 +3,22 @@ import Image from 'next/image';
 
 const categories = [
   {
-    title: 'ტექნოლოგია',
+    title: 'სამედიცინო ავეჯი და აპარატურა',
     href: '/',
     image: '/images/categories/1.jpg',
   },
   {
-    title: 'ავეჯი',
+    title: 'სამედიცინო სახარჯი მასალები',
     href: '/',
     image: '/images/categories/2.jpg',
   },
   {
-    title: 'სახარჯები',
+    title: 'ლაბორატორიული მედიცინა',
     href: '/',
     image: '/images/categories/3.jpg',
   },
   {
-    title: 'ლაბორატორია',
+    title: 'ესთეტიკური მედიცინა',
     href: '/',
     image: '/images/categories/4.jpg',
   },
@@ -51,11 +51,11 @@ export function Categories() {
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/40 via-60% to-transparent" />
 
                 {/* Title */}
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-3xl leading-snug font-bold text-white w-2/3 text-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
                     {category.title}
                   </h3>
                 </div>

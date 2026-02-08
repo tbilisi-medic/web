@@ -200,7 +200,7 @@ export function Header() {
   return (
     <div className="relative z-50 px-4 pt-4 sm:px-6 lg:px-8">
       <header className="relative mx-auto max-w-7xl rounded-xl bg-white shadow-sm">
-        <div className="flex h-17 items-center justify-between gap-15 px-6">
+        <div className="flex h-18 items-center justify-between gap-15 px-6">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">
@@ -337,7 +337,7 @@ export function Header() {
               >
                 ჩვენ
                 <ChevronDown
-                  className={`h-5 w-5 mr-2 transition-transform duration-300 ${
+                  className={`h-5 w-5 transition-transform duration-300 ${
                     openSubmenu === 'about' ? 'rotate-180' : ''
                   }`}
                 />
