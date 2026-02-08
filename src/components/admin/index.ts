@@ -6,3 +6,6 @@ export { DeleteProductDialog } from './delete-product-dialog';
 export { BlogTable } from './blog-table';
 export { BlogFormModal } from './blog-form-modal';
 export { DeleteBlogDialog } from './delete-blog-dialog';
+export { JobsTable } from './jobs-table';
+export { JobFormModal } from './job-form-modal';
+export { DeleteJobDialog } from './delete-job-dialog';
