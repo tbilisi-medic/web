@@ -73,7 +73,7 @@ export function JobListings() {
                   <TabsTrigger
                     key={job.id}
                     value={job.id}
-                    className="flex cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-foreground"
+                    className="flex border border-primary-light   cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
                   >
                     <span className="text-xl font-bold">{job.title}</span>
                     <span className="mt-2 text-base opacity-80">

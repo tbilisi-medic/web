@@ -80,7 +80,10 @@ export default async function ProductPage({
   return (
     <>
       <Header />
-      <PageHeader title={product.subcategory} />
+      <PageHeader
+        title="ციფრული კატალოგი"
+        description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
+      />
       <ProductDetails product={product} />
       <RelatedProducts products={relatedProducts} />
       <Footer />

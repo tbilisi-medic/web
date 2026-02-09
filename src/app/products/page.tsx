@@ -12,7 +12,10 @@ export default function ProductsPage() {
   return (
     <>
       <Header />
-      <PageHeader title="კლინიკებისთვის" />
+      <PageHeader
+        title="ციფრული კატალოგი"
+        description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
+      />
       <ProductCatalog />
       <ContactForm />
       <Footer />

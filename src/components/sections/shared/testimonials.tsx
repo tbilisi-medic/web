@@ -1,14 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
 import { Star } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
 
@@ -54,10 +51,12 @@ const testimonials = [
 export function Testimonials() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
     if (!api) return;
 
+    setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
 
     api.on('select', () => {
@@ -66,7 +65,7 @@ export function Testimonials() {
   }, [api]);
 
   return (
-    <section className="pt-14 pb-30 lg:py-24 lg:pb-30">
+    <section className="py-14 lg:py-24">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
@@ -98,45 +97,31 @@ export function Testimonials() {
                     key={testimonial.id}
                     className="pl-4 md:basis-1/2 lg:basis-1/3"
                   >
-                    <div className="flex h-full flex-col rounded-xl bg-gray-100 p-6 py-8">
-                      {/* Stars */}
+                    <div className="flex h-full flex-col rounded-xl border-1 border-primary-light bg-white p-6 py-8 shadow-sm">
                       <div className="flex gap-1">
                         {Array.from({ length: testimonial.rating }).map(
                           (_, i) => (
                             <Star
                               key={i}
-                              size={18}
-                              className="fill-primary text-primary"
+                              size={17}
+                              className="fill-primary-light text-primary-light"
                             />
-                          )
+                          ),
                         )}
                       </div>
 
                       {/* Quote */}
-                      <p className="mt-4 flex-grow text-lg text-foreground/80">
+                      <p className="mt-8 flex-grow text-lg text-foreground/80">
                         &ldquo;{testimonial.text}&rdquo;
                       </p>
 
-                      {/* Author */}
-                      <div className="mt-6 flex items-center gap-4 pt-6">
-                        {/* Logo */}
-                        <div className="relative h-12 w-12 overflow-hidden rounded-xl">
-                          <Image
-                            src={testimonial.logo}
-                            alt={testimonial.company}
-                            fill
-                            className="object-contain p-1"
-                          />
-                        </div>
-
-                        <div>
-                          <p className="font-semibold text-foreground text-lg">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-md text-foreground/70">
-                            {testimonial.role}
-                          </p>
-                        </div>
+                      <div className="mt-8 pt-4">
+                        <p className="font-semibold text-foreground text-lg">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-lg text-foreground/70">
+                          {testimonial.company}
+                        </p>
                       </div>
                     </div>
                   </CarouselItem>
@@ -144,25 +129,20 @@ export function Testimonials() {
               </CarouselContent>
 
               {/* Navigation */}
-              <div className="mt-8 flex items-center justify-between">
-                {/* Dots */}
-                <div className="hidden gap-2 lg:flex">
-                  {testimonials.map((_, i) => (
+              <div className="mt-8 flex items-center justify-center">
+                <div className="flex gap-2">
+                  {Array.from({ length: count }).map((_, i) => (
                     <button
                       key={i}
                       onClick={() => api?.scrollTo(i)}
-                      className={`h-3 w-3 cursor-pointer rounded-full transition-colors ${
-                        current === i ? 'bg-primary' : 'bg-primary/20'
+                      className={`h-2 cursor-pointer rounded-full transition-all ${
+                        current === i
+                          ? 'w-8 bg-primary-light'
+                          : 'w-8 bg-primary/15'
                       }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
-                </div>
-
-                {/* Arrows */}
-                <div className="flex gap-2">
-                  <CarouselPrevious className="static translate-y-0 cursor-pointer border-primary text-primary shadow-none hover:bg-white p-4" />
-                  <CarouselNext className="static translate-y-0 cursor-pointer border-primary text-primary shadow-none hover:bg-white p-4" />
                 </div>
               </div>
             </Carousel>

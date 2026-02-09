@@ -16,7 +16,10 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <PageHeader title="ჩვენს შესახებ" />
+      <PageHeader
+        title="მედიკი"
+        description='თბილისი მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან "მედიკელებად" ჩამოყალიბდნენ.'
+      />
       <AboutContent />
       <Mission />
       <Achievements />

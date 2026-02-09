@@ -32,8 +32,8 @@ export function TechnicalService() {
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col justify-between p-8 lg:p-12">
               {/* Title */}
-              <h3 className="max-w-md text-2xl font-bold text-white sm:text-3xl">
-                ტექნიკური მომსახურება
+              <h3 className="text-3xl leading-snug font-bold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                ღირსეული მომსახურება <br /> ქართული მედიცინისთვის
               </h3>
 
               {/* Button */}

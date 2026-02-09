@@ -43,7 +43,10 @@ export default function CareersPage() {
   return (
     <>
       <Header />
-      <PageHeader title="კარიერა" />
+      <PageHeader
+        title="მედიკი"
+        description='მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან "მედიკელებად" ჩამოყალიბდნენ.'
+      />
       <CareersContent />
       <Stories
         title="ადამიანების დღიურები"

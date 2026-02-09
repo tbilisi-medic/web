@@ -128,15 +128,8 @@ export function ProductCatalog() {
     <section className="py-16 lg:py-24">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
-            აღმოაჩინეთ მრავალფეროვანი
-            <br />
-            სამედიცინო პროდუქცია თქვენი კლინიკისთვის
-          </h2>
-
           {/* Category Tabs */}
-          <div className="mt-10">
+          <div>
             <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto pb-4">
               {categories.map((category) => (
                 <button
@@ -144,8 +137,8 @@ export function ProductCatalog() {
                   onClick={() => setActiveCategory(category.id)}
                   className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-medium transition-colors lg:shrink  ${
                     activeCategory === category.id
-                      ? 'bg-primary text-white'
-                      : 'bg-gray-100 text-foreground hover:bg-gray-200'
+                      ? 'bg-primary border border-primary text-white'
+                      : 'bg-white border border-primary/15 text-foreground hover:bg-primary/5'
                   }`}
                 >
                   {category.name}
@@ -212,7 +205,7 @@ export function ProductCatalog() {
               {/* Load More Button */}
               <div className="mt-14 md:mt-16">
                 <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12">
-                  სრულად
+                  მაჩვენე მეტი
                 </button>
               </div>
             </div>
