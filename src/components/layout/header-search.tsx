@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Search, X } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
-export function HeaderSearch() {
+function SearchInput() {
   const [query, setQuery] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -14,6 +14,8 @@ export function HeaderSearch() {
     const searchQuery = searchParams.get('search');
     if (searchQuery) {
       setQuery(searchQuery);
+    } else {
+      setQuery('');
     }
   }, [searchParams]);
 
@@ -34,5 +36,24 @@ export function HeaderSearch() {
         className="h-11 w-65 rounded-lg border-0 bg-gray-100 pl-10 pr-9 !text-[16px] focus-visible:ring-0 focus-visible:border-0"
       />
     </div>
+  );
+}
+
+export function HeaderSearch() {
+  return (
+    <Suspense
+      fallback={
+        <div className="relative hidden lg:block">
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-primary" />
+          <Input
+            type="text"
+            disabled
+            className="h-11 w-65 rounded-lg border-0 bg-gray-100 pl-10 pr-9 !text-[16px] focus-visible:ring-0 focus-visible:border-0"
+          />
+        </div>
+      }
+    >
+      <SearchInput />
+    </Suspense>
   );
 }
