@@ -16,7 +16,7 @@ export function Footer() {
         className="flex w-full cursor-pointer items-center justify-center bg-primary-light py-3 hover:brightness-110 transition-all"
         aria-label="Scroll to top"
       >
-        <ChevronUp className="h-5 w-5" />
+        <ChevronUp size={21} />
       </button>
 
       <div className="px-4 sm:px-6 lg:px-8">
@@ -41,7 +41,7 @@ export function Footer() {
             {/* Company */}
             <div className="lg:col-span-2 lg:col-start-7">
               <h4 className="text-lg font-bold">კომპანია</h4>
-              <ul className="mt-4 space-y-3 text-white/80">
+              <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
                     href="/about"
@@ -80,7 +80,7 @@ export function Footer() {
             {/* For Clinics */}
             <div className="lg:col-span-2">
               <h4 className="text-lg font-bold">კლინიკებისთვის</h4>
-              <ul className="mt-4 space-y-3 text-white/80">
+              <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
                     href="/products"
@@ -127,7 +127,7 @@ export function Footer() {
             {/* Careers */}
             <div className="lg:col-span-2">
               <h4 className="text-lg font-bold">კარიერა</h4>
-              <ul className="mt-4 space-y-3 text-white/80">
+              <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
                     href="/careers"

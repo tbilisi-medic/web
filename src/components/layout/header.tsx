@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Phone, Menu, ChevronDown, X } from 'lucide-react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import Image from 'next/image';
+import { HeaderSearch } from './header-search';
 
 type MenuItem = {
   label: string;
@@ -198,9 +199,9 @@ export function Header() {
   };
 
   return (
-    <div className="relative z-50 px-4 pt-4 sm:px-6 lg:px-8">
+    <div className="relative z-50 px-4 pt-5 sm:px-6 lg:px-8">
       <header className="relative mx-auto max-w-7xl rounded-xl bg-white shadow-sm">
-        <div className="flex h-18 items-center justify-between gap-15 px-6">
+        <div className="flex h-18 items-center justify-between gap-7 px-6">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">
@@ -265,11 +266,11 @@ export function Header() {
             </NavigationMenuPrimitive.Root>
           </div>
 
-          {/* Right side - Phone + Language */}
+          {/* Search */}
+          <HeaderSearch />
+
+          {/* Right side  */}
           <div className="flex items-center gap-4">
-            <a href="#" className="text-gray-700 hover:text-primary">
-              <Phone size={18} />
-            </a>
             <a
               href="#"
               className="text-base font-medium text-gray-700 hover:text-primary"
