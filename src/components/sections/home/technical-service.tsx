@@ -1,6 +1,8 @@
-import Link from 'next/link';
+'use client';
+
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
+import { ContactDialog } from '@/components/sections/home';
 
 export function TechnicalService() {
   return (
@@ -32,19 +34,18 @@ export function TechnicalService() {
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col justify-between p-8 lg:p-12">
               {/* Title */}
-              <h3 className="text-3xl leading-snug font-bold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
-                ღირსეული მომსახურება <br /> ქართული მედიცინისთვის
+              <h3 className="max-w-md text-2xl font-bold text-white sm:text-3xl">
+                ტექნიკური მომსახურება
               </h3>
 
               {/* Button */}
               <div>
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary"
-                >
-                  მოითხოვე ზარი
-                  <Phone size={16} />
-                </Link>
+                <ContactDialog>
+                  <button className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary">
+                    მოითხოვე ზარი
+                    <Phone size={16} />
+                  </button>
+                </ContactDialog>
               </div>
             </div>
           </div>

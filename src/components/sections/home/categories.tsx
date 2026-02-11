@@ -4,22 +4,22 @@ import Image from 'next/image';
 const categories = [
   {
     title: 'სამედიცინო ავეჯი და აპარატურა',
-    href: '/',
+    href: '/products',
     image: '/images/categories/1.jpg',
   },
   {
     title: 'სამედიცინო სახარჯი მასალები',
-    href: '/',
+    href: '/products',
     image: '/images/categories/2.jpg',
   },
   {
     title: 'ლაბორატორიული მედიცინა',
-    href: '/',
+    href: '/products',
     image: '/images/categories/3.jpg',
   },
   {
     title: 'ესთეტიკური მედიცინა',
-    href: '/',
+    href: '/products',
     image: '/images/categories/4.jpg',
   },
 ];

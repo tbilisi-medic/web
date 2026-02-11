@@ -18,7 +18,7 @@ export function Hero() {
               </p>
               <div className="mt-15">
                 <Link
-                  href="/"
+                  href="/about"
                   className="inline-flex items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary"
                 >
                   გაიგე მეტი
