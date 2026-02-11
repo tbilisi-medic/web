@@ -44,13 +44,6 @@ const getRelatedProducts = () => {
       description: 'ექოსკოპიის პორტატული მოწყობილობა',
       image: '/images/products/1.jpg',
     },
-    {
-      id: '4',
-      slug: 'sonoscape-e6',
-      name: 'SONOSCAPE E2',
-      description: 'ექოსკოპიის პორტატული მოწყობილობა',
-      image: '/images/products/1.jpg',
-    },
   ];
 };
 

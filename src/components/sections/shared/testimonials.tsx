@@ -97,7 +97,7 @@ export function Testimonials() {
                     key={testimonial.id}
                     className="pl-4 md:basis-1/2 lg:basis-1/3"
                   >
-                    <div className="flex h-full flex-col rounded-xl border-1 border-primary-light bg-white p-6 py-8 shadow-sm">
+                    <div className="flex h-full flex-col rounded-xl border-1 border-primary-light/50 bg-white p-6 py-8 shadow-sm">
                       <div className="flex gap-1">
                         {Array.from({ length: testimonial.rating }).map(
                           (_, i) => (

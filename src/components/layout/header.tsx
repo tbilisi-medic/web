@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Menu, ChevronDown, X } from 'lucide-react';
+import { Menu, ChevronDown, X } from 'lucide-react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import Image from 'next/image';
 import { HeaderSearch } from './header-search';
@@ -71,24 +71,23 @@ const aboutMenu: MenuSection[] = [
     title: 'კომპანია',
     items: [
       { label: 'ჩვენს შესახებ', href: '/about' },
-      { label: 'მისია და ხედვა', href: '/' },
-      { label: 'მონაგარი', href: '/' },
-      { label: 'გამოხმაურება', href: '/' },
+      { label: 'მისია და ხედვა', href: '/about#mission' },
+      { label: 'მონაგარი', href: '/about#achievements' },
     ],
   },
   {
     title: 'ფილიალები',
     items: [
-      { label: 'თბილისი', href: '/' },
-      { label: 'ქუთაისი', href: '/' },
-      { label: 'ბათუმი', href: '/' },
+      { label: 'თბილისი', href: '/about#tbilisi' },
+      { label: 'ქუთაისი', href: '/about#kutaisi' },
+      { label: 'ბათუმი', href: '/about#batumi' },
     ],
   },
   {
     title: 'კარიერა',
     items: [
       { label: 'ვაკანსიები', href: '/careers' },
-      { label: 'ადამიანების დღიურები', href: '/' },
+      { label: 'ადამიანების დღიურები', href: '/careers#stories' },
     ],
   },
   {

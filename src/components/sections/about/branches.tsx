@@ -5,6 +5,7 @@ const branches = [
   {
     id: 1,
     name: 'თბილისი',
+    sectionId: 'tbilisi',
     description:
       'საქართველოს მასშტაბით თბილისი მედიკი წარმოადგენს ერთ-ერთ უმსხვილეს კონტრიბუტორს სამედიცინო პროდუქციის დისტრიბუციისა და მომსახურების დარგში. კომპანია წარმატებით ახორციელებს პროდუქციის ფართო სპექტრის, ვიწრო დარგობრივ ჯგუფებად განვითარებასა და რეალიზაციას.',
     image: '/images/categories/1.jpg',
@@ -13,6 +14,7 @@ const branches = [
   {
     id: 2,
     name: 'ქუთაისი',
+    sectionId: 'kutaisi',
     description:
       'საქართველოს მასშტაბით თბილისი მედიკი წარმოადგენს ერთ-ერთ უმსხვილეს კონტრიბუტორს სამედიცინო პროდუქციის დისტრიბუციისა და მომსახურების დარგში. კომპანია წარმატებით ახორციელებს პროდუქციის ფართო სპექტრის, ვიწრო დარგობრივ ჯგუფებად განვითარებასა და რეალიზაციას.',
     image: '/images/categories/2.jpg',
@@ -21,6 +23,7 @@ const branches = [
   {
     id: 3,
     name: 'ბათუმი',
+    sectionId: 'batumi',
     description:
       'საქართველოს მასშტაბით თბილისი მედიკი წარმოადგენს ერთ-ერთ უმსხვილეს კონტრიბუტორს სამედიცინო პროდუქციის დისტრიბუციისა და მომსახურების დარგში. კომპანია წარმატებით ახორციელებს პროდუქციის ფართო სპექტრის, ვიწრო დარგობრივ ჯგუფებად განვითარებასა და რეალიზაციას.',
     image: '/images/categories/3.jpg',
@@ -47,14 +50,15 @@ export function Branches() {
           </p>
 
           {/* Branch Cards */}
-          <div className="mt-15 space-y-18">
+          <div className="mt-15 space-y-14">
             {branches.map((branch, index) => {
               const isReversed = index % 2 === 0;
 
               return (
                 <div
                   key={branch.id}
-                  className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
+                  id={branch.sectionId}
+                  className="grid items-center lg:grid-cols-2 gap-8 py-5 lg:gap-16"
                 >
                   {/* Text */}
                   <div

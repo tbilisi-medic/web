@@ -1,10 +1,6 @@
 import { Metadata } from 'next';
 import { PageHeader, Stories } from '@/components/sections/shared';
-import {
-  CareersContent,
-  Benefits,
-  JobListings,
-} from '@/components/sections/careers';
+import { CareersContent, JobListings } from '@/components/sections/careers';
 import { Header, Footer } from '@/components/layout';
 
 export const metadata: Metadata = {
@@ -53,7 +49,6 @@ export default function CareersPage() {
         description="გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად გამოცდილებაზე. ამ სტატიების საშუალებით მკითხველი გაეცნობა ადამიანებს კომპანიის მიღმა, მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის შესახებ."
         stories={employeeStories}
       />
-      <Benefits />
       <JobListings />
       <Footer />
     </>
