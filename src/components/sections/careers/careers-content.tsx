@@ -27,7 +27,7 @@ export function CareersContent() {
 
             {/* Right: Text content */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
                 კარიერა თბილისი მედიკში
               </h2>
 

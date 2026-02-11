@@ -15,7 +15,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Title */}
-          <h1 className="text-2xl max-w-4xl mx-auto text-center font-bold text-foreground sm:text-4xl leading-10 lg:leading-12">
+          <h1 className="text-2xl max-w-4xl mx-auto text-center font-bold text-foreground sm:text-4xl leading-10 lg:leading-12 uppercase">
             {post.title}
           </h1>
 

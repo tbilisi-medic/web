@@ -10,7 +10,7 @@ export function Hero() {
           <div className="grid items-center gap-2 lg:grid-cols-2">
             {/* Left: Text content */}
             <div>
-              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-5xl">
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-5xl uppercase">
                 ქართული მედიცინისთვის
               </h1>
               <p className="mt-10 text-lg text-white/80 sm:text-xl">
@@ -19,7 +19,7 @@ export function Hero() {
               <div className="mt-15">
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary"
+                  className="inline-flex items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary uppercase"
                 >
                   გაიგე მეტი
                   <ArrowRight size={16} />

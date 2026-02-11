@@ -102,7 +102,9 @@ const aboutMenu: MenuSection[] = [
 function DesktopMenuSection({ section }: { section: MenuSection }) {
   return (
     <div>
-      <h3 className="text-primary font-semibold mb-4">{section.title}</h3>
+      <h3 className="text-primary font-semibold mb-4 uppercase">
+        {section.title}
+      </h3>
       <ul className="space-y-2 text-md text-foreground/80">
         {section.items.map((item) => (
           <li key={item.label}>
@@ -118,7 +120,7 @@ function DesktopMenuSection({ section }: { section: MenuSection }) {
       {/* Subsection */}
       {section.subsection && (
         <div className="mt-8">
-          <h3 className="text-primary font-semibold mb-4">
+          <h3 className="text-primary font-semibold mb-4 uppercase">
             {section.subsection.title}
           </h3>
           <ul className="space-y-2 text-md text-foreground/80">
@@ -148,7 +150,7 @@ function MobileMenuSection({
   return (
     <>
       <div className="mt-7 first:mt-2">
-        <h3 className="text-foreground/60 font-medium mb-3 text-md">
+        <h3 className="text-foreground/60 font-semibold mb-3 text-md uppercase">
           {section.title}
         </h3>
         <ul className="space-y-2 text-md text-foreground/90">
@@ -165,7 +167,7 @@ function MobileMenuSection({
       {/* Subsection */}
       {section.subsection && (
         <div className="mt-7">
-          <h3 className="text-foreground/60 font-medium mb-3 text-md">
+          <h3 className="text-foreground/60 font-semibold mb-3 text-md uppercase">
             {section.subsection.title}
           </h3>
           <ul className="space-y-2 text-md text-foreground/90">
@@ -212,7 +214,7 @@ export function Header() {
               <NavigationMenuPrimitive.List className="flex items-center gap-1">
                 {/* For Clinics */}
                 <NavigationMenuPrimitive.Item>
-                  <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none">
+                  <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-primary transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none uppercase">
                     კლინიკებისთვის
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </NavigationMenuPrimitive.Trigger>
@@ -241,7 +243,7 @@ export function Header() {
 
                 {/* About Us */}
                 <NavigationMenuPrimitive.Item>
-                  <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none">
+                  <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-primary transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none uppercase">
                     ჩვენ
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </NavigationMenuPrimitive.Trigger>
@@ -272,7 +274,7 @@ export function Header() {
           <div className="flex items-center gap-4">
             <a
               href="#"
-              className="text-base font-medium text-gray-700 hover:text-primary"
+              className="text-base font-semibold text-primary uppercase"
             >
               ქარ
             </a>
@@ -301,7 +303,7 @@ export function Header() {
             <div>
               <button
                 onClick={() => toggleSubmenu('products')}
-                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-medium"
+                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold uppercase"
               >
                 კლინიკებისთვის
                 <ChevronDown
@@ -333,7 +335,7 @@ export function Header() {
             <div>
               <button
                 onClick={() => toggleSubmenu('about')}
-                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-medium"
+                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold uppercase"
               >
                 ჩვენ
                 <ChevronDown

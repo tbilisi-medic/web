@@ -56,7 +56,7 @@ export function JobsTable({ jobs }: JobsTableProps) {
       <div className="rounded-lg border shadow-sm">
         <Table>
           <TableHeader>
-            <TableRow>
+            <TableRow className="uppercase">
               <TableHead>დასახელება</TableHead>
               <TableHead>მდებარეობა</TableHead>
               <TableHead>თარიღი</TableHead>

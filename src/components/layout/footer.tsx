@@ -24,7 +24,9 @@ export function Footer() {
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Left side - Company Info */}
             <div className="lg:col-span-5">
-              <h4 className="text-lg font-bold">ქართული მედიცინისთვის</h4>
+              <h4 className="text-lg font-semibold uppercase">
+                ქართული მედიცინისთვის
+              </h4>
               <p className="mt-2 text-lg text-white/80">
                 სამედიცინო დარგის კვალიფიციური პარტნიორი
               </p>
@@ -40,7 +42,7 @@ export function Footer() {
 
             {/* Company */}
             <div className="lg:col-span-2 lg:col-start-7">
-              <h4 className="text-lg font-bold">კომპანია</h4>
+              <h4 className="text-lg font-semibold uppercase">კომპანია</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
@@ -79,7 +81,9 @@ export function Footer() {
 
             {/* For Clinics */}
             <div className="lg:col-span-2">
-              <h4 className="text-lg font-bold">კლინიკებისთვის</h4>
+              <h4 className="text-lg font-semibold uppercase">
+                კლინიკებისთვის
+              </h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
@@ -102,7 +106,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    სამედიცინო
+                    სახარჯები
                   </Link>
                 </li>
                 <li>
@@ -126,7 +130,7 @@ export function Footer() {
 
             {/* Careers */}
             <div className="lg:col-span-2">
-              <h4 className="text-lg font-bold">კარიერა</h4>
+              <h4 className="text-lg font-semibold uppercase">კარიერა</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
@@ -138,7 +142,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/careers"
+                    href="/careers#stories"
                     className="hover:text-white transition-colors"
                   >
                     ადამიანების დღიურები

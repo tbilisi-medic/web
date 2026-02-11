@@ -17,12 +17,12 @@ const posts = [
     description:
       'მსოფლიოში წამყვანი სამედიცინო ბრენდები და მწარმოებლები ერთ სივრცეში.',
     image: '/images/categories/2.jpg',
-    stat: '100+',
+    stat: '250+',
     href: '/partners',
   },
   {
     id: 3,
-    title: 'კმაყოფილი მომხმარებლები',
+    title: 'ადგილობრივი მომხმარებლები',
     description:
       'უამრავი კმაყოფილი ადგილობრივი მომხმარებელი და უთვალავი წარმატებული განხორციელებული პროექტი.',
     image: '/images/categories/3.jpg',
@@ -37,7 +37,7 @@ export function Achievements() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase uppercase">
             მონაგარი
           </h2>
 
@@ -70,7 +70,7 @@ export function Achievements() {
 
                 {/* Content */}
                 <div className="order-3 lg:order-2 lg:col-span-5">
-                  <h3 className="text-xl font-bold text-primary lg:text-2xl">
+                  <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
                     {post.title}
                   </h3>
                   <p className="mt-5 text-lg text-foreground/80">
@@ -79,7 +79,7 @@ export function Achievements() {
                   <div className="mt-8">
                     <Link
                       href={post.href}
-                      className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90"
+                      className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90 uppercase"
                     >
                       სრულად
                     </Link>

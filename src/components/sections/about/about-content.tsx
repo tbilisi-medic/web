@@ -27,7 +27,7 @@ export function AboutContent() {
 
             {/* Right: Text content */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
                 ჩვენს შესახებ
               </h2>
 

@@ -60,7 +60,7 @@ export function BlogTable({ posts }: BlogTableProps) {
       <div className="rounded-lg border shadow-sm">
         <Table>
           <TableHeader>
-            <TableRow>
+            <TableRow className="uppercase">
               <TableHead>სათაური</TableHead>
               <TableHead>კატეგორია</TableHead>
               <TableHead>თარიღი</TableHead>

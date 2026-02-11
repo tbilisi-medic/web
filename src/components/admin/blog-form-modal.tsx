@@ -103,7 +103,7 @@ export function BlogFormModal({
       {!isControlled && (
         <DialogTrigger asChild>
           {children || (
-            <Button className="cursor-pointer">
+            <Button className="cursor-pointer uppercase">
               <Plus />
               დამატება
             </Button>
@@ -116,7 +116,7 @@ export function BlogFormModal({
         onInteractOutside={(e) => e.preventDefault()}
       >
         <DialogHeader className="p-6 py-5 border-b">
-          <DialogTitle className="text-md">
+          <DialogTitle className="text-md uppercase">
             {isEdit ? 'პოსტის რედაქტირება' : 'პოსტის დამატება'}
           </DialogTitle>
         </DialogHeader>
@@ -125,7 +125,9 @@ export function BlogFormModal({
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             {/* Title */}
             <div className="space-y-3">
-              <Label htmlFor="title">სათაური</Label>
+              <Label htmlFor="title" className="uppercase">
+                სათაური
+              </Label>
               <Input
                 id="title"
                 placeholder="პოსტის სათაური"
@@ -138,7 +140,9 @@ export function BlogFormModal({
 
             {/* Category */}
             <div className="space-y-3">
-              <Label htmlFor="category">კატეგორია</Label>
+              <Label htmlFor="category" className="uppercase">
+                კატეგორია
+              </Label>
               <Select
                 value={selectedCategory}
                 onValueChange={setSelectedCategory}
@@ -158,7 +162,7 @@ export function BlogFormModal({
 
             {/* Content - Text Editor */}
             <div className="space-y-3">
-              <Label>კონტენტი</Label>
+              <Label className="uppercase">კონტენტი</Label>
               <ReactQuill
                 theme="snow"
                 value={content}
@@ -170,9 +174,11 @@ export function BlogFormModal({
 
             {/* Image Upload Placeholder */}
             <div className="space-y-3">
-              <Label>სურათი</Label>
+              <Label className="uppercase">სურათი</Label>
               <div className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
-                <p className="text-sm text-foreground/60">ატვირთე სურათი</p>
+                <p className="text-sm font-semibold text-foreground/60 uppercase">
+                  ატვირთე სურათი
+                </p>
               </div>
             </div>
 
@@ -181,12 +187,12 @@ export function BlogFormModal({
               <Button
                 type="button"
                 variant="outline"
-                className="cursor-pointer"
+                className="cursor-pointer uppercase"
                 onClick={() => setOpen(false)}
               >
                 გაუქმება
               </Button>
-              <Button type="submit" className="cursor-pointer">
+              <Button type="submit" className="cursor-pointer uppercase">
                 {isEdit ? 'შენახვა' : 'დამატება'}
               </Button>
             </div>

@@ -69,16 +69,16 @@ export function Testimonials() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
             გამოხმაურება
           </h2>
 
           {/* Description */}
           <p className="mt-6 text-lg text-foreground/80">
-            საქართველოს მასშტაბით თბილისი მედიკი წარმოადგენს ერთ-ერთ უმსხვილეს
-            კონტრიბუტორს სამედიცინო პროდუქციის დისტრიბუციისა და მომსახურების
-            დარგში. კომპანია წარმატებით ახორციელებს პროდუქციის ფართო სპექტრის,
-            ვინრო დარგობრივ ჯგუფებად განვითარებასა და რეალიზაციას.
+            საქართველოს მასშტაბით, მედიკმა არაერთ წარმატებულ პროექტს ჩაუყარა
+            საფუძველი, რაც გვაძლიერებს და გვეხმარება სამედიცინო დარგის
+            წარმომადგენლებთან გრძელვადიანი პარტნიორული ურთიერთობების შენებასა და
+            შენარჩუნებაში.
           </p>
 
           {/* Carousel */}
@@ -116,7 +116,7 @@ export function Testimonials() {
                       </p>
 
                       <div className="mt-8 pt-4">
-                        <p className="font-semibold text-foreground text-lg">
+                        <p className="font-semibold text-foreground text-lg uppercase">
                           {testimonial.name}
                         </p>
                         <p className="text-lg text-foreground/70">

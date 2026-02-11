@@ -30,7 +30,7 @@ export function Categories() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
             აღმოაჩინეთ მრავალფეროვანი
             <br />
             სამედიცინო პროდუქცია თქვენი კლინიკისთვის
@@ -55,7 +55,7 @@ export function Categories() {
 
                 {/* Title */}
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-3xl leading-snug font-bold text-white w-2/3 text-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                  <h3 className="text-3xl leading-snug font-bold text-white w-2/3 text-shadow-[0_1px_2px_rgba(0,0,0,0.25)] uppercase">
                     {category.title}
                   </h3>
                 </div>

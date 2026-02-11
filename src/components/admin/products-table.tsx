@@ -60,7 +60,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
       <div className="rounded-lg border shadow-sm">
         <Table>
           <TableHeader>
-            <TableRow>
+            <TableRow className="uppercase">
               <TableHead>სახელი</TableHead>
               <TableHead>კატეგორია</TableHead>
               <TableHead>ქვეკატეგორია</TableHead>

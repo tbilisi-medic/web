@@ -37,7 +37,7 @@ export function Branches() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
             ფილიალები
           </h2>
 
@@ -66,7 +66,7 @@ export function Branches() {
                       isReversed ? 'lg:order-2' : 'lg:order-1'
                     }`}
                   >
-                    <h3 className="text-xl font-bold text-primary lg:text-2xl">
+                    <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
                       {branch.name}
                     </h3>
                     <p className="mt-5 mb-8 text-lg text-foreground/80">
@@ -75,7 +75,7 @@ export function Branches() {
                     <div className="mt-6">
                       <Link
                         href={branch.href}
-                        className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90"
+                        className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90 uppercase"
                       >
                         როგორ გვიპოვოთ?
                       </Link>

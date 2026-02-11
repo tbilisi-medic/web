@@ -62,7 +62,7 @@ export function BlogPosts() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-medium transition-colors lg:shrink ${
+                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
                       : 'bg-white border border-primary/15 text-foreground hover:bg-primary/5'
@@ -95,7 +95,7 @@ export function BlogPosts() {
 
                 {/* Content */}
                 <div className="lg:col-span-8">
-                  <h3 className="text-xl font-bold text-primary lg:text-2xl">
+                  <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
                     {post.title}
                   </h3>
                   <p className="mt-4 text-lg text-foreground/80">
@@ -103,7 +103,7 @@ export function BlogPosts() {
                   </p>
                   <div className="mt-6">
                     <Link href={`/blog/${post.slug}`}>
-                      <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90">
+                      <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
                         სრულად
                       </Button>
                     </Link>
@@ -115,7 +115,7 @@ export function BlogPosts() {
 
           {/* Load More */}
           <div className="mt-14 border-t border-gray-200 pt-8 text-center">
-            <button className="cursor-pointer text-md font-medium text-foreground/80 transition-colors hover:text-primary">
+            <button className="cursor-pointer text-md font-medium text-foreground/80 transition-colors hover:text-primary uppercase">
               მაჩვენე მეტი
             </button>
           </div>

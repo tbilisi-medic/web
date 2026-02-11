@@ -31,12 +31,12 @@ export function ContactDialog({ children }: ContactDialogProps) {
           {/* Left - Form */}
           <div>
             <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-3xl">
+              <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-3xl uppercase">
                 ტექნიკური მომსახურება
               </DialogTitle>
             </DialogHeader>
 
-            <p className="mt-7 text-xl font-semibold text-primary lg:text-xl">
+            <p className="mt-4 text-xl font-semibold text-primary lg:text-xl">
               მოითხოვე ზარი ბიო-სამედიცინო ინჟინერთან
             </p>
 
@@ -62,7 +62,7 @@ export function ContactDialog({ children }: ContactDialogProps) {
               />
               <Button
                 type="submit"
-                className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90"
+                className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 uppercase"
               >
                 მოთხოვნის გაგზავნა
               </Button>

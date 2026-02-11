@@ -18,7 +18,7 @@ export function ContactForm() {
         <div className="mx-auto max-w-7xl">
           <div className="rounded-xl border border-primary-light/50 p-8 lg:p-10">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
               ჩვენ დაგიკავშირდებით
             </h2>
 
@@ -58,7 +58,7 @@ export function ContactForm() {
                   />
                   <Button
                     type="submit"
-                    className="h-12 text-md cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90"
+                    className="h-12 text-md cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90 uppercase"
                   >
                     მოთხოვნის გაგზავნა
                   </Button>

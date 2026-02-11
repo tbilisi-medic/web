@@ -135,7 +135,7 @@ export function ProductCatalog() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-medium transition-colors lg:shrink  ${
+                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
                       : 'bg-white border border-primary/15 text-foreground hover:bg-primary/5'
@@ -191,7 +191,7 @@ export function ProductCatalog() {
 
                     {/* Info */}
                     <div className="mt-8">
-                      <h3 className="font-semibold text-lg text-foreground">
+                      <h3 className="font-semibold text-lg text-foreground uppercase">
                         {product.name}
                       </h3>
                       <p className="mt-2 text-md text-foreground/70">
@@ -204,7 +204,7 @@ export function ProductCatalog() {
 
               {/* Load More Button */}
               <div className="mt-14 md:mt-16">
-                <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12">
+                <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12 uppercase">
                   მაჩვენე მეტი
                 </button>
               </div>

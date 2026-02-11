@@ -46,11 +46,13 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md py-8">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl font-bold">ადმინ პანელი</CardTitle>
+          <CardTitle className="text-xl font-bold uppercase">
+            ადმინ პანელი
+          </CardTitle>
           <CardDescription>შედით თქვენს ანგარიშზე</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 mt-4">
             {error && (
               <div className="rounded-md bg-red-50 p-3 text-sm text-red-500">
                 {error}
@@ -58,7 +60,9 @@ export default function AdminLoginPage() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="email">ელ-ფოსტა</Label>
+              <Label htmlFor="email" className="uppercase">
+                ელ-ფოსტა
+              </Label>
               <Input
                 id="email"
                 type="email"
@@ -71,7 +75,9 @@ export default function AdminLoginPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">პაროლი</Label>
+              <Label htmlFor="password" className="uppercase">
+                პაროლი
+              </Label>
               <Input
                 id="password"
                 type="password"
@@ -85,7 +91,7 @@ export default function AdminLoginPage() {
 
             <Button
               type="submit"
-              className="h-11 w-full cursor-pointer"
+              className="h-11 w-full cursor-pointer uppercase"
               disabled={isLoading}
             >
               {isLoading ? 'იტვირთება...' : 'შესვლა'}

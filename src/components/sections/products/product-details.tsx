@@ -16,7 +16,6 @@ interface ProductDetailsProps {
   product: {
     name: string;
     subtitle: string;
-    stats: string;
     shortDescription: string;
     fullDescription: string;
     image: string;
@@ -48,7 +47,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             {/* Right - Content */}
             <div className="flex flex-col">
               {/* Product Name */}
-              <h1 className="text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
+              <h1 className="text-2xl font-bold text-primary sm:text-3xl lg:text-4xl uppercase">
                 {product.name}
               </h1>
 
@@ -56,9 +55,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               <h2 className="mt-4 text-xl font-semibold text-primary lg:text-2xl">
                 {product.subtitle}
               </h2>
-
-              {/* Stats */}
-              <p className="mt-5 text-md text-foreground/70">{product.stats}</p>
 
               {/* Description */}
               <div className="mt-6">
@@ -81,7 +77,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               <div className="mt-auto pt-8">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 lg:w-auto lg:px-12">
+                    <Button className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 lg:w-auto lg:px-12 uppercase">
                       დაინტერესებული ვარ
                     </Button>
                   </DialogTrigger>
@@ -90,17 +86,13 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                       {/* Left - Form */}
                       <div>
                         <DialogHeader>
-                          <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-4xl">
+                          <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-4xl uppercase">
                             {product.name}
                           </DialogTitle>
                         </DialogHeader>
 
-                        <p className="mt-4 text-xl font-semibold text-primary lg:text-2xl">
+                        <p className="mt-4 text-xl font-semibold text-primary lg:text-xl">
                           {product.subtitle}
-                        </p>
-
-                        <p className="mt-5 text-md text-foreground/70">
-                          {product.stats}
                         </p>
 
                         <p className="mt-15 font-semibold text-foreground">
@@ -128,7 +120,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           />
                           <Button
                             type="submit"
-                            className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90"
+                            className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 uppercase"
                           >
                             მოთხოვნის გაგზავნა
                           </Button>

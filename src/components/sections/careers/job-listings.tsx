@@ -48,7 +48,7 @@ export function JobListings() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10">
+          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
             გახდი ჩვენი გუნდის წევრი
           </h2>
 
@@ -75,7 +75,9 @@ export function JobListings() {
                     value={job.id}
                     className="flex border border-primary-light   cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
                   >
-                    <span className="text-xl font-bold">{job.title}</span>
+                    <span className="text-xl font-bold uppercase">
+                      {job.title}
+                    </span>
                     <span className="mt-2 text-base opacity-80">
                       {job.location}
                     </span>
@@ -93,7 +95,7 @@ export function JobListings() {
                   >
                     <ScrollArea className="lg:h-full">
                       <div className="p-7">
-                        <h3 className="text-xl font-bold text-foreground">
+                        <h3 className="text-xl font-bold text-foreground uppercase">
                           {job.title}
                         </h3>
                         <p className="mt-2 text-md text-foreground/70">
@@ -102,14 +104,14 @@ export function JobListings() {
 
                         <div className="mt-6">
                           <Link href="">
-                            <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90">
+                            <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
                               ატვირთე რეზიუმე
                             </Button>
                           </Link>
                         </div>
 
                         <div className="mt-8">
-                          <h4 className="text-xl font-bold text-foreground">
+                          <h4 className="text-xl font-bold text-foreground uppercase">
                             ვაკანსიის შესახებ
                           </h4>
                           <div className="mt-4 text-lg whitespace-pre-line text-foreground/80">

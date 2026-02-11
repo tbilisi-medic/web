@@ -88,7 +88,7 @@ export function JobFormModal({
       {!isControlled && (
         <DialogTrigger asChild>
           {children || (
-            <Button className="cursor-pointer">
+            <Button className="cursor-pointer uppercase">
               <Plus />
               დამატება
             </Button>
@@ -101,7 +101,7 @@ export function JobFormModal({
         onInteractOutside={(e) => e.preventDefault()}
       >
         <DialogHeader className="p-6 py-5 border-b">
-          <DialogTitle className="text-md">
+          <DialogTitle className="text-md uppercase">
             {isEdit ? 'ვაკანსიის რედაქტირება' : 'ვაკანსიის დამატება'}
           </DialogTitle>
         </DialogHeader>
@@ -110,7 +110,9 @@ export function JobFormModal({
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             {/* Job Name */}
             <div className="space-y-3">
-              <Label htmlFor="name">დასახელება</Label>
+              <Label htmlFor="name" className="uppercase">
+                დასახელება
+              </Label>
               <Input
                 id="name"
                 placeholder="ვაკანსიის დასახელება"
@@ -123,7 +125,9 @@ export function JobFormModal({
 
             {/* Location */}
             <div className="space-y-3">
-              <Label htmlFor="location">მდებარეობა</Label>
+              <Label htmlFor="location" className="uppercase">
+                მდებარეობა
+              </Label>
               <Input
                 id="location"
                 placeholder="მაგ: თბილისი, ბათუმი"
@@ -136,7 +140,7 @@ export function JobFormModal({
 
             {/* Description - Rich Text Editor */}
             <div className="space-y-3">
-              <Label>აღწერა</Label>
+              <Label className="uppercase">აღწერა</Label>
               <ReactQuill
                 theme="snow"
                 value={description}
@@ -151,12 +155,12 @@ export function JobFormModal({
               <Button
                 type="button"
                 variant="outline"
-                className="cursor-pointer"
+                className="cursor-pointer uppercase"
                 onClick={() => setOpen(false)}
               >
                 გაუქმება
               </Button>
-              <Button type="submit" className="cursor-pointer">
+              <Button type="submit" className="cursor-pointer uppercase">
                 {isEdit ? 'შენახვა' : 'დამატება'}
               </Button>
             </div>

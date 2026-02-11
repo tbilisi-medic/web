@@ -51,7 +51,7 @@ export function AdminSidebar() {
     <Sidebar variant="inset">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>მენიუ</SidebarGroupLabel>
+          <SidebarGroupLabel className="uppercase">მენიუ</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
