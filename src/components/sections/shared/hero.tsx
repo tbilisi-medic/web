@@ -14,7 +14,7 @@ export function Hero() {
                 ქართული მედიცინისთვის
               </h1>
               <p className="mt-10 text-lg text-white/80 sm:text-xl">
-                სამედიცინო დარგის კვალიფიციური პარტნიორები
+                სამედიცინო დარგის კვალიფიციური პარტნიორი
               </p>
               <div className="mt-15">
                 <Link

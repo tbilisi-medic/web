@@ -1,49 +1,94 @@
 'use client';
 
 import * as React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Suspense } from 'react';
 
 const categories = [
   {
-    id: 'technology',
-    name: 'ტექნოლოგია',
+    id: 'equipment',
+    name: 'აპარატურა',
     subcategories: [
-      'ყველა',
-      'ექოსკოპია',
-      'ენდოსკოპია',
-      'ლაპარასკოპია',
-      'ანესთეზია',
-      'ხელოვნური სუნთქვა',
-      'პაციენტის მონიტორინგი',
-      'ოფთალმოლოგია',
+      { id: 'endoscopy', name: 'ენდოსკოპია' },
+      { id: 'ultrasound', name: 'ექოსკოპია' },
+      { id: 'laparoscopy', name: 'ლაპაროსკოპია' },
+      { id: 'large-equipment', name: 'მსხვილი აპარატურა' },
+      { id: 'ophthalmology', name: 'ოფთალმოლოგია' },
+      { id: 'radiology', name: 'რადიოლოგია' },
+      { id: 'medical-gas', name: 'სამედიცინო აირი' },
+      { id: 'sterilization', name: 'სტერილიზაცია' },
+      { id: 'gynecology', name: 'გინეკოლოგია' },
+      { id: 'cardiology', name: 'კარდიოლოგია' },
+      { id: 'dermatology', name: 'დერმატოლოგია' },
+      { id: 'ent', name: 'ყელ-ყურ-ცხვირი' },
+      { id: 'rehabilitation', name: 'რეაბილიტაცია' },
+      { id: 'neonatology', name: 'ნეონატალოგია' },
+      { id: 'neurology', name: 'ნევროლოგია' },
+      { id: 'general-equipment', name: 'ზოგადი აპარატურა' },
     ],
   },
   {
     id: 'furniture',
     name: 'ავეჯი',
-    subcategories: ['ყველა', 'საწოლები', 'მაგიდები', 'სავარძლები', 'კარადები'],
+    subcategories: [
+      { id: 'beds', name: 'საწოლები' },
+      { id: 'tables', name: 'მაგიდები' },
+      { id: 'chairs', name: 'სავარძლები' },
+      { id: 'cabinets', name: 'კარადები' },
+    ],
   },
   {
     id: 'consumables',
     name: 'სახარჯები',
-    subcategories: ['ყველა', 'სამედიცინო სამოსი', 'შპრიცები', 'კათეტერები'],
+    subcategories: [
+      { id: 'bandages-gauze', name: 'ბინტები და მარლები' },
+      { id: 'disinfection-sterilization', name: 'დეზინფექცია და სტერილიზაცია' },
+      { id: 'instruments', name: 'ინსტრუმენტები' },
+      { id: 'surgical-sets', name: 'ქირურგიული ანაწყობები' },
+      { id: 'surgical-mesh-drains', name: 'ქირურგიული ბადე და დრენაჟები' },
+      { id: 'surgical-sutures-adhesives', name: 'ქირურგიული ძაფები და წებო' },
+      { id: 'plastic-surgery', name: 'პლასტიკური ქირურგია' },
+      { id: 'printer-paper', name: 'საბეჭდი ქაღალდები' },
+      { id: 'respiratory-systems', name: 'სასუნთქი სისტემები' },
+      { id: 'syringes-infusion', name: 'შპრიცები და გადასხმის სისტემები' },
+      { id: 'gloves', name: 'ხელთათმანები' },
+      { id: 'gowns-drapes', name: 'ხალათები და ზეწრები' },
+    ],
   },
   {
     id: 'laboratory',
     name: 'ლაბორატორია',
     subcategories: [
-      'ყველა',
-      'ჰემატოლოგია',
-      'იმუნოლოგია',
-      'ბიოქიმია',
-      'კოაგულაცია',
+      { id: 'biochemistry', name: 'ბიოქიმია' },
+      { id: 'blood-gases-electrolytes', name: 'გაზები და ელექტროლიტები' },
+      { id: 'auxiliary-equipment', name: 'დამხმარე აპარატურა' },
+      { id: 'veterinary-equipment', name: 'ვეტერინალური აპარატურა' },
+      { id: 'elisa-tests', name: 'ელაიზა ტესტები' },
+      { id: 'immunology', name: 'იმუნოლოგია' },
+      { id: 'coagulation', name: 'კოაგულაცია' },
+      { id: 'lab-consumables', name: 'სახარჯი მასალები' },
+      { id: 'rapid-tests', name: 'სწრაფი ტესტები' },
+      { id: 'urinalysis', name: 'შარდი' },
+      { id: 'hematology', name: 'ჰემატოლოგია' },
     ],
   },
   {
     id: 'aesthetics',
     name: 'ესთეტიკა',
-    subcategories: ['ყველა', 'ლაზერები', 'ინექციები', 'აპარატურა'],
+    subcategories: [
+      { id: 'exosomes', name: 'ეგზოსომები' },
+      { id: 'aesthetic-equipment', name: 'ესთეტიკური აპარატურა' },
+      { id: 'eye-boosters', name: 'თვალის ბუსტერები' },
+      { id: 'hair-boosters', name: 'თმის ბუსტერები' },
+      { id: 'lipolytics-hyaluronidase', name: 'ლიპოლიტიკები და ჰიალურონიდაზა' },
+      { id: 'lifting-threads', name: 'ლიფტინგის ძაფები' },
+      { id: 'face-boosters', name: 'სახის ბუსტერები' },
+      { id: 'body-fillers', name: 'ტანის ფილერები' },
+      { id: 'fillers-hyaluronic-acid', name: 'ფილერები და ჰიალურონის მჟავა' },
+    ],
   },
 ];
 
@@ -85,44 +130,71 @@ const products = [
   },
   {
     id: '6',
-    slug: 'sonoscape-e6',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '7',
     slug: 'sonoscape-e7',
     name: 'SONOSCAPE E2',
     description: 'ექოსკოპიის პორტატული მოწყობილობა',
     image: '/images/products/1.jpg',
   },
   {
-    id: '8',
+    id: '7',
     slug: 'sonoscape-e8',
     name: 'SONOSCAPE E2',
     description: 'ექოსკოპიის პორტატული მოწყობილობა',
     image: '/images/products/1.jpg',
   },
   {
-    id: '9',
+    id: '8',
     slug: 'sonoscape-e9',
+    name: 'SONOSCAPE E2',
+    description: 'ექოსკოპიის პორტატული მოწყობილობა',
+    image: '/images/products/1.jpg',
+  },
+  {
+    id: '9',
+    slug: 'sonoscape-e10',
     name: 'SONOSCAPE E2',
     description: 'ექოსკოპიის პორტატული მოწყობილობა',
     image: '/images/products/1.jpg',
   },
 ];
 
-export function ProductCatalog() {
-  const [activeCategory, setActiveCategory] = React.useState(categories[0].id);
-  const [activeSubcategory, setActiveSubcategory] = React.useState('ყველა');
+function ProductCatalogContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const activeCategory = searchParams.get('category') || categories[0].id;
+  const activeSubcategories = searchParams.getAll('sub');
 
   const currentCategory = categories.find((c) => c.id === activeCategory);
 
-  // Reset subcategory when category changes
-  React.useEffect(() => {
-    setActiveSubcategory('ყველა');
-  }, [activeCategory]);
+  const updateURL = (category: string, subcategories: string[]) => {
+    const params = new URLSearchParams();
+    params.set('category', category);
+    subcategories.forEach((sub) => params.append('sub', sub));
+
+    const search = searchParams.get('search');
+    if (search) {
+      params.set('search', search);
+    }
+
+    router.push(`/products?${params.toString()}`, { scroll: false });
+  };
+
+  const handleCategoryChange = (categoryId: string) => {
+    updateURL(categoryId, []);
+  };
+
+  const handleSubcategoryChange = (subcategoryId: string, checked: boolean) => {
+    let newSubcategories: string[];
+
+    if (checked) {
+      newSubcategories = [...activeSubcategories, subcategoryId];
+    } else {
+      newSubcategories = activeSubcategories.filter((s) => s !== subcategoryId);
+    }
+
+    updateURL(activeCategory, newSubcategories);
+  };
 
   return (
     <section className="py-16 lg:py-24">
@@ -134,7 +206,7 @@ export function ProductCatalog() {
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
+                  onClick={() => handleCategoryChange(category.id)}
                   className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
@@ -149,21 +221,29 @@ export function ProductCatalog() {
 
           {/* Content Area */}
           <div className="mt-10 grid gap-10 lg:grid-cols-12">
-            {/* Left Sidebar - Subcategories */}
+            {/* Left Sidebar */}
             <div className="lg:col-span-3">
               <ul className="space-y-3">
                 {currentCategory?.subcategories.map((sub) => (
-                  <li key={sub}>
-                    <button
-                      onClick={() => setActiveSubcategory(sub)}
-                      className={`w-full cursor-pointer text-left text-md transition-colors ${
-                        activeSubcategory === sub
-                          ? 'font-semibold text-primary'
-                          : 'text-foreground/70 hover:text-primary'
-                      }`}
-                    >
-                      {sub}
-                    </button>
+                  <li key={sub.id}>
+                    <label className="flex cursor-pointer items-center gap-3">
+                      <Checkbox
+                        checked={activeSubcategories.includes(sub.id)}
+                        onCheckedChange={(checked) =>
+                          handleSubcategoryChange(sub.id, checked as boolean)
+                        }
+                        className="border-gray-300 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      />
+                      <span
+                        className={`text-md transition-colors ${
+                          activeSubcategories.includes(sub.id)
+                            ? 'font-semibold text-primary'
+                            : 'text-foreground/70 hover:text-primary'
+                        }`}
+                      >
+                        {sub.name}
+                      </span>
+                    </label>
                   </li>
                 ))}
               </ul>
@@ -213,5 +293,13 @@ export function ProductCatalog() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function ProductCatalog() {
+  return (
+    <Suspense>
+      <ProductCatalogContent />
+    </Suspense>
   );
 }
