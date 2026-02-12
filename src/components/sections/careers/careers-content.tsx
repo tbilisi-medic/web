@@ -4,7 +4,7 @@ const images = ['/images/categories/1.jpg', '/images/categories/2.jpg'];
 
 export function CareersContent() {
   return (
-    <section className="py-16 lg:py-24 lg:pb-20">
+    <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">

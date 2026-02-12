@@ -10,7 +10,7 @@ export function TechnicalService() {
       {/* Blue background */}
       <div className="absolute inset-x-0 top-0 h-[70%] bg-primary" />
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-7xl py-16 lg:py-18">
+        <div className="relative mx-auto max-w-7xl pt-16 lg:pt-18">
           {/* Headline */}
           <h2 className="text-2xl font-bold text-white sm:text-3xl leading-10 uppercase">
             მიიღეთ კვალიფიციური

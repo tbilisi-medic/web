@@ -1,4 +1,3 @@
-export { Hero } from './hero';
 export { Achievements } from './achievements';
 export { Testimonials } from './testimonials';
 export { PageHeader } from './page-header';

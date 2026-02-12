@@ -20,11 +20,21 @@ export default function AboutPage() {
         title="მედიკი"
         description='თბილისი მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან "მედიკელებად" ჩამოყალიბდნენ.'
       />
-      <AboutContent />
-      <Mission />
-      <Achievements />
-      <Testimonials />
-      <Branches />
+      <div className="pt-16 lg:pt-24">
+        <AboutContent />
+      </div>
+      <div className="pt-16 lg:pt-24">
+        <Mission />
+      </div>
+      <div className="pt-16 lg:pt-24">
+        <Achievements />
+      </div>
+      <div className="pt-16 lg:pt-24">
+        <Testimonials />
+      </div>
+      <div className="py-16 lg:py-24">
+        <Branches />
+      </div>
       <Footer />
     </>
   );

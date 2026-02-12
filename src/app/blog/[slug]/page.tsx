@@ -91,8 +91,12 @@ export default async function BlogPostPage({
     <>
       <Header />
       <PageHeader />
-      <BlogPostContent post={post} />
-      <RelatedPosts posts={relatedPosts} />
+      <div className="pt-16 lg:pt-24">
+        <BlogPostContent post={post} />
+      </div>
+      <div className="py-16 lg:py-24">
+        <RelatedPosts posts={relatedPosts} />
+      </div>
       <Footer />
     </>
   );

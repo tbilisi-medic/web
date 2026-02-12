@@ -16,8 +16,12 @@ export default function ProductsPage() {
         title="ციფრული კატალოგი"
         description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
       />
-      <ProductCatalog />
-      <ContactForm />
+      <div className="pt-16 lg:pt-24">
+        <ProductCatalog />
+      </div>
+      <div className="py-16 lg:py-24">
+        <ContactForm />
+      </div>
       <Footer />
     </>
   );

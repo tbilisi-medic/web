@@ -76,8 +76,13 @@ export default async function ProductPage({
         title="ციფრული კატალოგი"
         description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
       />
-      <ProductDetails product={product} />
-      <RelatedProducts products={relatedProducts} />
+      <div className="pt-16 lg:pt-24">
+        <ProductDetails product={product} />
+      </div>
+      <div className="py-16 lg:py-24">
+        <RelatedProducts products={relatedProducts} />
+      </div>
+
       <Footer />
     </>
   );

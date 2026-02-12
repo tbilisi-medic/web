@@ -4,7 +4,7 @@ const images = ['/images/categories/3.jpg', '/images/categories/4.jpg'];
 
 export function Mission() {
   return (
-    <section id="mission" className="pt-10 pb-12 lg:py-24 lg:pt-10">
+    <section id="mission">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}

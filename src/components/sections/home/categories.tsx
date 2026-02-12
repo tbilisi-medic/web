@@ -26,7 +26,7 @@ const categories = [
 
 export function Categories() {
   return (
-    <section className="py-16 lg:py-24">
+    <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}

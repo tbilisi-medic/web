@@ -17,7 +17,7 @@ interface StoriesProps {
 
 export function Stories({ title, description, stories }: StoriesProps) {
   return (
-    <section id="stories" className="lg:pt-6 mb-30">
+    <section id="stories">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
@@ -33,7 +33,7 @@ export function Stories({ title, description, stories }: StoriesProps) {
             {stories.map((story) => (
               <div
                 key={story.id}
-                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
+                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mt-10"
               >
                 {/* Image */}
                 <div className="lg:col-span-4">

@@ -33,7 +33,7 @@ const branches = [
 
 export function Branches() {
   return (
-    <section className="py-16 sm:pt-0 lg:py-24 lg:pt-0 lg:pb-40">
+    <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
@@ -58,7 +58,7 @@ export function Branches() {
                 <div
                   key={branch.id}
                   id={branch.sectionId}
-                  className="grid items-center lg:grid-cols-2 gap-8 py-5 lg:gap-16"
+                  className="grid items-center lg:grid-cols-2 gap-8 pt-4 lg:gap-16"
                 >
                   {/* Text */}
                   <div

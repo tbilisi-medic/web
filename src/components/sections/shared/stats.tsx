@@ -14,7 +14,7 @@ interface StatsProps {
 
 export function Stats({ title, stats }: StatsProps) {
   return (
-    <section className="pt-10 pb-12 lg:py-24 lg:pt-10">
+    <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}

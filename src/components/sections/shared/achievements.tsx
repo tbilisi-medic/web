@@ -33,7 +33,7 @@ const posts = [
 
 export function Achievements() {
   return (
-    <section id="achievements" className="lg:pt-6">
+    <section id="achievements">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
@@ -54,7 +54,7 @@ export function Achievements() {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
+                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mt-10"
               >
                 {/* Image */}
                 <div className="lg:col-span-4">
