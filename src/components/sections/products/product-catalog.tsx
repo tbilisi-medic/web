@@ -221,7 +221,7 @@ function ProductCatalogContent() {
 
           {/* Content Area */}
           <div className="mt-10 grid gap-10 lg:grid-cols-12">
-            {/* Left Sidebar */}
+            {/* Left Sidebar - Subcategories */}
             <div className="lg:col-span-3">
               <ul className="space-y-3">
                 {currentCategory?.subcategories.map((sub) => (

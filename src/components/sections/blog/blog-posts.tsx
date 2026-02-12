@@ -1,16 +1,17 @@
 'use client';
 
-import * as React from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Suspense } from 'react';
 
 const categories = [
-  { id: 'all', name: 'სიახლეები' },
+  { id: 'news', name: 'სიახლეები' },
   { id: 'blog', name: 'ბლოგი' },
-  { id: 'listening', name: 'მოსასმენი' },
-  { id: 'conferences', name: 'ღონისძიებები' },
-  { id: 'stories', name: 'დღიურები' },
+  { id: 'listen', name: 'მოსასმენი' },
+  { id: 'events', name: 'ღონისძიებები' },
+  { id: 'diaries', name: 'დღიურები' },
 ];
 
 const posts = [
@@ -43,11 +44,18 @@ const posts = [
   },
 ];
 
-export function BlogPosts() {
-  const [activeCategory, setActiveCategory] = React.useState(categories[0].id);
+function BlogPostsContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const activeCategory = searchParams.get('category') || categories[0].id;
+
+  const handleCategoryChange = (categoryId: string) => {
+    router.push(`/blog?category=${categoryId}`, { scroll: false });
+  };
 
   const filteredPosts =
-    activeCategory === 'all'
+    activeCategory === 'news'
       ? posts
       : posts.filter((post) => post.category === activeCategory);
 
@@ -61,7 +69,7 @@ export function BlogPosts() {
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
+                  onClick={() => handleCategoryChange(category.id)}
                   className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
@@ -122,5 +130,13 @@ export function BlogPosts() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function BlogPosts() {
+  return (
+    <Suspense>
+      <BlogPostsContent />
+    </Suspense>
   );
 }

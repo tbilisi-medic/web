@@ -23,44 +23,62 @@ type MenuSection = {
 
 const productsMenu: MenuSection[] = [
   {
-    title: 'ტექნოლოგია',
+    title: 'აპარატურა',
     items: [
-      { label: 'ექოსკოპიის აპარატები', href: '/products' },
-      { label: 'ენდოსკოპიის აპარატები', href: '/products' },
-      { label: 'ლაპარასკოპიის აპარატები', href: '/products' },
-      { label: 'ანესთეზიის აპარატები', href: '/products' },
-      { label: 'ხელოვნური სუნთქვის აპარატები', href: '/products' },
-      { label: 'პაციენტის დაკვირვების მონიტორი', href: '/products' },
-      { label: 'ოფთალმოლოგიური აპარატები', href: '/products' },
+      { label: 'ექოსკოპიის აპარატები', href: '/products?category=equipment' },
+      { label: 'ენდოსკოპიის აპარატები', href: '/products?category=equipment' },
+      {
+        label: 'ლაპარასკოპიის აპარატები',
+        href: '/products?category=equipment',
+      },
+      { label: 'ანესთეზიის აპარატები', href: '/products?category=equipment' },
+      {
+        label: 'ხელოვნური სუნთქვის აპარატები',
+        href: '/products?category=equipment',
+      },
+      {
+        label: 'პაციენტის დაკვირვების მონიტორი',
+        href: '/products?category=equipment',
+      },
+      {
+        label: 'ოფთალმოლოგიური აპარატები',
+        href: '/products?category=equipment',
+      },
       { label: 'სხვა', href: '#' },
     ],
   },
   {
     title: 'ავეჯი',
     items: [
-      { label: 'პაციენტის საწოლები', href: '/products' },
-      { label: 'საპროცედურო მაგიდები', href: '/products' },
-      { label: 'საოპერაციო მაგიდები', href: '/products' },
-      { label: 'სავარძლები და ტახტები', href: '/products' },
-      { label: 'ურიკები და ტუმბოები', href: '/products' },
-      { label: 'კარადები და სათავსოები', href: '/products' },
-      { label: 'განათება', href: '/products' },
+      { label: 'პაციენტის საწოლები', href: '/products?category=furniture' },
+      { label: 'საპროცედურო მაგიდები', href: '/products?category=furniture' },
+      { label: 'საოპერაციო მაგიდები', href: '/products?category=furniture' },
+      { label: 'სავარძლები და ტახტები', href: '/products?category=furniture' },
+      { label: 'ურიკები და ტუმბოები', href: '/products?category=furniture' },
+      { label: 'კარადები და სათავსოები', href: '/products?category=furniture' },
+      { label: 'განათება', href: '/products?category=furniture' },
     ],
   },
   {
     title: 'სახარჯები',
     items: [
-      { label: 'სამედიცინო სამოსი', href: '/products' },
-      { label: 'შპრიცები, კათეტერები და ნემსები', href: '/products' },
-      { label: 'იმპლანტები და აუგმენტაცია', href: '/products' },
+      { label: 'სამედიცინო სამოსი', href: '/products?category=consumables' },
+      {
+        label: 'შპრიცები, კათეტერები და ნემსები',
+        href: '/products?category=consumables',
+      },
+      {
+        label: 'იმპლანტები და აუგმენტაცია',
+        href: '/products?category=consumables',
+      },
     ],
     subsection: {
       title: 'ლაბორატორია',
       items: [
-        { label: 'ჰემატოლოგია', href: '/products' },
-        { label: 'იმუნოლოგია', href: '/products' },
-        { label: 'ბიოქიმია', href: '/products' },
-        { label: 'კოაგულაცია', href: '/products' },
+        { label: 'ჰემატოლოგია', href: '/products?category=laboratory' },
+        { label: 'იმუნოლოგია', href: '/products?category=laboratory' },
+        { label: 'ბიოქიმია', href: '/products?category=laboratory' },
+        { label: 'კოაგულაცია', href: '/products?category=laboratory' },
       ],
     },
   },
@@ -94,7 +112,7 @@ const aboutMenu: MenuSection[] = [
     title: 'წასაკითხი',
     items: [
       { label: 'სიახლეები', href: '/blog' },
-      { label: 'ბლოგი', href: '/blog' },
+      { label: 'ბლოგი', href: '/blog?category=blog' },
     ],
   },
 ];
