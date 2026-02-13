@@ -6,6 +6,8 @@ import { Menu, ChevronDown, X } from 'lucide-react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import Image from 'next/image';
 import { HeaderSearch } from './header-search';
+import { LanguageSwitcher } from './language-switcher';
+import { useTranslations } from 'next-intl';
 
 type MenuItem = {
   label: string;
@@ -205,6 +207,8 @@ function MobileMenuSection({
 
 // Main Header Component
 export function Header() {
+  const t = useTranslations('header');
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
@@ -233,7 +237,7 @@ export function Header() {
                 {/* For Clinics */}
                 <NavigationMenuPrimitive.Item>
                   <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-primary transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none uppercase">
-                    კლინიკებისთვის
+                    {t('forClinics')}
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </NavigationMenuPrimitive.Trigger>
                   <NavigationMenuPrimitive.Content className="w-full bg-white p-6 py-8 data-[motion=from-start]:animate-in data-[motion=from-start]:fade-in data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:animate-in data-[motion=from-end]:fade-in data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-start]:animate-out data-[motion=to-start]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:animate-out data-[motion=to-end]:fade-out data-[motion=to-end]:slide-out-to-right-52">
@@ -262,7 +266,7 @@ export function Header() {
                 {/* About Us */}
                 <NavigationMenuPrimitive.Item>
                   <NavigationMenuPrimitive.Trigger className="group inline-flex h-10 items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-semibold text-primary transition-colors hover:bg-gray-100 hover:text-primary focus:outline-none uppercase">
-                    ჩვენ
+                    {t('aboutUs')}
                     <ChevronDown className="ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
                   </NavigationMenuPrimitive.Trigger>
                   <NavigationMenuPrimitive.Content className="w-full bg-white p-6 py-8 data-[motion=from-start]:animate-in data-[motion=from-start]:fade-in data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:animate-in data-[motion=from-end]:fade-in data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-start]:animate-out data-[motion=to-start]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:animate-out data-[motion=to-end]:fade-out data-[motion=to-end]:slide-out-to-right-52">
@@ -290,12 +294,7 @@ export function Header() {
 
           {/* Right side  */}
           <div className="flex items-center gap-4">
-            <a
-              href="#"
-              className="text-base font-semibold text-primary uppercase"
-            >
-              ქარ
-            </a>
+            <LanguageSwitcher />
             {/* Mobile menu button */}
             <button
               type="button"

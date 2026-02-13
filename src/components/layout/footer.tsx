@@ -2,8 +2,11 @@
 
 import Link from 'next/link';
 import { ChevronUp } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations('footer');
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -24,17 +27,13 @@ export function Footer() {
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Left side - Company Info */}
             <div className="lg:col-span-5">
-              <h4 className="text-lg font-semibold uppercase">
-                ქართული მედიცინისთვის
-              </h4>
-              <p className="mt-2 text-lg text-white/80">
-                სამედიცინო დარგის კვალიფიციური პარტნიორი
-              </p>
+              <h4 className="text-lg font-semibold uppercase">{t('title')}</h4>
+              <p className="mt-2 text-lg text-white/80">{t('subtitle')}</p>
 
               <div className="mt-6 space-y-1 text-lg text-white/80">
-                <p>თბილისი, ლუბლიანას ქ. №28ა</p>
-                <p>ქუთაისი, გამსახურდიას ქ. №22</p>
-                <p>ბათუმი, ბაგრატიონის ქ. №196თ</p>
+                <p>{t('address1')}</p>
+                <p>{t('address2')}</p>
+                <p>{t('address3')}</p>
               </div>
 
               <p className="mt-4 text-white/80">info@tbilisimedic.ge</p>
@@ -42,14 +41,16 @@ export function Footer() {
 
             {/* Company */}
             <div className="lg:col-span-2 lg:col-start-7">
-              <h4 className="text-lg font-semibold uppercase">კომპანია</h4>
+              <h4 className="text-lg font-semibold uppercase">
+                {t('company')}
+              </h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
                     href="/about"
                     className="hover:text-white transition-colors"
                   >
-                    ჩვენს შესახებ
+                    {t('aboutUs')}
                   </Link>
                 </li>
                 <li>
@@ -57,7 +58,7 @@ export function Footer() {
                     href="/employees"
                     className="hover:text-white transition-colors"
                   >
-                    თანამშრომლები
+                    {t('employees')}
                   </Link>
                 </li>
                 <li>
@@ -65,7 +66,7 @@ export function Footer() {
                     href="/partners"
                     className="hover:text-white transition-colors"
                   >
-                    საერთაშორისო პარტნიორები
+                    {t('partners')}
                   </Link>
                 </li>
                 <li>
@@ -73,7 +74,7 @@ export function Footer() {
                     href="/customers"
                     className="hover:text-white transition-colors"
                   >
-                    კმაყოფილი მომხმარებლები
+                    {t('customers')}
                   </Link>
                 </li>
               </ul>
@@ -82,7 +83,7 @@ export function Footer() {
             {/* For Clinics */}
             <div className="lg:col-span-2">
               <h4 className="text-lg font-semibold uppercase">
-                კლინიკებისთვის
+                {t('forClinics')}
               </h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
@@ -90,7 +91,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    აპარატურა
+                    {t('devices')}
                   </Link>
                 </li>
                 <li>
@@ -98,7 +99,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    ავეჯი
+                    {t('furniture')}
                   </Link>
                 </li>
                 <li>
@@ -106,7 +107,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    სახარჯები
+                    {t('consumables')}
                   </Link>
                 </li>
                 <li>
@@ -114,7 +115,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    ლაბორატორია
+                    {t('laboratory')}
                   </Link>
                 </li>
                 <li>
@@ -122,7 +123,7 @@ export function Footer() {
                     href="/products"
                     className="hover:text-white transition-colors"
                   >
-                    ესთეტიკა
+                    {t('aesthetics')}
                   </Link>
                 </li>
               </ul>
@@ -130,14 +131,14 @@ export function Footer() {
 
             {/* Careers */}
             <div className="lg:col-span-2">
-              <h4 className="text-lg font-semibold uppercase">კარიერა</h4>
+              <h4 className="text-lg font-semibold uppercase">{t('career')}</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
                     href="/careers"
                     className="hover:text-white transition-colors"
                   >
-                    ვაკანსიები
+                    {t('vacancies')}
                   </Link>
                 </li>
                 <li>
@@ -145,7 +146,7 @@ export function Footer() {
                     href="/careers#stories"
                     className="hover:text-white transition-colors"
                   >
-                    ადამიანების დღიურები
+                    {t('diaries')}
                   </Link>
                 </li>
               </ul>
@@ -154,7 +155,7 @@ export function Footer() {
 
           {/* Bottom section */}
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 sm:flex-row">
-            <p className="text-white/80">შპს "თბილისი მედიკ"</p>
+            <p className="text-white/80">{t('name')}</p>
 
             {/* Social icons */}
             <div className="flex items-center gap-1">

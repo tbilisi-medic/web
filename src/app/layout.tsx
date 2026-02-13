@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_Georgian } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 import './globals.css';
 
 const notoSansGeorgian = Noto_Sans_Georgian({
@@ -13,15 +15,20 @@ export const metadata: Metadata = {
   description: '',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="ka">
+    <html lang={locale}>
       <body className={`${notoSansGeorgian.variable} antialiased`}>
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

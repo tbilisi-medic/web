@@ -8,43 +8,44 @@ import {
   CarouselItem,
   type CarouselApi,
 } from '@/components/ui/carousel';
+import { useTranslations } from 'next-intl';
 
 const testimonials = [
   {
     id: 1,
-    name: 'ირაკლი გაგუა',
+    nameKey: 'name1',
     role: 'გაგუას კლინიკის დირექტორი',
-    company: 'გაგუას კლინიკა',
+    companyKey: 'company1',
     logo: '/images/testimonials/1.png',
     rating: 5,
-    text: 'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
+    textKey: 'text1',
   },
   {
     id: 2,
-    name: 'ირაკლი გაგუა',
+    nameKey: 'name2',
     role: 'გაგუას კლინიკის დირექტორი',
-    company: 'გაგუას კლინიკა',
+    companyKey: 'company2',
     logo: '/images/testimonials/1.png',
     rating: 5,
-    text: 'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
+    textKey: 'text2',
   },
   {
     id: 3,
-    name: 'ირაკლი გაგუა',
+    nameKey: 'name3',
     role: 'გაგუას კლინიკის დირექტორი',
-    company: 'გაგუას კლინიკა',
+    companyKey: 'company3',
     logo: '/images/testimonials/1.png',
     rating: 5,
-    text: 'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
+    textKey: 'text3',
   },
   {
     id: 4,
-    name: 'ირაკლი გაგუა',
+    nameKey: 'name4',
     role: 'გაგუას კლინიკის დირექტორი',
-    company: 'გაგუას კლინიკა',
+    companyKey: 'company4',
     logo: '/images/testimonials/1.png',
     rating: 5,
-    text: 'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
+    textKey: 'text4',
   },
 ];
 
@@ -64,22 +65,19 @@ export function Testimonials() {
     });
   }, [api]);
 
+  const t = useTranslations('testimonials');
+
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
-            გამოხმაურება
+            {t('title')}
           </h2>
 
           {/* Description */}
-          <p className="mt-6 text-lg text-foreground/80">
-            საქართველოს მასშტაბით, მედიკმა არაერთ წარმატებულ პროექტს ჩაუყარა
-            საფუძველი, რაც გვაძლიერებს და გვეხმარება სამედიცინო დარგის
-            წარმომადგენლებთან გრძელვადიანი პარტნიორული ურთიერთობების შენებასა და
-            შენარჩუნებაში.
-          </p>
+          <p className="mt-6 text-lg text-foreground/80">{t('subtitle')}</p>
 
           {/* Carousel */}
           <div className="mt-12">
@@ -112,15 +110,15 @@ export function Testimonials() {
 
                       {/* Quote */}
                       <p className="mt-8 flex-grow text-lg text-foreground/80">
-                        &ldquo;{testimonial.text}&rdquo;
+                        &ldquo;{t(testimonial.textKey)}&rdquo;
                       </p>
 
                       <div className="mt-8 pt-4">
                         <p className="font-semibold text-foreground text-lg uppercase">
-                          {testimonial.name}
+                          {t(testimonial.nameKey)}
                         </p>
                         <p className="text-lg text-foreground/70">
-                          {testimonial.company}
+                          {t(testimonial.companyKey)}
                         </p>
                       </div>
                     </div>

@@ -1,0 +1,75 @@
+{
+  "header": {
+    "forClinics": "For Clinics",
+    "aboutUs": "About Us"
+  },
+  "hero": {
+    "title": "For Georgian Medicine",
+    "subtitle": "Qualified partner of healthcare industry",
+    "cta": "Learn More"
+  },
+  "categories": {
+    "title1": "Showcasing a diverse range",
+    "title2": "of medical products for clinics",
+    "furniture": "Medical furniture & Devices",
+    "consumables": "Medical Consumables",
+    "diagnostics": "Laboratory Diagnostics",
+    "aesthetic": "Aesthetic Medicine"
+  },
+  "technical-service": {
+    "title1": "Get highly qualified",
+    "title2": "bio-medical engineering service",
+    "subtitle1": "Quality service for",
+    "subtitle2": "georgian healthcare",
+    "cta": "Request a call"
+  },
+  "achievements": {
+    "title": "Legacy",
+    "subtitle": "We have been operating in Georgia's healthcare industry for more than 15 years. Continuous development and ongoing improvement across all areas of our work are essential to us, strengthening our position as a reliable and qualified partner of the medical field.",
+    "employees": "Employees",
+    "employeesDescription": "An unprecedented number of employees and a distinctive organizational management approach in the market.",
+    "partners": "International Partners",
+    "partnersDescription": "Constant communication and support with leading global medical brands and manufacturers.",
+    "customers": "Local Customers",
+    "customersDescription": "Numerous satisfied local clients and successfully completed projects.",
+    "cta": "Learn More"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "Across Georgia, Medic has initiated numerous successful projects, strengthening our position and helping us build long-term partnerships with representatives of the medical field.",
+    "name1": "Irakli Gagua",
+    "company1": "Gagua Clinic",
+    "text1": "This is a standard placeholder text used in the printing and typesetting industry. It originated in the 1500s when an unknown printer created a test book using his press. The text has survived not only for five centuries but has also remained unchanged through the era of electronic typesetting",
+    "name2": "Irakli Gagua",
+    "company2": "Gagua Clinic",
+    "text2": "This is a standard placeholder text used in the printing and typesetting industry. It originated in the 1500s when an unknown printer created a test book using his press. The text has survived not only for five centuries but has also remained unchanged through the era of electronic typesetting",
+    "name3": "Irakli Gagua",
+    "company3": "Gagua Clinic",
+    "text3": "This is a standard placeholder text used in the printing and typesetting industry. It originated in the 1500s when an unknown printer created a test book using his press. The text has survived not only for five centuries but has also remained unchanged through the era of electronic typesetting",
+    "name4": "Irakli Gagua",
+    "company4": "Gagua Clinic",
+    "text4": "This is a standard placeholder text used in the printing and typesetting industry. It originated in the 1500s when an unknown printer created a test book using his press. The text has survived not only for five centuries but has also remained unchanged through the era of electronic typesetting"
+  },
+  "footer": {
+    "title": "For Georgian Medicine",
+    "subtitle": "Qualified partner of healthcare industry",
+    "address1": "Tbilisi, Luabliana str. №28a",
+    "address2": "Kutaisi, Gamsakhurdia str. №22",
+    "address3": "Batumi, Bagrationi str. №196t",
+    "company": "Company",
+    "aboutUs": "About us",
+    "employees": "Employees",
+    "partners": "International Partners",
+    "customers": "Satisfied Customers",
+    "forClinics": "For Clinics",
+    "devices": "Devices",
+    "furniture": "Furniture",
+    "consumables": "Consumables",
+    "laboratory": "Laboratory",
+    "aesthetics": "Aesthetics",
+    "career": "Career",
+    "vacancies": "Vacancies",
+    "diaries": "People's Diaries",
+    "name": "LLC Tbilisi Medic"
+  }
+}
