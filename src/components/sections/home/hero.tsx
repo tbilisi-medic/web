@@ -7,7 +7,7 @@ export async function Hero() {
   const t = await getTranslations('hero');
 
   return (
-    <section className="-mt-24 bg-primary pt-24">
+    <section className="bg-primary pt-24">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl pb-14 pt-14 lg:pb-15 lg:pt-15">
           <div className="grid items-center gap-10 lg:gap-2 lg:grid-cols-2">

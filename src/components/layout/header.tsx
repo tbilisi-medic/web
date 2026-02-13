@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, ChevronDown, X } from 'lucide-react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
@@ -212,6 +212,37 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
+  const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const headerHeight = 90;
+
+      setIsScrolled(currentScrollY > headerHeight);
+
+      if (currentScrollY > headerHeight && !mobileMenuOpen) {
+        if (currentScrollY < lastScrollY) {
+          // Scrolling up - show header
+          setIsVisible(true);
+        } else {
+          // Scrolling down - hide header
+          setIsVisible(false);
+        }
+      } else {
+        // At top of page or mobile menu open - always show
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, mobileMenuOpen]);
+
   const toggleSubmenu = (menu: string) => {
     setOpenSubmenu(openSubmenu === menu ? null : menu);
   };
@@ -222,8 +253,16 @@ export function Header() {
   };
 
   return (
-    <div className="relative z-50 px-4 pt-5 sm:px-6 lg:px-8">
-      <header className="relative mx-auto max-w-7xl rounded-xl bg-white shadow-sm">
+    <div
+      className={`fixed left-0 right-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8 transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
+      <header
+        className={`relative mx-auto max-w-7xl rounded-xl bg-white shadow-sm transition-shadow duration-300 ${
+          isScrolled ? 'shadow-md' : 'shadow-sm'
+        }`}
+      >
         <div className="flex h-18 items-center justify-between gap-7 px-6">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
