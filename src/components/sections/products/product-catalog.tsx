@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -159,11 +159,14 @@ const products = [
 ];
 
 function ProductCatalogContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
 
-  const activeCategory = searchParams.get('category') || categories[0].id;
-  const activeSubcategories = searchParams.getAll('sub');
+  const [activeCategory, setActiveCategory] = React.useState(
+    searchParams.get('category') || categories[0].id,
+  );
+  const [activeSubcategories, setActiveSubcategories] = React.useState<
+    string[]
+  >(searchParams.getAll('sub'));
 
   const currentCategory = categories.find((c) => c.id === activeCategory);
 
@@ -177,22 +180,21 @@ function ProductCatalogContent() {
       params.set('search', search);
     }
 
-    router.push(`/products?${params.toString()}`, { scroll: false });
+    window.history.replaceState(null, '', `/products?${params.toString()}`);
   };
 
   const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    setActiveSubcategories([]);
     updateURL(categoryId, []);
   };
 
   const handleSubcategoryChange = (subcategoryId: string, checked: boolean) => {
-    let newSubcategories: string[];
+    const newSubcategories = checked
+      ? [...activeSubcategories, subcategoryId]
+      : activeSubcategories.filter((s) => s !== subcategoryId);
 
-    if (checked) {
-      newSubcategories = [...activeSubcategories, subcategoryId];
-    } else {
-      newSubcategories = activeSubcategories.filter((s) => s !== subcategoryId);
-    }
-
+    setActiveSubcategories(newSubcategories);
     updateURL(activeCategory, newSubcategories);
   };
 
