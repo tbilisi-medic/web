@@ -8,16 +8,16 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Categories />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <TechnicalService />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Achievements />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <Testimonials />
       </div>
       <Footer />

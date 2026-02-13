@@ -5,7 +5,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, description }: PageHeaderProps) {
   return (
-    <section className="bg-primary pt-24">
+    <section className="bg-primary pt-22">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl pb-14 pt-14 lg:pb-16 lg:pt-16">
           {title && (

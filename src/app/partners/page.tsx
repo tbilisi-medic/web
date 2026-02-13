@@ -47,7 +47,7 @@ export default function PartnersPage() {
         title="საერთაშორისო პარტნიორები"
         description="თბილისი მედიკში ვაერთიანებთ საერთაშორისო პარტნიორებს, რომლებიც წამყვანი სამედიცინო ქვეყნიდან შემოგვიერთდნენ და ჩვენთან ერთად ქმნიან მზარდ ადგილობრივ სამედიცინო ეკოსისტემას."
       />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Quote
           title="პარტნიორებს"
           text={[
@@ -60,7 +60,7 @@ export default function PartnersPage() {
           image="/images/categories/1.jpg"
         />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Stats
           title="პარტნიორები რიცხვებში"
           stats={[
@@ -85,7 +85,7 @@ export default function PartnersPage() {
           ]}
         />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <Stories
           title="პარტნიორები ჩვენზე"
           description="გაიგეთ, რას ყვებიან საერთაშორისო სამედიცინო მწარმოებლები ჩვენთან თანამშრომლობასა და იმ გამოცდილებაზე, რომელიც ერთად დაგვიგროვდა. ამ შეფასებებით გაეცნობით ხედვებს, სტანდარტებსა და ღირებულებებს, რომლებიც უზრუნველყოფს კომპანიებს შორის გრძელვადიან პარტნიორობას საერთაშორისო ასპარეზზე."

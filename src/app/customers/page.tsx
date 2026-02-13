@@ -20,7 +20,7 @@ export default function CustomersPage() {
         title="ადგილობრივი მომხმარებლები"
         description="თბილისი მედიკში ვაერთიანებთ მომხმარებლებს, რომლებიც გვირჩევენ ნდობას, ხარისხსა და გრძელვადიან ურთიერთობას და ჩვენთან ერთად ქმნიან თანამედროვე, ადამიანზე ორიენტირებულ სამედიცინო გამოცდილებას."
       />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Quote
           title="მომხმარებლებს"
           text={[
@@ -33,7 +33,7 @@ export default function CustomersPage() {
           image="/images/categories/1.jpg"
         />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Stats
           title="მომხმარებლები რიცხვებში"
           stats={[
@@ -58,7 +58,7 @@ export default function CustomersPage() {
           ]}
         />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <Testimonials />
       </div>
       <Footer />

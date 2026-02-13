@@ -43,17 +43,17 @@ export default function CareersPage() {
         title="მედიკი"
         description='მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან "მედიკელებად" ჩამოყალიბდნენ.'
       />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <CareersContent />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Stories
           title="ადამიანების დღიურები"
           description="გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად გამოცდილებაზე. ამ დღიურების დახმარებით  გაეცნობით ადამიანებს კომპანიის მიღმა - მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის შესახებ."
           stories={employeeStories}
         />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <JobListings />
       </div>
 

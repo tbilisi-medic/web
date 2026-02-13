@@ -47,7 +47,7 @@ export default function EmployeesPage() {
         title="თანამშრომლები"
         description="თბილისი მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან „მედიკელებად“ ჩამოყალიბდნენ."
       />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Quote
           title="მედიკელებს"
           text={[
@@ -59,7 +59,7 @@ export default function EmployeesPage() {
           image="/images/categories/1.jpg"
         />
       </div>
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <Stats
           title="თანამშრომლები რიცხვებში"
           stats={[
@@ -84,7 +84,7 @@ export default function EmployeesPage() {
           ]}
         />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <Stories
           title="ადამიანების დღიურები"
           description="გაიგეთ ადამიანების ყოველდღიურობაზე, პროფესიულ გზაზე და პირად გამოცდილებაზე. ამ სტატიების საშუალებით მკითხველი გაეცნობა ადამიანებს კომპანიის მიღმა, მათ ხედვებს, გამოწვევებსა და მოტივაციას, რაც ქმნის უფრო ახლო, ავთენტურ და ადამიანურ სურათს ორგანიზაციის შიდა კულტურის შესახებ."

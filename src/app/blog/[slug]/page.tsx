@@ -91,10 +91,10 @@ export default async function BlogPostPage({
     <>
       <Header />
       <PageHeader />
-      <div className="pt-16 lg:pt-24">
+      <div className="pt-16 lg:pt-22">
         <BlogPostContent post={post} />
       </div>
-      <div className="py-16 lg:py-24">
+      <div className="py-16 lg:py-22">
         <RelatedPosts posts={relatedPosts} />
       </div>
       <Footer />
