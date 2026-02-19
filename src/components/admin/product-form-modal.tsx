@@ -21,55 +21,16 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Plus } from 'lucide-react';
-
-export const categories = [
-  {
-    id: 'technology',
-    name: 'ტექნოლოგია',
-    subcategories: [
-      'ექოსკოპია',
-      'ენდოსკოპია',
-      'ლაპარასკოპია',
-      'ანესთეზია',
-      'ხელოვნური სუნთქვა',
-      'პაციენტის მონიტორინგი',
-      'ოფთალმოლოგია',
-    ],
-  },
-  {
-    id: 'furniture',
-    name: 'ავეჯი',
-    subcategories: ['საწოლები', 'მაგიდები', 'სავარძლები', 'კარადები'],
-  },
-  {
-    id: 'consumables',
-    name: 'სახარჯები',
-    subcategories: ['სამედიცინო სამოსი', 'შპრიცები', 'კათეტერები'],
-  },
-  {
-    id: 'laboratory',
-    name: 'ლაბორატორია',
-    subcategories: ['ჰემატოლოგია', 'იმუნოლოგია', 'ბიოქიმია', 'კოაგულაცია'],
-  },
-  {
-    id: 'aesthetics',
-    name: 'ესთეტიკა',
-    subcategories: ['ლაზერები', 'ინექციები', 'აპარატურა'],
-  },
-];
-
-export interface Product {
-  id: string;
-  name: string;
-  category: string;
-  subcategory: string;
-  description?: string;
-  createdAt: string;
-}
+import { createProduct, updateProduct } from '@/app/admin/products/actions';
+import type {
+  ProductWithRelations,
+  CategoryWithSubcategories,
+} from '@/types/product';
 
 interface ProductFormModalProps {
   mode: 'add' | 'edit';
-  product?: Product;
+  product?: ProductWithRelations;
+  categories: CategoryWithSubcategories[];
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   children?: React.ReactNode;
@@ -78,30 +39,34 @@ interface ProductFormModalProps {
 export function ProductFormModal({
   mode,
   product,
+  categories,
   open: controlledOpen,
   onOpenChange,
   children,
 }: ProductFormModalProps) {
   const [internalOpen, setInternalOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const isControlled = controlledOpen !== undefined;
   const open = isControlled ? controlledOpen : internalOpen;
   const setOpen = isControlled ? onOpenChange! : setInternalOpen;
 
   const [name, setName] = React.useState('');
+  const [subtitle, setSubtitle] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState('');
   const [selectedSubcategory, setSelectedSubcategory] = React.useState('');
   const [description, setDescription] = React.useState('');
 
-  // Prefill form when editing
   React.useEffect(() => {
     if (mode === 'edit' && product && open) {
       setName(product.name);
-      setSelectedCategory(product.category);
-      setSelectedSubcategory(product.subcategory);
+      setSubtitle(product.subtitle || '');
+      setSelectedCategory(product.categoryId);
+      setSelectedSubcategory(product.subcategoryId);
       setDescription(product.description || '');
     } else if (mode === 'add' && open) {
       setName('');
+      setSubtitle('');
       setSelectedCategory('');
       setSelectedSubcategory('');
       setDescription('');
@@ -115,15 +80,31 @@ export function ProductFormModal({
     setSelectedSubcategory('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', {
-      name,
-      selectedCategory,
-      selectedSubcategory,
-      description,
-    });
-    setOpen(false);
+    setIsSubmitting(true);
+
+    try {
+      const data = {
+        name,
+        subtitle: subtitle || undefined,
+        description: description || undefined,
+        categoryId: selectedCategory,
+        subcategoryId: selectedSubcategory,
+      };
+
+      if (mode === 'edit' && product) {
+        await updateProduct(product.id, data);
+      } else {
+        await createProduct(data);
+      }
+
+      setOpen(false);
+    } catch (error) {
+      console.error('Failed to save product:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isEdit = mode === 'edit';
@@ -168,6 +149,20 @@ export function ProductFormModal({
               />
             </div>
 
+            {/* Subtitle */}
+            <div className="space-y-3">
+              <Label htmlFor="subtitle" className="uppercase">
+                ქვესათაური
+              </Label>
+              <Input
+                id="subtitle"
+                placeholder="პროდუქტის ქვესათაური"
+                className="h-11 w-full"
+                value={subtitle}
+                onChange={(e) => setSubtitle(e.target.value)}
+              />
+            </div>
+
             {/* Category */}
             <div className="space-y-3">
               <Label htmlFor="category" className="uppercase">
@@ -183,7 +178,7 @@ export function ProductFormModal({
                 <SelectContent className="w-full">
                   {categories.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
-                      {category.name}
+                      {category.nameKa}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -205,8 +200,8 @@ export function ProductFormModal({
                 </SelectTrigger>
                 <SelectContent className="w-full">
                   {currentCategory?.subcategories.map((sub) => (
-                    <SelectItem key={sub} value={sub}>
-                      {sub}
+                    <SelectItem key={sub.id} value={sub.id}>
+                      {sub.nameKa}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -245,11 +240,20 @@ export function ProductFormModal({
                 variant="outline"
                 className="cursor-pointer uppercase"
                 onClick={() => setOpen(false)}
+                disabled={isSubmitting}
               >
                 გაუქმება
               </Button>
-              <Button type="submit" className="cursor-pointer uppercase">
-                {isEdit ? 'შენახვა' : 'დამატება'}
+              <Button
+                type="submit"
+                className="cursor-pointer uppercase"
+                disabled={isSubmitting}
+              >
+                {isSubmitting
+                  ? 'იტვირთება...'
+                  : isEdit
+                    ? 'შენახვა'
+                    : 'დამატება'}
               </Button>
             </div>
           </form>

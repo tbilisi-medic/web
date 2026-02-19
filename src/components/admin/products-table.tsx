@@ -12,16 +12,22 @@ import {
 import { Button } from '@/components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import { DeleteProductDialog } from './delete-product-dialog';
-import { ProductFormModal, Product, categories } from './product-form-modal';
+import { ProductFormModal } from './product-form-modal';
+import { deleteProduct } from '@/app/admin/products/actions';
+import type {
+  ProductWithRelations,
+  CategoryWithSubcategories,
+} from '@/types/product';
 
 interface ProductsTableProps {
-  products: Product[];
+  products: ProductWithRelations[];
+  categories: CategoryWithSubcategories[];
 }
 
-export function ProductsTable({ products }: ProductsTableProps) {
+export function ProductsTable({ products, categories }: ProductsTableProps) {
   const [deleteDialog, setDeleteDialog] = useState<{
     open: boolean;
-    product: Product | null;
+    product: ProductWithRelations | null;
   }>({
     open: false,
     product: null,
@@ -29,28 +35,15 @@ export function ProductsTable({ products }: ProductsTableProps) {
 
   const [editModal, setEditModal] = useState<{
     open: boolean;
-    product: Product | null;
+    product: ProductWithRelations | null;
   }>({
     open: false,
     product: null,
   });
 
-  const getCategoryName = (categoryId: string) => {
-    return categories.find((c) => c.id === categoryId)?.name ?? categoryId;
-  };
-
-  const handleEditClick = (product: Product) => {
-    setEditModal({ open: true, product });
-  };
-
-  const handleDeleteClick = (product: Product) => {
-    setDeleteDialog({ open: true, product });
-  };
-
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (deleteDialog.product) {
-      // Will connect to Supabase later
-      console.log('Delete product:', deleteDialog.product.id);
+      await deleteProduct(deleteDialog.product.id);
     }
     setDeleteDialog({ open: false, product: null });
   };
@@ -82,16 +75,18 @@ export function ProductsTable({ products }: ProductsTableProps) {
               products.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell className="font-medium">{product.name}</TableCell>
-                  <TableCell>{getCategoryName(product.category)}</TableCell>
-                  <TableCell>{product.subcategory}</TableCell>
-                  <TableCell>{product.createdAt}</TableCell>
+                  <TableCell>{product.category.nameKa}</TableCell>
+                  <TableCell>{product.subcategory.nameKa}</TableCell>
+                  <TableCell>
+                    {new Date(product.createdAt).toLocaleDateString('ka-GE')}
+                  </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer"
-                        onClick={() => handleEditClick(product)}
+                        onClick={() => setEditModal({ open: true, product })}
                       >
                         <Pencil className="h-4 w-4" />
                       </Button>
@@ -99,7 +94,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer text-red-500 hover:text-red-600"
-                        onClick={() => handleDeleteClick(product)}
+                        onClick={() => setDeleteDialog({ open: true, product })}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -124,6 +119,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
       <ProductFormModal
         mode="edit"
         product={editModal.product ?? undefined}
+        categories={categories}
         open={editModal.open}
         onOpenChange={(open) =>
           setEditModal({ open, product: open ? editModal.product : null })
