@@ -1,6 +1,9 @@
 import { AdminHeader } from '@/components/admin';
+import { prisma } from '@/lib/prisma';
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const productCount = await prisma.product.count();
+
   return (
     <>
       <AdminHeader title="მთავარი" />
@@ -10,17 +13,17 @@ export default function AdminDashboard() {
             {/* Placeholder stats cards */}
             <div className="rounded-xl border p-6 shadow-sm">
               <p className="text-sm text-foreground/60 uppercase">პროდუქტები</p>
-              <p className="mt-2 text-3xl font-bold">124</p>
+              <p className="mt-2 text-3xl font-bold">{productCount}</p>
             </div>
             <div className="rounded-xl border p-6 shadow-sm">
               <p className="text-sm text-foreground/60 uppercase">
                 ბლოგ პოსტები
               </p>
-              <p className="mt-2 text-3xl font-bold">45</p>
+              <p className="mt-2 text-3xl font-bold">0</p>
             </div>
             <div className="rounded-xl border p-6 shadow-sm">
               <p className="text-sm text-foreground/60 uppercase">ვაკანსიები</p>
-              <p className="mt-2 text-3xl font-bold">12</p>
+              <p className="mt-2 text-3xl font-bold">0</p>
             </div>
           </div>
         </div>
