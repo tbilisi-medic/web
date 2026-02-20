@@ -6,169 +6,50 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Suspense } from 'react';
+import type {
+  ProductWithRelations,
+  CategoryWithSubcategories,
+} from '@/types/product';
 
-const categories = [
-  {
-    id: 'equipment',
-    name: 'აპარატურა',
-    subcategories: [
-      { id: 'endoscopy', name: 'ენდოსკოპია' },
-      { id: 'ultrasound', name: 'ექოსკოპია' },
-      { id: 'laparoscopy', name: 'ლაპაროსკოპია' },
-      { id: 'large-equipment', name: 'მსხვილი აპარატურა' },
-      { id: 'ophthalmology', name: 'ოფთალმოლოგია' },
-      { id: 'radiology', name: 'რადიოლოგია' },
-      { id: 'medical-gas', name: 'სამედიცინო აირი' },
-      { id: 'sterilization', name: 'სტერილიზაცია' },
-      { id: 'gynecology', name: 'გინეკოლოგია' },
-      { id: 'cardiology', name: 'კარდიოლოგია' },
-      { id: 'dermatology', name: 'დერმატოლოგია' },
-      { id: 'ent', name: 'ყელ-ყურ-ცხვირი' },
-      { id: 'rehabilitation', name: 'რეაბილიტაცია' },
-      { id: 'neonatology', name: 'ნეონატალოგია' },
-      { id: 'neurology', name: 'ნევროლოგია' },
-      { id: 'general-equipment', name: 'ზოგადი აპარატურა' },
-    ],
-  },
-  {
-    id: 'furniture',
-    name: 'ავეჯი',
-    subcategories: [
-      { id: 'beds', name: 'საწოლები' },
-      { id: 'tables', name: 'მაგიდები' },
-      { id: 'chairs', name: 'სავარძლები' },
-      { id: 'cabinets', name: 'კარადები' },
-    ],
-  },
-  {
-    id: 'consumables',
-    name: 'სახარჯები',
-    subcategories: [
-      { id: 'bandages-gauze', name: 'ბინტები და მარლები' },
-      { id: 'disinfection-sterilization', name: 'დეზინფექცია და სტერილიზაცია' },
-      { id: 'instruments', name: 'ინსტრუმენტები' },
-      { id: 'surgical-sets', name: 'ქირურგიული ანაწყობები' },
-      { id: 'surgical-mesh-drains', name: 'ქირურგიული ბადე და დრენაჟები' },
-      { id: 'surgical-sutures-adhesives', name: 'ქირურგიული ძაფები და წებო' },
-      { id: 'plastic-surgery', name: 'პლასტიკური ქირურგია' },
-      { id: 'printer-paper', name: 'საბეჭდი ქაღალდები' },
-      { id: 'respiratory-systems', name: 'სასუნთქი სისტემები' },
-      { id: 'syringes-infusion', name: 'შპრიცები და გადასხმის სისტემები' },
-      { id: 'gloves', name: 'ხელთათმანები' },
-      { id: 'gowns-drapes', name: 'ხალათები და ზეწრები' },
-    ],
-  },
-  {
-    id: 'laboratory',
-    name: 'ლაბორატორია',
-    subcategories: [
-      { id: 'biochemistry', name: 'ბიოქიმია' },
-      { id: 'blood-gases-electrolytes', name: 'გაზები და ელექტროლიტები' },
-      { id: 'auxiliary-equipment', name: 'დამხმარე აპარატურა' },
-      { id: 'veterinary-equipment', name: 'ვეტერინალური აპარატურა' },
-      { id: 'elisa-tests', name: 'ელაიზა ტესტები' },
-      { id: 'immunology', name: 'იმუნოლოგია' },
-      { id: 'coagulation', name: 'კოაგულაცია' },
-      { id: 'lab-consumables', name: 'სახარჯი მასალები' },
-      { id: 'rapid-tests', name: 'სწრაფი ტესტები' },
-      { id: 'urinalysis', name: 'შარდი' },
-      { id: 'hematology', name: 'ჰემატოლოგია' },
-    ],
-  },
-  {
-    id: 'aesthetics',
-    name: 'ესთეტიკა',
-    subcategories: [
-      { id: 'exosomes', name: 'ეგზოსომები' },
-      { id: 'aesthetic-equipment', name: 'ესთეტიკური აპარატურა' },
-      { id: 'eye-boosters', name: 'თვალის ბუსტერები' },
-      { id: 'hair-boosters', name: 'თმის ბუსტერები' },
-      { id: 'lipolytics-hyaluronidase', name: 'ლიპოლიტიკები და ჰიალურონიდაზა' },
-      { id: 'lifting-threads', name: 'ლიფტინგის ძაფები' },
-      { id: 'face-boosters', name: 'სახის ბუსტერები' },
-      { id: 'body-fillers', name: 'ტანის ფილერები' },
-      { id: 'fillers-hyaluronic-acid', name: 'ფილერები და ჰიალურონის მჟავა' },
-    ],
-  },
-];
+interface ProductCatalogContentProps {
+  products: ProductWithRelations[];
+  categories: CategoryWithSubcategories[];
+}
 
-const products = [
-  {
-    id: '1',
-    slug: 'sonoscape-e2',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '2',
-    slug: 'sonoscape-e3',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '3',
-    slug: 'sonoscape-e4',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '4',
-    slug: 'sonoscape-e5',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '5',
-    slug: 'sonoscape-e6',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '6',
-    slug: 'sonoscape-e7',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '7',
-    slug: 'sonoscape-e8',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '8',
-    slug: 'sonoscape-e9',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-  {
-    id: '9',
-    slug: 'sonoscape-e10',
-    name: 'SONOSCAPE E2',
-    description: 'ექოსკოპიის პორტატული მოწყობილობა',
-    image: '/images/products/1.jpg',
-  },
-];
-
-function ProductCatalogContent() {
+function ProductCatalogContent({
+  products,
+  categories,
+}: ProductCatalogContentProps) {
   const searchParams = useSearchParams();
 
   const [activeCategory, setActiveCategory] = React.useState(
-    searchParams.get('category') || categories[0].id,
+    searchParams.get('category') || categories[0]?.id || '',
   );
   const [activeSubcategories, setActiveSubcategories] = React.useState<
     string[]
   >(searchParams.getAll('sub'));
 
+  React.useEffect(() => {
+    const categoryFromUrl = searchParams.get('category');
+    const subsFromUrl = searchParams.getAll('sub');
+
+    if (categoryFromUrl) {
+      setActiveCategory(categoryFromUrl);
+      setActiveSubcategories(subsFromUrl);
+    }
+  }, [searchParams]);
+
   const currentCategory = categories.find((c) => c.id === activeCategory);
+
+  const filteredProducts = React.useMemo(() => {
+    return products.filter((product) => {
+      if (product.categoryId !== activeCategory) return false;
+      if (activeSubcategories.length > 0) {
+        return activeSubcategories.includes(product.subcategoryId);
+      }
+      return true;
+    });
+  }, [products, activeCategory, activeSubcategories]);
 
   const updateURL = (category: string, subcategories: string[]) => {
     const params = new URLSearchParams();
@@ -215,7 +96,7 @@ function ProductCatalogContent() {
                       : 'bg-white border border-primary/15 text-foreground hover:bg-primary/5'
                   }`}
                 >
-                  {category.name}
+                  {category.nameKa}
                 </button>
               ))}
             </div>
@@ -243,7 +124,7 @@ function ProductCatalogContent() {
                             : 'text-foreground/70 hover:text-primary'
                         }`}
                       >
-                        {sub.name}
+                        {sub.nameKa}
                       </span>
                     </label>
                   </li>
@@ -254,42 +135,49 @@ function ProductCatalogContent() {
             {/* Right Content */}
             <div className="lg:col-span-9">
               {/* Products Grid */}
-              <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {products.map((product) => (
-                  <Link
-                    key={product.id}
-                    href={`/products/${product.slug}`}
-                    className="group block"
-                  >
-                    {/* Image */}
-                    <div className="relative h-70 overflow-hidden rounded-xl">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
+              {filteredProducts.length === 0 ? (
+                <p className="text-foreground/60 text-center">
+                  პროდუქტები არ მოიძებნა
+                </p>
+              ) : (
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                  {filteredProducts.map((product) => (
+                    <Link
+                      key={product.id}
+                      href={`/products/${product.slug}`}
+                      className="group block"
+                    >
+                      {/* Image */}
+                      <div className="relative h-70 overflow-hidden rounded-xl bg-gray-100">
+                        {product.imageUrl ? (
+                          <Image
+                            src={product.imageUrl}
+                            alt={product.name}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center text-foreground/30">
+                            სურათი არ მოიძებნა
+                          </div>
+                        )}
+                      </div>
 
-                    {/* Info */}
-                    <div className="mt-8">
-                      <h3 className="font-semibold text-lg text-foreground uppercase">
-                        {product.name}
-                      </h3>
-                      <p className="mt-2 text-md text-foreground/70">
-                        {product.description}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Load More Button */}
-              <div className="mt-14 md:mt-16">
-                <button className="cursor-pointer text-md font-medium text-primary underline underline-offset-12 uppercase">
-                  მაჩვენე მეტი
-                </button>
-              </div>
+                      {/* Info */}
+                      <div className="mt-8">
+                        <h3 className="font-semibold text-lg text-foreground uppercase">
+                          {product.name}
+                        </h3>
+                        {product.subtitle && (
+                          <p className="mt-2 text-md text-foreground/70">
+                            {product.subtitle}
+                          </p>
+                        )}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -298,10 +186,15 @@ function ProductCatalogContent() {
   );
 }
 
-export function ProductCatalog() {
+interface ProductCatalogProps {
+  products: ProductWithRelations[];
+  categories: CategoryWithSubcategories[];
+}
+
+export function ProductCatalog({ products, categories }: ProductCatalogProps) {
   return (
     <Suspense>
-      <ProductCatalogContent />
+      <ProductCatalogContent products={products} categories={categories} />
     </Suspense>
   );
 }
