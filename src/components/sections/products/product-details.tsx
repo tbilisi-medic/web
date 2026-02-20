@@ -55,15 +55,16 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               </h1>
 
               {/* Subtitle */}
-              <h2 className="mt-4 text-xl font-semibold text-primary lg:text-2xl">
+              <h2 className="mt-4 text-xl font-semibold text-primary lg:text-xl">
                 {product.subtitle}
               </h2>
 
               {/* Description */}
               <div className="mt-6">
-                <p className="text-base text-foreground/80 lg:text-lg">
-                  {product.description}
-                </p>
+                <div
+                  className="prose prose-base lg:prose-lg text-foreground/80"
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                />
               </div>
 
               {/* CTA Button */}

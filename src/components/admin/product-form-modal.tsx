@@ -13,7 +13,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
@@ -28,6 +27,10 @@ import type {
   ProductWithRelations,
   CategoryWithSubcategories,
 } from '@/types/product';
+import dynamic from 'next/dynamic';
+import 'react-quill-new/dist/quill.snow.css';
+
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 interface ProductFormModalProps {
   mode: 'add' | 'edit';
@@ -148,6 +151,15 @@ export function ProductFormModal({
 
   const isEdit = mode === 'edit';
 
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['clean'],
+    ],
+  };
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {!isControlled && (
@@ -249,16 +261,13 @@ export function ProductFormModal({
 
             {/* Description */}
             <div className="space-y-3">
-              <Label htmlFor="description" className="uppercase">
-                აღწერა
-              </Label>
-              <Textarea
-                id="description"
-                placeholder="პროდუქტის აღწერა"
-                rows={4}
-                className="w-full"
+              <Label className="uppercase">აღწერა</Label>
+              <ReactQuill
+                theme="snow"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={setDescription}
+                modules={quillModules}
+                className="[&_.ql-container]:min-h-[150px] [&_.ql-editor]:min-h-[150px]"
               />
             </div>
 

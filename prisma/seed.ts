@@ -48,10 +48,48 @@ const categories = [
     ],
   },
   {
+    id: 'furniture',
+    nameKa: 'ავეჯი',
+    nameEn: 'Furniture',
+    sortOrder: 1,
+    subcategories: [
+      {
+        id: 'patient-beds',
+        nameKa: 'პაციენტის საწოლები',
+        nameEn: 'Patient Beds',
+      },
+      {
+        id: 'operating-room-furniture',
+        nameKa: 'საოპერაციო ავეჯი',
+        nameEn: 'Operating Room Furniture',
+      },
+      {
+        id: 'medical-chairs',
+        nameKa: 'სამედიცინო სავარძლები',
+        nameEn: 'Medical Chairs',
+      },
+      {
+        id: 'medical-trolleys',
+        nameKa: 'სამედიცინო ურიკები',
+        nameEn: 'Medical Trolleys',
+      },
+      {
+        id: 'stainless-steel-furniture',
+        nameKa: 'უჟანგავი მეტალის ავეჯი',
+        nameEn: 'Stainless Steel Furniture',
+      },
+      {
+        id: 'additional-accessories',
+        nameKa: 'დამატებითი აქსესუარები',
+        nameEn: 'Additional Accessories',
+      },
+    ],
+  },
+  {
     id: 'consumables',
     nameKa: 'სახარჯები',
     nameEn: 'Consumables',
-    sortOrder: 1,
+    sortOrder: 2,
     subcategories: [
       {
         id: 'bandages-gauze',
@@ -111,7 +149,7 @@ const categories = [
     id: 'laboratory',
     nameKa: 'ლაბორატორია',
     nameEn: 'Laboratory',
-    sortOrder: 2,
+    sortOrder: 3,
     subcategories: [
       { id: 'biochemistry', nameKa: 'ბიოქიმია', nameEn: 'Biochemistry' },
       {
@@ -146,7 +184,7 @@ const categories = [
     id: 'aesthetics',
     nameKa: 'ესთეტიკა',
     nameEn: 'Aesthetics',
-    sortOrder: 3,
+    sortOrder: 4,
     subcategories: [
       { id: 'exosomes', nameKa: 'ეგზოსომები', nameEn: 'Exosomes' },
       {
@@ -184,44 +222,6 @@ const categories = [
         id: 'fillers-hyaluronic-acid',
         nameKa: 'ფილერები და ჰიალურონის მჟავა',
         nameEn: 'Fillers and Hyaluronic Acid',
-      },
-    ],
-  },
-  {
-    id: 'furniture',
-    nameKa: 'ავეჯი',
-    nameEn: 'Furniture',
-    sortOrder: 4,
-    subcategories: [
-      {
-        id: 'patient-beds',
-        nameKa: 'პაციენტის საწოლები',
-        nameEn: 'Patient Beds',
-      },
-      {
-        id: 'operating-room-furniture',
-        nameKa: 'საოპერაციო ავეჯი',
-        nameEn: 'Operating Room Furniture',
-      },
-      {
-        id: 'medical-chairs',
-        nameKa: 'სამედიცინო სავარძლები',
-        nameEn: 'Medical Chairs',
-      },
-      {
-        id: 'medical-trolleys',
-        nameKa: 'სამედიცინო ურიკები',
-        nameEn: 'Medical Trolleys',
-      },
-      {
-        id: 'stainless-steel-furniture',
-        nameKa: 'უჟანგავი მეტალის ავეჯი',
-        nameEn: 'Stainless Steel Furniture',
-      },
-      {
-        id: 'additional-accessories',
-        nameKa: 'დამატებითი აქსესუარები',
-        nameEn: 'Additional Accessories',
       },
     ],
   },
