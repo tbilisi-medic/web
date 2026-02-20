@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { generateSlug } from '@/lib/slug';
 import { revalidatePath } from 'next/cache';
+import { deleteProductImage } from './upload-action';
 
 export async function getProducts(search?: string) {
   const products = await prisma.product.findMany({
@@ -90,6 +91,14 @@ export async function updateProduct(
 }
 
 export async function deleteProduct(id: string) {
+  const product = await prisma.product.findUnique({ where: { id } });
+  if (!product) throw new Error('Product not found');
+
+  // Delete image from storage if exists
+  if (product.imageUrl) {
+    await deleteProductImage(product.imageUrl);
+  }
+
   await prisma.product.delete({ where: { id } });
   revalidatePath('/admin/products');
 }

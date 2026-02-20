@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import {
   Dialog,
   DialogContent,
@@ -20,8 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Plus } from 'lucide-react';
+import { Plus, Upload, X } from 'lucide-react';
 import { createProduct, updateProduct } from '@/app/admin/products/actions';
+import { uploadProductImage } from '@/app/admin/products/upload-action';
 import type {
   ProductWithRelations,
   CategoryWithSubcategories,
@@ -56,6 +58,10 @@ export function ProductFormModal({
   const [selectedCategory, setSelectedCategory] = React.useState('');
   const [selectedSubcategory, setSelectedSubcategory] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [imageFile, setImageFile] = React.useState<File | null>(null);
+  const [imagePreview, setImagePreview] = React.useState<string | null>(null);
+
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     if (mode === 'edit' && product && open) {
@@ -64,12 +70,16 @@ export function ProductFormModal({
       setSelectedCategory(product.categoryId);
       setSelectedSubcategory(product.subcategoryId);
       setDescription(product.description || '');
+      setImageFile(null);
+      setImagePreview(product.imageUrl || null);
     } else if (mode === 'add' && open) {
       setName('');
       setSubtitle('');
       setSelectedCategory('');
       setSelectedSubcategory('');
       setDescription('');
+      setImageFile(null);
+      setImagePreview(null);
     }
   }, [mode, product, open]);
 
@@ -80,17 +90,46 @@ export function ProductFormModal({
     setSelectedSubcategory('');
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  const handleRemoveImage = () => {
+    setImageFile(null);
+    setImagePreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
+      let imageUrl: string | undefined = undefined;
+
+      // Upload new image if selected
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+        imageUrl = await uploadProductImage(formData);
+      } else if (mode === 'edit' && imagePreview) {
+        // Keep existing image
+        imageUrl = product?.imageUrl || undefined;
+      }
+
       const data = {
         name,
         subtitle: subtitle || undefined,
         description: description || undefined,
         categoryId: selectedCategory,
         subcategoryId: selectedSubcategory,
+        imageUrl,
       };
 
       if (mode === 'edit' && product) {
@@ -223,14 +262,40 @@ export function ProductFormModal({
               />
             </div>
 
-            {/* Image Upload Placeholder */}
+            {/* Image Upload */}
             <div className="space-y-3">
               <Label className="uppercase">სურათი</Label>
-              <div className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
-                <p className="text-sm font-semibold text-foreground/60 uppercase">
-                  ატვირთე სურათი
-                </p>
-              </div>
+              {imagePreview ? (
+                <div className="relative h-48 w-full overflow-hidden rounded-lg border">
+                  <Image
+                    src={imagePreview}
+                    alt="Preview"
+                    fill
+                    className="object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleRemoveImage}
+                    className="absolute top-2 right-2 rounded-full bg-black/60 p-1 text-white cursor-pointer hover:bg-black/80"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : (
+                <label className="flex h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <Upload className="h-6 w-6 text-foreground/40" />
+                  <p className="text-sm font-semibold text-foreground/60 uppercase">
+                    ატვირთე სურათი
+                  </p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
+              )}
             </div>
 
             {/* Actions */}
