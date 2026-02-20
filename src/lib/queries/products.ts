@@ -32,3 +32,33 @@ export async function getCategoriesWithSubcategories() {
 
   return categories;
 }
+
+export async function getProductBySlug(slug: string) {
+  const product = await prisma.product.findUnique({
+    where: { slug, isActive: true },
+    include: {
+      category: true,
+      subcategory: true,
+    },
+  });
+
+  return product;
+}
+
+export async function getRelatedProducts(
+  categoryId: string,
+  excludeProductId: string,
+  limit = 3,
+) {
+  const products = await prisma.product.findMany({
+    where: {
+      isActive: true,
+      categoryId,
+      id: { not: excludeProductId },
+    },
+    take: limit,
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return products;
+}

@@ -1,50 +1,12 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { PageHeader } from '@/components/sections/shared';
 import {
   ProductDetails,
   RelatedProducts,
 } from '@/components/sections/products';
 import { Header, Footer } from '@/components/layout';
-
-const getProduct = (slug: string) => {
-  return {
-    slug,
-    name: 'SONOSCAPE E2',
-    subtitle: 'ექოსკოპიის პორტატული მოწყობილობა',
-    subcategory: 'ექოსკოპია',
-    shortDescription:
-      'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა',
-    fullDescription:
-      'საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია',
-    image: '/images/products/1.jpg',
-  };
-};
-
-const getRelatedProducts = () => {
-  return [
-    {
-      id: '1',
-      slug: 'sonoscape-e3',
-      name: 'SONOSCAPE E2',
-      description: 'ექოსკოპიის პორტატული მოწყობილობა',
-      image: '/images/products/1.jpg',
-    },
-    {
-      id: '2',
-      slug: 'sonoscape-e4',
-      name: 'SONOSCAPE E2',
-      description: 'ექოსკოპიის პორტატული მოწყობილობა',
-      image: '/images/products/1.jpg',
-    },
-    {
-      id: '3',
-      slug: 'sonoscape-e5',
-      name: 'SONOSCAPE E2',
-      description: 'ექოსკოპიის პორტატული მოწყობილობა',
-      image: '/images/products/1.jpg',
-    },
-  ];
-};
+import { getProductBySlug, getRelatedProducts } from '@/lib/queries/products';
 
 export async function generateMetadata({
   params,
@@ -52,11 +14,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
+
+  if (!product) return { title: 'პროდუქტი ვერ მოიძებნა' };
 
   return {
     title: product.name,
-    description: product.shortDescription,
+    description: product.subtitle || product.description || '',
   };
 }
 
@@ -66,8 +30,14 @@ export default async function ProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProduct(slug);
-  const relatedProducts = getRelatedProducts();
+  const product = await getProductBySlug(slug);
+
+  if (!product) notFound();
+
+  const relatedProducts = await getRelatedProducts(
+    product.categoryId,
+    product.id,
+  );
 
   return (
     <>
@@ -77,12 +47,26 @@ export default async function ProductPage({
         description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
       />
       <div className="pt-16 lg:pt-22">
-        <ProductDetails product={product} />
+        <ProductDetails
+          product={{
+            name: product.name,
+            subtitle: product.subtitle || '',
+            description: product.description || '',
+            image: product.imageUrl || '',
+          }}
+        />
       </div>
       <div className="py-16 lg:py-22">
-        <RelatedProducts products={relatedProducts} />
+        <RelatedProducts
+          products={relatedProducts.map((p) => ({
+            id: p.id,
+            slug: p.slug,
+            name: p.name,
+            description: p.subtitle || '',
+            image: p.imageUrl || '',
+          }))}
+        />
       </div>
-
       <Footer />
     </>
   );

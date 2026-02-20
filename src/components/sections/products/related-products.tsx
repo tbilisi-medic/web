@@ -33,13 +33,19 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
                   className="group block border border-primary-light/50 rounded-xl shadow-sm p-6"
                 >
                   {/* Image */}
-                  <div className="relative h-70 overflow-hidden rounded-xl bg-white">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
+                  <div className="relative h-70 overflow-hidden rounded-xl bg-gray-100">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-foreground/30">
+                        სურათი არ მოიძებნა
+                      </div>
+                    )}
                   </div>
 
                   {/* Info */}

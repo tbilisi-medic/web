@@ -16,15 +16,12 @@ interface ProductDetailsProps {
   product: {
     name: string;
     subtitle: string;
-    shortDescription: string;
-    fullDescription: string;
+    description: string;
     image: string;
   };
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
-  const [isExpanded, setIsExpanded] = React.useState(false);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -35,13 +32,19 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             {/* Left - Image */}
-            <div className="relative aspect-square overflow-hidden rounded-xl">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-              />
+            <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100">
+              {product.image ? (
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center text-foreground/30">
+                  სურათი არ მოიძებნა
+                </div>
+              )}
             </div>
 
             {/* Right - Content */}
@@ -59,18 +62,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               {/* Description */}
               <div className="mt-6">
                 <p className="text-base text-foreground/80 lg:text-lg">
-                  {isExpanded
-                    ? product.fullDescription
-                    : product.shortDescription}
+                  {product.description}
                 </p>
-
-                {/* Show More Button */}
-                <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="mt-6 cursor-pointer text-sm font-medium text-primary hover:underline"
-                >
-                  {isExpanded ? 'ნაკლების ჩვენება' : 'მაჩვენე მეტი'}
-                </button>
               </div>
 
               {/* CTA Button */}
@@ -130,12 +123,18 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                       {/* Right - Image */}
                       <div className="hidden lg:flex lg:items-center">
                         <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-100">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            className="object-cover"
-                          />
+                          {product.image ? (
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              className="object-cover"
+                            />
+                          ) : (
+                            <div className="flex h-full items-center justify-center text-foreground/30">
+                              სურათი არ მოიძებნა
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
