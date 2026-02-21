@@ -2,9 +2,10 @@ import { AdminHeader } from '@/components/admin';
 import { prisma } from '@/lib/prisma';
 
 export default async function AdminDashboard() {
-  const [productCount, blogPostCount] = await Promise.all([
+  const [productCount, blogPostCount, jobCount] = await Promise.all([
     prisma.product.count(),
     prisma.blogPost.count(),
+    prisma.job.count(),
   ]);
 
   return (
@@ -25,7 +26,7 @@ export default async function AdminDashboard() {
             </div>
             <div className="rounded-xl border p-6 shadow-sm">
               <p className="text-sm text-foreground/60 uppercase">ვაკანსიები</p>
-              <p className="mt-2 text-3xl font-bold">0</p>
+              <p className="mt-2 text-3xl font-bold">{jobCount}</p>
             </div>
           </div>
         </div>
