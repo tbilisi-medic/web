@@ -14,18 +14,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus } from 'lucide-react';
+import { createJob, updateJob } from '@/app/admin/jobs/actions';
+import type { Job } from '@/types/job';
 
 import 'react-quill-new/dist/quill.snow.css';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-
-export interface Job {
-  id: string;
-  name: string;
-  location: string;
-  description: string;
-  createdAt: string;
-}
 
 interface JobFormModalProps {
   mode: 'add' | 'edit';
@@ -43,32 +37,47 @@ export function JobFormModal({
   children,
 }: JobFormModalProps) {
   const [internalOpen, setInternalOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const isControlled = controlledOpen !== undefined;
   const open = isControlled ? controlledOpen : internalOpen;
   const setOpen = isControlled ? onOpenChange! : setInternalOpen;
 
-  const [name, setName] = React.useState('');
+  const [title, setTitle] = React.useState('');
   const [location, setLocation] = React.useState('');
   const [description, setDescription] = React.useState('');
 
-  // Prefill form when editing
   React.useEffect(() => {
     if (mode === 'edit' && job && open) {
-      setName(job.name);
+      setTitle(job.title);
       setLocation(job.location);
       setDescription(job.description);
     } else if (mode === 'add' && open) {
-      setName('');
+      setTitle('');
       setLocation('');
       setDescription('');
     }
   }, [mode, job, open]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', { name, location, description });
-    setOpen(false);
+    setIsSubmitting(true);
+
+    try {
+      const data = { title, location, description };
+
+      if (mode === 'edit' && job) {
+        await updateJob(job.id, data);
+      } else {
+        await createJob(data);
+      }
+
+      setOpen(false);
+    } catch (error) {
+      console.error('Failed to save job:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isEdit = mode === 'edit';
@@ -82,6 +91,14 @@ export function JobFormModal({
       ['clean'],
     ],
   };
+
+  const isQuillEmpty = (value: string) =>
+    !value ||
+    value === '<p><br></p>' ||
+    value.replace(/<[^>]*>/g, '').trim() === '';
+
+  const isFormValid =
+    title.trim() && location.trim() && !isQuillEmpty(description);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -108,17 +125,17 @@ export function JobFormModal({
 
         <ScrollArea className="max-h-[75vh]">
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
-            {/* Job Name */}
+            {/* Job Title */}
             <div className="space-y-3">
-              <Label htmlFor="name" className="uppercase">
+              <Label htmlFor="title" className="uppercase">
                 დასახელება
               </Label>
               <Input
-                id="name"
+                id="title"
                 placeholder="ვაკანსიის დასახელება"
                 className="h-11 w-full"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 required
               />
             </div>
@@ -138,7 +155,7 @@ export function JobFormModal({
               />
             </div>
 
-            {/* Description - Rich Text Editor */}
+            {/* Description */}
             <div className="space-y-3">
               <Label className="uppercase">აღწერა</Label>
               <ReactQuill
@@ -157,11 +174,20 @@ export function JobFormModal({
                 variant="outline"
                 className="cursor-pointer uppercase"
                 onClick={() => setOpen(false)}
+                disabled={isSubmitting}
               >
                 გაუქმება
               </Button>
-              <Button type="submit" className="cursor-pointer uppercase">
-                {isEdit ? 'შენახვა' : 'დამატება'}
+              <Button
+                type="submit"
+                className="cursor-pointer uppercase"
+                disabled={isSubmitting || !isFormValid}
+              >
+                {isSubmitting
+                  ? 'იტვირთება...'
+                  : isEdit
+                    ? 'შენახვა'
+                    : 'დამატება'}
               </Button>
             </div>
           </form>

@@ -8,6 +8,7 @@ export { AdminBlogClient } from './admin-blog-client';
 export { BlogTable } from './blog-table';
 export { BlogFormModal } from './blog-form-modal';
 export { DeleteBlogDialog } from './delete-blog-dialog';
+export { AdminJobsClient } from './admin-jobs-client';
 export { JobsTable } from './jobs-table';
 export { JobFormModal } from './job-form-modal';
 export { DeleteJobDialog } from './delete-job-dialog';

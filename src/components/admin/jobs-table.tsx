@@ -12,7 +12,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import { DeleteJobDialog } from './delete-job-dialog';
-import { JobFormModal, Job } from './job-form-modal';
+import { JobFormModal } from './job-form-modal';
+import { deleteJob } from '@/app/admin/jobs/actions';
+import type { Job } from '@/types/job';
 
 interface JobsTableProps {
   jobs: Job[];
@@ -35,18 +37,9 @@ export function JobsTable({ jobs }: JobsTableProps) {
     job: null,
   });
 
-  const handleEditClick = (job: Job) => {
-    setEditModal({ open: true, job });
-  };
-
-  const handleDeleteClick = (job: Job) => {
-    setDeleteDialog({ open: true, job });
-  };
-
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (deleteDialog.job) {
-      // Will connect to Supabase later
-      console.log('Delete job:', deleteDialog.job.id);
+      await deleteJob(deleteDialog.job.id);
     }
     setDeleteDialog({ open: false, job: null });
   };
@@ -70,22 +63,24 @@ export function JobsTable({ jobs }: JobsTableProps) {
                   colSpan={4}
                   className="text-center text-foreground/60"
                 >
-                  ვაკანსიები არ მოიძებნა
+                  <p className="p-2">ვაკანსიები არ მოიძებნა</p>
                 </TableCell>
               </TableRow>
             ) : (
               jobs.map((job) => (
                 <TableRow key={job.id}>
-                  <TableCell className="font-medium">{job.name}</TableCell>
+                  <TableCell className="font-medium">{job.title}</TableCell>
                   <TableCell>{job.location}</TableCell>
-                  <TableCell>{job.createdAt}</TableCell>
+                  <TableCell>
+                    {new Date(job.createdAt).toLocaleDateString('ka-GE')}
+                  </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer"
-                        onClick={() => handleEditClick(job)}
+                        onClick={() => setEditModal({ open: true, job })}
                       >
                         <Pencil className="h-4 w-4" />
                       </Button>
@@ -93,7 +88,7 @@ export function JobsTable({ jobs }: JobsTableProps) {
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer text-red-500 hover:text-red-600"
-                        onClick={() => handleDeleteClick(job)}
+                        onClick={() => setDeleteDialog({ open: true, job })}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -111,7 +106,7 @@ export function JobsTable({ jobs }: JobsTableProps) {
         onOpenChange={(open) =>
           setDeleteDialog({ open, job: open ? deleteDialog.job : null })
         }
-        jobName={deleteDialog.job?.name ?? ''}
+        jobName={deleteDialog.job?.title ?? ''}
         onConfirm={handleDeleteConfirm}
       />
 
