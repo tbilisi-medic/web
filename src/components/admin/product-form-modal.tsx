@@ -160,6 +160,17 @@ export function ProductFormModal({
     ],
   };
 
+  const isQuillEmpty = (value: string) =>
+    !value ||
+    value === '<p><br></p>' ||
+    value.replace(/<[^>]*>/g, '').trim() === '';
+
+  const isFormValid =
+    name.trim() &&
+    selectedCategory &&
+    selectedSubcategory &&
+    !isQuillEmpty(description);
+
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {!isControlled && (
@@ -321,7 +332,7 @@ export function ProductFormModal({
               <Button
                 type="submit"
                 className="cursor-pointer uppercase"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormValid}
               >
                 {isSubmitting
                   ? 'იტვირთება...'
