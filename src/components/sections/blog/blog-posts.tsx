@@ -1,63 +1,33 @@
 'use client';
 
+import * as React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Suspense } from 'react';
+import { blogCategories, type BlogPost } from '@/types/blog';
 
-const categories = [
-  { id: 'news', name: 'სიახლეები' },
-  { id: 'blog', name: 'ბლოგი' },
-  { id: 'listen', name: 'მოსასმენი' },
-  { id: 'events', name: 'ღონისძიებები' },
-  { id: 'diaries', name: 'დღიურები' },
-];
+interface BlogPostsContentProps {
+  posts: BlogPost[];
+  locale: string;
+}
 
-const posts = [
-  {
-    id: 1,
-    title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-    description:
-      'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-    image: '/images/categories/1.jpg',
-    slug: 'modern-anesthesia-technology',
-    category: 'blog',
-  },
-  {
-    id: 2,
-    title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-    description:
-      'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-    image: '/images/categories/2.jpg',
-    slug: 'modern-anesthesia-technology-2',
-    category: 'blog',
-  },
-  {
-    id: 3,
-    title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-    description:
-      'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-    image: '/images/categories/3.jpg',
-    slug: 'modern-anesthesia-technology-3',
-    category: 'events',
-  },
-];
-
-function BlogPostsContent() {
+function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const activeCategory = searchParams.get('category') || categories[0].id;
+  const activeCategory = searchParams.get('category') || blogCategories[0].id;
 
   const handleCategoryChange = (categoryId: string) => {
     router.push(`/blog?category=${categoryId}`, { scroll: false });
   };
 
-  const filteredPosts =
-    activeCategory === 'news'
-      ? posts
-      : posts.filter((post) => post.category === activeCategory);
+  const filteredPosts = posts.filter(
+    (post) => post.category === activeCategory,
+  );
+
+  const isEn = locale === 'en';
 
   return (
     <section>
@@ -66,7 +36,7 @@ function BlogPostsContent() {
           {/* Category Tabs */}
           <div>
             <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto pb-4">
-              {categories.map((category) => (
+              {blogCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
@@ -76,7 +46,7 @@ function BlogPostsContent() {
                       : 'bg-white border border-primary/15 text-foreground hover:bg-primary/5'
                   }`}
                 >
-                  {category.name}
+                  {isEn ? category.nameEn : category.nameKa}
                 </button>
               ))}
             </div>
@@ -84,48 +54,60 @@ function BlogPostsContent() {
 
           {/* Posts List */}
           <div className="mt-10 space-y-8">
-            {filteredPosts.map((post) => (
-              <div
-                key={post.id}
-                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
-              >
-                {/* Image */}
-                <div className="lg:col-span-4">
-                  <div className="relative h-60 overflow-hidden rounded-xl bg-gray-200">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
+            {filteredPosts.length === 0 ? (
+              <p className="text-foreground/60">
+                {isEn ? 'No posts found' : 'პოსტები არ მოიძებნა'}
+              </p>
+            ) : (
+              filteredPosts.map((post) => (
+                <div
+                  key={post.id}
+                  className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
+                >
+                  {/* Image */}
+                  <div className="lg:col-span-4">
+                    <div className="relative h-60 overflow-hidden rounded-xl bg-gray-200">
+                      {post.imageUrl ? (
+                        <Image
+                          src={post.imageUrl}
+                          alt={
+                            isEn ? post.titleEn || post.titleKa : post.titleKa
+                          }
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center text-foreground/30">
+                          {isEn ? 'No image' : 'სურათი არ მოიძებნა'}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="lg:col-span-8">
+                    <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
+                      {isEn ? post.titleEn || post.titleKa : post.titleKa}
+                    </h3>
+                    <div
+                      className="mt-4 text-lg text-foreground/80 line-clamp-3"
+                      dangerouslySetInnerHTML={{
+                        __html: isEn
+                          ? post.contentEn || post.contentKa
+                          : post.contentKa,
+                      }}
                     />
+                    <div className="mt-6">
+                      <Link href={`/blog/${post.slug}`}>
+                        <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
+                          {isEn ? 'Read more' : 'სრულად'}
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="lg:col-span-8">
-                  <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
-                    {post.title}
-                  </h3>
-                  <p className="mt-4 text-lg text-foreground/80">
-                    {post.description}
-                  </p>
-                  <div className="mt-6">
-                    <Link href={`/blog/${post.slug}`}>
-                      <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
-                        სრულად
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Load More */}
-          <div className="mt-14 border-t border-gray-200 pt-8 text-center">
-            <button className="cursor-pointer text-md font-medium text-foreground/80 transition-colors hover:text-primary uppercase">
-              მაჩვენე მეტი
-            </button>
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -133,10 +115,15 @@ function BlogPostsContent() {
   );
 }
 
-export function BlogPosts() {
+interface BlogPostsProps {
+  posts: BlogPost[];
+  locale: string;
+}
+
+export function BlogPosts({ posts, locale }: BlogPostsProps) {
   return (
     <Suspense>
-      <BlogPostsContent />
+      <BlogPostsContent posts={posts} locale={locale} />
     </Suspense>
   );
 }

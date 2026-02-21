@@ -1,68 +1,10 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { PageHeader } from '@/components/sections/shared';
 import { BlogPostContent, RelatedPosts } from '@/components/sections/blog';
 import { Header, Footer } from '@/components/layout';
-
-const getPost = (slug: string) => {
-  return {
-    slug,
-    title: 'ხელოვნური სუნთქვის აპარატების როლი თანამედროვე რეანიმაციაში',
-    date: '22 იანვარი, 2026 / 08:45 PM',
-    description:
-      'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-    image: '/images/categories/1.jpg',
-    content: `
-      <p>ინტენსიური თერაპიის განყოფილებაში თითოეული ნაბიჯი გადამწყვეტია, კრიტიკულ პაციენტებში სუნთქვის მხარდაჭერა ხშირად სიცოცხლის გადარჩენის მთავარი ფაქტორია, ამიტომ ხელოვნური სუნთქვის აპარატები (ვენტილატორები) იქცნენ თანამედროვე რეანიმატოლოგიის ერთ-ერთ მთავარი საყრდენად.</p>
-
-      <h2>სიცოცხლის შენარჩუნების საფუძველი</h2>
-
-      <p>ვენტილატორების მთავარი ფუნქციაა ჟანგბადის მიწოდება და ნახშირორჟანგის გამოდევნა მაშინ, როცა პაციენტი ამას ვერ ახერხებს დამოუკიდებლად. თანამედროვე მოწყობილობები იყენებენ ზუსტ სენსორებსა და ალგორითმებს, რომლებიც მუდმივად აკონტროლებენ სუნთქვის სიღრმეს, სიხშირესა და გაზების ბალანსს. ამ მხრივ განსაკუთრებით გამოსარჩევია Comen V სერიის აპარატები, რომლებიც რეალურ დროში ადაპტირდებიან პაციენტის საჭიროებებზე და უზრუნველყოფენ სტაბილურ სუნთქვით პარამეტრებს.</p>
-
-      <h2>მრავალფეროვანი</h2>
-
-      <p>ინტენსიური თერაპიის პაციენტებს ხშირად სჭირდებათ განსხვავებული მიდგომა: ზოგს ინვაზიური, ზოგს კი არაინვაზიური ვენტილაცია. თანამედროვე აპარატები საშუალებას იძლევა, რომ ექიმმა სწრაფად გადართოს სხვადასხვა რეჟიმი და შეარჩიოს ოპტიმალური სქემა.</p>
-
-      <h2>სრული მონიტორინგი ერთ სისტემაში</h2>
-
-      <p>ხელოვნური სუნთქვის აპარატები აღარ შემოიფარგლება მხოლოდ ვენტილაციით. თანამედროვე მოწყობილობები ინტეგრირებულად აჩვენებენ ჟანგბადის, წნევისა და ფილტვის კომპლაიანსის მონაცემებს, რაც ექიმს უფრო სრულ სურათს აძლევს. მაგალითად, Comen V სერიის მოდელები ერთ ეკრანზე აერთიანებენ ვენტილაციის პარამეტრებსა და მონიტორინგის ძირითად მაჩვენებლებს, რითაც ამარტივებენ გადაწყვეტილების მიღებას.</p>
-
-      <h2>კომფორტი და ეფექტურობა</h2>
-
-      <p>ინტენსიური თერაპიის განყოფილებაში თითოეულ წამს მნიშვნელობა აქვს. ამიტომ ვენტილატორების ინტერფეისი უნდა იყოს მარტივი, სწრაფი და საიმედო. თანამედროვე მოწყობილობები აღჭურვილია სენსორული ეკრანებით, ადვილად გასაწმენდი სისტემებით და მოდულური დიზაინით. Comen-ის რესპირატორული მართვის მოწყობილობები ამ კრიტერიუმებს სრულად აკმაყოფილებენ, რაც მათ ყოველდღიურ პრაქტიკაში ექიმების ერთ-ერთ ძირითად არჩევანად აქცევს.</p>
-
-      <p>თანამედროვე ხელოვნური სუნთქვის აპარატები ინტენსიური თერაპიის განყოფილების მთავარი ინსტრუმენტია, რომელიც კრიტიკულ სიტუაციებში სიცოცხლის გადარჩენას უზრუნველყოფს. მათი სიზუსტე, მოქნილობა და ინტეგრირებული მონიტორინგი ექიმებს აძლევს საშუალებას, სწრაფად და ეფექტურად მართონ პაციენტის სუნთქვა. ამ პროცესში განსაკუთრებული ყურადღება უნდა მიექცეს თანამედროვე ტექნოლოგიებს რომლებიც ყველა სტანდარტს სრულად აკმაყოფილებენ და რეანიმაციის პრაქტიკაში საიმედო პარტნიორად ითვლებიან.</p>
-    `,
-  };
-};
-
-const getRelatedPosts = () => {
-  return [
-    {
-      id: '1',
-      slug: 'post-1',
-      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-      description:
-        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-      image: '/images/categories/1.jpg',
-    },
-    {
-      id: '2',
-      slug: 'post-2',
-      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-      description:
-        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-      image: '/images/categories/2.jpg',
-    },
-    {
-      id: '3',
-      slug: 'post-3',
-      title: 'თანამედროვე საანესთეზიო ტექნოლოგიები და მოწყობილობები',
-      description:
-        'გაიგეთ, თუ რა შეიცვალა თანამედროვე საანესთეზიო ტექნოლოგიებში და როგორ აერთიანებს ის უსაფრთხოებასა და კომფორტს',
-      image: '/images/categories/3.jpg',
-    },
-  ];
-};
+import { getBlogPostBySlug, getRelatedBlogPosts } from '@/lib/queries/blog';
+import { getLocale } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
@@ -70,11 +12,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getBlogPostBySlug(slug);
+
+  if (!post) return { title: 'პოსტი ვერ მოიძებნა' };
 
   return {
-    title: `${post.title}`,
-    description: post.description,
+    title: post.titleKa,
+    description: '',
   };
 }
 
@@ -84,18 +28,47 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
-  const relatedPosts = getRelatedPosts();
+  const [post, locale] = await Promise.all([
+    getBlogPostBySlug(slug),
+    getLocale(),
+  ]);
+
+  if (!post) notFound();
+
+  const relatedPosts = await getRelatedBlogPosts(post.category, post.id);
+
+  const isEn = locale === 'en';
 
   return (
     <>
       <Header />
-      <PageHeader />
+      <PageHeader
+        title="წასაკითხები და მოსასმენები"
+        description="თბილისი მედიკში გარდა იმისა, რომ სამედიცინო პროდუქციის იმპორტით ვართ დაკავებულები, ძალიან გვიყვარს მედიცინა და ვცდილობთ მის გარშემო ყველა სიახლე, ინოვაცია და ამბავი მოგიყვეთ."
+      />
       <div className="pt-16 lg:pt-22">
-        <BlogPostContent post={post} />
+        <BlogPostContent
+          post={{
+            title: isEn ? post.titleEn || post.titleKa : post.titleKa,
+            date: new Date(post.createdAt).toLocaleDateString(
+              isEn ? 'en-US' : 'ka-GE',
+              { year: 'numeric', month: 'long', day: 'numeric' },
+            ),
+            image: post.imageUrl || '',
+            content: isEn ? post.contentEn || post.contentKa : post.contentKa,
+          }}
+        />
       </div>
       <div className="py-16 lg:py-22">
-        <RelatedPosts posts={relatedPosts} />
+        <RelatedPosts
+          posts={relatedPosts.map((p) => ({
+            id: p.id,
+            slug: p.slug,
+            title: isEn ? p.titleEn || p.titleKa : p.titleKa,
+            description: '',
+            image: p.imageUrl || '',
+          }))}
+        />
       </div>
       <Footer />
     </>

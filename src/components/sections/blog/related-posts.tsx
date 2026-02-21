@@ -14,6 +14,8 @@ interface RelatedPostsProps {
 }
 
 export function RelatedPosts({ posts }: RelatedPostsProps) {
+  if (posts.length === 0) return null;
+
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -33,12 +35,18 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
               >
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                  {post.image ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-foreground/30">
+                      სურათი არ მოიძებნა
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}
@@ -46,9 +54,6 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
                   <h3 className="font-bold text-xl text-foreground uppercase">
                     {post.title}
                   </h3>
-                  <p className="mt-4 text-lg text-foreground/70">
-                    {post.description}
-                  </p>
                 </div>
               </Link>
             ))}
