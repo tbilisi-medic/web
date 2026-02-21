@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import {
   Dialog,
@@ -20,27 +21,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Plus } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Plus, Upload, X } from 'lucide-react';
+import { createBlogPost, updateBlogPost } from '@/app/admin/blog/actions';
+import { uploadImage } from '@/lib/upload';
+import { blogCategories, type BlogPost } from '@/types/blog';
 
 import 'react-quill-new/dist/quill.snow.css';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
-
-export const categories = [
-  { id: 'news', name: 'სიახლეები' },
-  { id: 'blog', name: 'ბლოგი' },
-  { id: 'podcast', name: 'მოსასმენი' },
-  { id: 'events', name: 'ღონისძიებები' },
-  { id: 'diaries', name: 'დღიურები' },
-];
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  category: string;
-  content: string;
-  createdAt: string;
-}
 
 interface BlogFormModalProps {
   mode: 'add' | 'edit';
@@ -58,32 +47,91 @@ export function BlogFormModal({
   children,
 }: BlogFormModalProps) {
   const [internalOpen, setInternalOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const isControlled = controlledOpen !== undefined;
   const open = isControlled ? controlledOpen : internalOpen;
   const setOpen = isControlled ? onOpenChange! : setInternalOpen;
 
-  const [title, setTitle] = React.useState('');
+  const [titleKa, setTitleKa] = React.useState('');
+  const [titleEn, setTitleEn] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState('');
-  const [content, setContent] = React.useState('');
+  const [contentKa, setContentKa] = React.useState('');
+  const [contentEn, setContentEn] = React.useState('');
+  const [imageFile, setImageFile] = React.useState<File | null>(null);
+  const [imagePreview, setImagePreview] = React.useState<string | null>(null);
 
-  // Prefill form when editing
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
   React.useEffect(() => {
     if (mode === 'edit' && post && open) {
-      setTitle(post.title);
+      setTitleKa(post.titleKa);
+      setTitleEn(post.titleEn || '');
       setSelectedCategory(post.category);
-      setContent(post.content);
+      setContentKa(post.contentKa);
+      setContentEn(post.contentEn || '');
+      setImageFile(null);
+      setImagePreview(post.imageUrl || null);
     } else if (mode === 'add' && open) {
-      setTitle('');
+      setTitleKa('');
+      setTitleEn('');
       setSelectedCategory('');
-      setContent('');
+      setContentKa('');
+      setContentEn('');
+      setImageFile(null);
+      setImagePreview(null);
     }
   }, [mode, post, open]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
+  };
+
+  const handleRemoveImage = () => {
+    setImageFile(null);
+    setImagePreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', { title, selectedCategory, content });
-    setOpen(false);
+    setIsSubmitting(true);
+
+    try {
+      let imageUrl: string | undefined = undefined;
+
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append('file', imageFile);
+        imageUrl = await uploadImage(formData, 'blog');
+      } else if (mode === 'edit' && imagePreview) {
+        imageUrl = post?.imageUrl || undefined;
+      }
+
+      const data = {
+        titleKa,
+        titleEn: titleEn || undefined,
+        contentKa,
+        contentEn: contentEn || undefined,
+        category: selectedCategory,
+        imageUrl,
+      };
+
+      if (mode === 'edit' && post) {
+        await updateBlogPost(post.id, data);
+      } else {
+        await createBlogPost(data);
+      }
+
+      setOpen(false);
+    } catch (error) {
+      console.error('Failed to save blog post:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const isEdit = mode === 'edit';
@@ -111,7 +159,7 @@ export function BlogFormModal({
         </DialogTrigger>
       )}
       <DialogContent
-        className="sm:max-w-[700px] p-0 gap-0 [&>button]:top-6 [&>button]:right-6"
+        className="sm:max-w-[800px] p-0 gap-0 [&>button]:top-6 [&>button]:right-6"
         onPointerDownOutside={(e) => e.preventDefault()}
         onInteractOutside={(e) => e.preventDefault()}
       >
@@ -123,26 +171,9 @@ export function BlogFormModal({
 
         <ScrollArea className="max-h-[75vh]">
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
-            {/* Title */}
-            <div className="space-y-3">
-              <Label htmlFor="title" className="uppercase">
-                სათაური
-              </Label>
-              <Input
-                id="title"
-                placeholder="პოსტის სათაური"
-                className="h-11 w-full"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </div>
-
             {/* Category */}
             <div className="space-y-3">
-              <Label htmlFor="category" className="uppercase">
-                კატეგორია
-              </Label>
+              <Label className="uppercase">კატეგორია</Label>
               <Select
                 value={selectedCategory}
                 onValueChange={setSelectedCategory}
@@ -151,35 +182,112 @@ export function BlogFormModal({
                   <SelectValue placeholder="აირჩიეთ კატეგორია" />
                 </SelectTrigger>
                 <SelectContent className="w-full">
-                  {categories.map((category) => (
+                  {blogCategories.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
-                      {category.name}
+                      {category.nameKa}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
 
-            {/* Content - Text Editor */}
-            <div className="space-y-3">
-              <Label className="uppercase">კონტენტი</Label>
-              <ReactQuill
-                theme="snow"
-                value={content}
-                onChange={setContent}
-                modules={quillModules}
-                className="[&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
-              />
-            </div>
+            {/* Titles & Content with Tabs */}
+            <Tabs defaultValue="ka" className="w-full">
+              <TabsList className="w-full">
+                <TabsTrigger value="ka" className="flex-1 cursor-pointer">
+                  ქართული
+                </TabsTrigger>
+                <TabsTrigger value="en" className="flex-1 cursor-pointer">
+                  English
+                </TabsTrigger>
+              </TabsList>
 
-            {/* Image Upload Placeholder */}
+              <TabsContent value="ka" className="space-y-6 mt-6">
+                {/* Title KA */}
+                <div className="space-y-3">
+                  <Label className="uppercase">სათაური (ქართული)</Label>
+                  <Input
+                    placeholder="პოსტის სათაური"
+                    className="h-11 w-full"
+                    value={titleKa}
+                    onChange={(e) => setTitleKa(e.target.value)}
+                    required
+                  />
+                </div>
+
+                {/* Content KA */}
+                <div className="space-y-3">
+                  <Label className="uppercase">კონტენტი (ქართული)</Label>
+                  <ReactQuill
+                    theme="snow"
+                    value={contentKa}
+                    onChange={setContentKa}
+                    modules={quillModules}
+                    className="[&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
+                  />
+                </div>
+              </TabsContent>
+
+              <TabsContent value="en" className="space-y-6 mt-6">
+                {/* Title EN */}
+                <div className="space-y-3">
+                  <Label className="uppercase">სათაური (English)</Label>
+                  <Input
+                    placeholder="Post title"
+                    className="h-11 w-full"
+                    value={titleEn}
+                    onChange={(e) => setTitleEn(e.target.value)}
+                  />
+                </div>
+
+                {/* Content EN */}
+                <div className="space-y-3">
+                  <Label className="uppercase">კონტენტი (English)</Label>
+                  <ReactQuill
+                    theme="snow"
+                    value={contentEn}
+                    onChange={setContentEn}
+                    modules={quillModules}
+                    className="[&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
+                  />
+                </div>
+              </TabsContent>
+            </Tabs>
+
+            {/* Image Upload */}
             <div className="space-y-3">
               <Label className="uppercase">სურათი</Label>
-              <div className="flex h-20 items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
-                <p className="text-sm font-semibold text-foreground/60 uppercase">
-                  ატვირთე სურათი
-                </p>
-              </div>
+              {imagePreview ? (
+                <div className="relative h-48 w-full overflow-hidden rounded-lg border">
+                  <Image
+                    src={imagePreview}
+                    alt="Preview"
+                    fill
+                    className="object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleRemoveImage}
+                    className="absolute top-2 right-2 rounded-full bg-black/60 p-1 text-white cursor-pointer hover:bg-black/80"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : (
+                <label className="flex h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <Upload className="h-6 w-6 text-foreground/40" />
+                  <p className="text-sm font-semibold text-foreground/60 uppercase">
+                    ატვირთე სურათი
+                  </p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
+              )}
             </div>
 
             {/* Actions */}
@@ -189,11 +297,20 @@ export function BlogFormModal({
                 variant="outline"
                 className="cursor-pointer uppercase"
                 onClick={() => setOpen(false)}
+                disabled={isSubmitting}
               >
                 გაუქმება
               </Button>
-              <Button type="submit" className="cursor-pointer uppercase">
-                {isEdit ? 'შენახვა' : 'დამატება'}
+              <Button
+                type="submit"
+                className="cursor-pointer uppercase"
+                disabled={isSubmitting}
+              >
+                {isSubmitting
+                  ? 'იტვირთება...'
+                  : isEdit
+                    ? 'შენახვა'
+                    : 'დამატება'}
               </Button>
             </div>
           </form>

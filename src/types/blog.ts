@@ -1,4 +1,4 @@
-export type BlogPostWithDates = {
+export type BlogPost = {
   id: string;
   slug: string;
   titleKa: string;

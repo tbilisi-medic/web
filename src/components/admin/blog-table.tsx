@@ -12,7 +12,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import { DeleteBlogDialog } from './delete-blog-dialog';
-import { BlogFormModal, BlogPost, categories } from './blog-form-modal';
+import { BlogFormModal } from './blog-form-modal';
+import { deleteBlogPost } from '@/app/admin/blog/actions';
+import { blogCategories, type BlogPost } from '@/types/blog';
 
 interface BlogTableProps {
   posts: BlogPost[];
@@ -36,21 +38,14 @@ export function BlogTable({ posts }: BlogTableProps) {
   });
 
   const getCategoryName = (categoryId: string) => {
-    return categories.find((c) => c.id === categoryId)?.name ?? categoryId;
+    return (
+      blogCategories.find((c) => c.id === categoryId)?.nameKa ?? categoryId
+    );
   };
 
-  const handleEditClick = (post: BlogPost) => {
-    setEditModal({ open: true, post });
-  };
-
-  const handleDeleteClick = (post: BlogPost) => {
-    setDeleteDialog({ open: true, post });
-  };
-
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (deleteDialog.post) {
-      // Will connect to Supabase later
-      console.log('Delete post:', deleteDialog.post.id);
+      await deleteBlogPost(deleteDialog.post.id);
     }
     setDeleteDialog({ open: false, post: null });
   };
@@ -80,16 +75,18 @@ export function BlogTable({ posts }: BlogTableProps) {
             ) : (
               posts.map((post) => (
                 <TableRow key={post.id}>
-                  <TableCell className="font-medium">{post.title}</TableCell>
+                  <TableCell className="font-medium">{post.titleKa}</TableCell>
                   <TableCell>{getCategoryName(post.category)}</TableCell>
-                  <TableCell>{post.createdAt}</TableCell>
+                  <TableCell>
+                    {new Date(post.createdAt).toLocaleDateString('ka-GE')}
+                  </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer"
-                        onClick={() => handleEditClick(post)}
+                        onClick={() => setEditModal({ open: true, post })}
                       >
                         <Pencil className="h-4 w-4" />
                       </Button>
@@ -97,7 +94,7 @@ export function BlogTable({ posts }: BlogTableProps) {
                         variant="ghost"
                         size="icon"
                         className="h-8 w-8 cursor-pointer text-red-500 hover:text-red-600"
-                        onClick={() => handleDeleteClick(post)}
+                        onClick={() => setDeleteDialog({ open: true, post })}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -115,7 +112,7 @@ export function BlogTable({ posts }: BlogTableProps) {
         onOpenChange={(open) =>
           setDeleteDialog({ open, post: open ? deleteDialog.post : null })
         }
-        postTitle={deleteDialog.post?.title ?? ''}
+        postTitle={deleteDialog.post?.titleKa ?? ''}
         onConfirm={handleDeleteConfirm}
       />
 

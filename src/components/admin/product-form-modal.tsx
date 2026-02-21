@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/select';
 import { Plus, Upload, X } from 'lucide-react';
 import { createProduct, updateProduct } from '@/app/admin/products/actions';
-import { uploadProductImage } from '@/app/admin/products/upload-action';
+import { uploadImage } from '@/lib/upload';
 import type {
   ProductWithRelations,
   CategoryWithSubcategories,
@@ -120,7 +120,7 @@ export function ProductFormModal({
       if (imageFile) {
         const formData = new FormData();
         formData.append('file', imageFile);
-        imageUrl = await uploadProductImage(formData);
+        imageUrl = await uploadImage(formData);
       } else if (mode === 'edit' && imagePreview) {
         // Keep existing image
         imageUrl = product?.imageUrl || undefined;

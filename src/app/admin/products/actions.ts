@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { generateSlug } from '@/lib/slug';
 import { revalidatePath } from 'next/cache';
-import { deleteProductImage } from './upload-action';
+import { deleteImage } from '@/lib/upload';
 
 export async function getProducts(search?: string) {
   const products = await prisma.product.findMany({
@@ -96,7 +96,7 @@ export async function deleteProduct(id: string) {
 
   // Delete image from storage if exists
   if (product.imageUrl) {
-    await deleteProductImage(product.imageUrl);
+    await deleteImage(product.imageUrl);
   }
 
   await prisma.product.delete({ where: { id } });

@@ -4,6 +4,7 @@ export { AdminProductsClient } from './admin-products-client';
 export { ProductsTable } from './products-table';
 export { ProductFormModal } from './product-form-modal';
 export { DeleteProductDialog } from './delete-product-dialog';
+export { AdminBlogClient } from './admin-blog-client';
 export { BlogTable } from './blog-table';
 export { BlogFormModal } from './blog-form-modal';
 export { DeleteBlogDialog } from './delete-blog-dialog';
