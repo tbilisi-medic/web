@@ -56,3 +56,22 @@ model Product {
   @@index([isActive])
   @@map("products")
 }
+
+model BlogPost {
+  id        String   @id @default(uuid())
+  slug      String   @unique
+  titleKa   String   @map("title_ka")
+  titleEn   String?  @map("title_en")
+  contentKa String   @map("content_ka")
+  contentEn String?  @map("content_en")
+  category  String
+  imageUrl  String?  @map("image_url")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([slug])
+  @@index([isActive])
+  @@map("blog_posts")
+}
