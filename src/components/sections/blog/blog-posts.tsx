@@ -70,9 +70,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                       {post.imageUrl ? (
                         <Image
                           src={post.imageUrl}
-                          alt={
-                            isEn ? post.titleEn || post.titleKa : post.titleKa
-                          }
+                          alt={isEn ? post.titleEn! : post.titleKa}
                           fill
                           className="object-cover"
                         />
@@ -87,14 +85,12 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                   {/* Content */}
                   <div className="lg:col-span-8">
                     <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
-                      {isEn ? post.titleEn || post.titleKa : post.titleKa}
+                      {isEn ? post.titleEn! : post.titleKa}
                     </h3>
                     <div
                       className="mt-4 text-lg text-foreground/80 line-clamp-3"
                       dangerouslySetInnerHTML={{
-                        __html: isEn
-                          ? post.contentEn || post.contentKa
-                          : post.contentKa,
+                        __html: isEn ? post.contentEn! : post.contentKa,
                       }}
                     />
                     <div className="mt-6">

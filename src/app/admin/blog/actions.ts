@@ -23,9 +23,9 @@ export async function getBlogPosts(search?: string) {
 
 export async function createBlogPost(data: {
   titleKa: string;
-  titleEn?: string;
+  titleEn: string;
   contentKa: string;
-  contentEn?: string;
+  contentEn: string;
   category: string;
   imageUrl?: string;
 }) {
@@ -50,9 +50,9 @@ export async function updateBlogPost(
   id: string,
   data: {
     titleKa: string;
-    titleEn?: string;
+    titleEn: string;
     contentKa: string;
-    contentEn?: string;
+    contentEn: string;
     category: string;
     imageUrl?: string;
   },

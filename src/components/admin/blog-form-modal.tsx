@@ -113,9 +113,9 @@ export function BlogFormModal({
 
       const data = {
         titleKa,
-        titleEn: titleEn || undefined,
+        titleEn,
         contentKa,
-        contentEn: contentEn || undefined,
+        contentEn,
         category: selectedCategory,
         imageUrl,
       };
@@ -145,6 +145,18 @@ export function BlogFormModal({
       ['clean'],
     ],
   };
+
+  const isQuillEmpty = (value: string) =>
+    !value ||
+    value === '<p><br></p>' ||
+    value.replace(/<[^>]*>/g, '').trim() === '';
+
+  const isFormValid =
+    titleKa.trim() &&
+    titleEn.trim() &&
+    selectedCategory &&
+    !isQuillEmpty(contentKa) &&
+    !isQuillEmpty(contentEn);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -237,6 +249,7 @@ export function BlogFormModal({
                     className="h-11 w-full"
                     value={titleEn}
                     onChange={(e) => setTitleEn(e.target.value)}
+                    required
                   />
                 </div>
 
@@ -304,7 +317,7 @@ export function BlogFormModal({
               <Button
                 type="submit"
                 className="cursor-pointer uppercase"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormValid}
               >
                 {isSubmitting
                   ? 'იტვირთება...'
