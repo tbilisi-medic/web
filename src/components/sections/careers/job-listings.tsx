@@ -4,45 +4,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import type { Job } from '@/types/job';
 
-const jobs = [
-  {
-    id: 'marketing-manager-1',
-    title: 'მარკეტინგის მენეჯერი',
-    location: 'თბილისი, საქართველო',
-    date: 'გამოქვეყნდა 3 დღის წინ',
-    description: `ჩვენ უწყვეტი ენერგიის, პროგრესის, შესაძლებლობებისა და სასიკეთო გარდამტეხი ცვლილებების ძრავა ვართ.
+interface JobListingsProps {
+  jobs: Job[];
+}
 
-30 წელია, ვზრუნავთ ავტოსფეროს განვითარებაზე და მომხმარებელს საავტომობილო ეკოსისტემის სრულ სპექტრს ვთავაზობთ. ჩვენი ნებისმიერი წარმატების უკან დგანან პროფესიონალი და გამბედავი ადამიანები, რომლებსაც სჯერათ, რომ თუ ინდომებ, შეუძლებელი არაფერია. თეგეტაში ვქმნით სამუშაო გარემოს, სადაც ერთმანეთს მხარს ვუჭერთ, ყოველდღე ახალს ვსწავლობთ და გამოწვევებს გუნდურად ვპასუხობთ.
+export function JobListings({ jobs }: JobListingsProps) {
+  if (jobs.length === 0) return null;
 
-განვითარება ჩვენი მამოძრავებელი ძალაა და პროგრესის გზაზე ახალ თანამგზავრებს ველით.`,
-  },
-  {
-    id: 'marketing-manager-2',
-    title: 'მარკეტინგის მენეჯერი',
-    location: 'თბილისი, საქართველო',
-    date: 'გამოქვეყნდა 3 დღის წინ',
-    description: `ჩვენ უწყვეტი ენერგიის, პროგრესის, შესაძლებლობებისა და სასიკეთო გარდამტეხი ცვლილებების ძრავა ვართ.`,
-  },
-  {
-    id: 'marketing-manager-3',
-    title: 'მარკეტინგის მენეჯერი',
-    location: 'თბილისი, საქართველო',
-    date: 'გამოქვეყნდა 3 დღის წინ',
-    description: `ჩვენ უწყვეტი ენერგიის, პროგრესის, შესაძლებლობებისა და სასიკეთო გარდამტეხი ცვლილებების ძრავა ვართ.`,
-  },
-  {
-    id: 'marketing-manager-4',
-    title: 'მარკეტინგის მენეჯერი',
-    location: 'თბილისი, საქართველო',
-    date: 'გამოქვეყნდა 3 დღის წინ',
-    description: `ჩვენ უწყვეტი ენერგიის, პროგრესის, შესაძლებლობებისა და სასიკეთო გარდამტეხი ცვლილებების ძრავა ვართ.
-
-30 წელია, ვზრუნავთ ავტოსფეროს განვითარებაზე და მომხმარებელს საავტომობილო ეკოსისტემის სრულ სპექტრს ვთავაზობთ. ჩვენი ნებისმიერი წარმატების უკან დგანან პროფესიონალი და გამბედავი ადამიანები, რომლებსაც სჯერათ, რომ თუ ინდომებ, შეუძლებელი არაფერია.`,
-  },
-];
-
-export function JobListings() {
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -73,7 +43,7 @@ export function JobListings() {
                   <TabsTrigger
                     key={job.id}
                     value={job.id}
-                    className="flex border border-primary-light   cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
+                    className="flex border border-primary-light cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
                   >
                     <span className="text-xl font-bold uppercase">
                       {job.title}
@@ -99,7 +69,12 @@ export function JobListings() {
                           {job.title}
                         </h3>
                         <p className="mt-2 text-md text-foreground/70">
-                          {job.location} | {job.date}
+                          {job.location} |{' '}
+                          {new Date(job.createdAt).toLocaleDateString('ka-GE', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
                         </p>
 
                         <div className="mt-6">
@@ -114,9 +89,12 @@ export function JobListings() {
                           <h4 className="text-xl font-bold text-foreground uppercase">
                             ვაკანსიის შესახებ
                           </h4>
-                          <div className="mt-4 text-lg whitespace-pre-line text-foreground/80">
-                            {job.description}
-                          </div>
+                          <div
+                            className="prose prose-lg mt-4 max-w-none text-foreground/80 break-words"
+                            dangerouslySetInnerHTML={{
+                              __html: job.description,
+                            }}
+                          />
                         </div>
                       </div>
                     </ScrollArea>

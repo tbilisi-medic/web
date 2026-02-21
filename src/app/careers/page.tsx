@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { PageHeader, Stories } from '@/components/sections/shared';
 import { CareersContent, JobListings } from '@/components/sections/careers';
 import { Header, Footer } from '@/components/layout';
+import { getActiveJobs } from '@/lib/queries/jobs';
 
 export const metadata: Metadata = {
   title: 'კარიერა',
@@ -35,7 +36,9 @@ const employeeStories = [
   },
 ];
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const jobs = await getActiveJobs();
+
   return (
     <>
       <Header />
@@ -54,9 +57,8 @@ export default function CareersPage() {
         />
       </div>
       <div className="py-16 lg:py-22">
-        <JobListings />
+        <JobListings jobs={jobs} />
       </div>
-
       <Footer />
     </>
   );
