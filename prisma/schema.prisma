@@ -88,3 +88,18 @@ model Job {
   @@index([isActive])
   @@map("jobs")
 }
+
+model ContactRequest {
+  id          String   @id @default(uuid())
+  name        String
+  phone       String
+  email       String
+  source      String
+  productName String?  @map("product_name")
+  isRead      Boolean  @default(false) @map("is_read")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([isRead])
+  @@index([source])
+  @@map("contact_requests")
+}

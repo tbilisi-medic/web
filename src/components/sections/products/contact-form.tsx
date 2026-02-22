@@ -44,17 +44,17 @@ export function ContactForm() {
                   <Input
                     type="text"
                     placeholder="სახელი, გვარი"
-                    className="h-12 rounded-lg bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50 !text-base placeholder:!text-base"
                   />
                   <Input
                     type="tel"
                     placeholder="ტელეფონის ნომერი"
-                    className="h-12 rounded-lg bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
                   />
                   <Input
                     type="email"
                     placeholder="ელ. ფოსტა"
-                    className="h-12 rounded-lg bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
                   />
                   <Button
                     type="submit"
