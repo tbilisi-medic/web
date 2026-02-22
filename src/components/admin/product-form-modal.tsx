@@ -129,7 +129,9 @@ export function ProductFormModal({
       const data = {
         name,
         subtitle: subtitle || undefined,
-        description: description || undefined,
+        description: description
+          ? description.replace(/&nbsp;/g, ' ')
+          : undefined,
         categoryId: selectedCategory,
         subcategoryId: selectedSubcategory,
         imageUrl,

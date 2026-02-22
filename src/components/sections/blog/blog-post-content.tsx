@@ -20,7 +20,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           </h1>
 
           {/* Date */}
-          <p className="mt-5 text-center text-md text-foreground/70">
+          <p className="mt-3 text-center text-md text-foreground/70">
             {post.date}
           </p>
 

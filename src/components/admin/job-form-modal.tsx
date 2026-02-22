@@ -64,7 +64,11 @@ export function JobFormModal({
     setIsSubmitting(true);
 
     try {
-      const data = { title, location, description };
+      const data = {
+        title,
+        location,
+        description: description.replace(/&nbsp;/g, ' '),
+      };
 
       if (mode === 'edit' && job) {
         await updateJob(job.id, data);

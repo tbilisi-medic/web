@@ -62,7 +62,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               {/* Description */}
               <div className="mt-6">
                 <div
-                  className="prose prose-base lg:prose-lg text-foreground/80"
+                  className="prose prose-base lg:prose-lg text-foreground/80 break-words"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>

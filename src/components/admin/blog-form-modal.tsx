@@ -114,8 +114,8 @@ export function BlogFormModal({
       const data = {
         titleKa,
         titleEn,
-        contentKa,
-        contentEn,
+        contentKa: contentKa.replace(/&nbsp;/g, ' '),
+        contentEn: contentEn.replace(/&nbsp;/g, ' '),
         category: selectedCategory,
         imageUrl,
       };
