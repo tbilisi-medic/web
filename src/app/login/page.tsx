@@ -25,18 +25,23 @@ export default function AdminLoginPage() {
     setError('');
     setIsLoading(true);
 
-    // TODO: Replace with Supabase auth later
-
     try {
-      console.log('Login attempt:', { email, password });
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
 
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || 'შეცდომა');
+        return;
+      }
 
-      // Redirect to admin dashboard on success
       router.push('/admin');
+      router.refresh();
     } catch {
-      setError('არასწორი ელ-ფოსტა ან პაროლი');
+      setError('შეცდომა, სცადეთ თავიდან');
     } finally {
       setIsLoading(false);
     }

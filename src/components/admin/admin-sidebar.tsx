@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -46,6 +47,13 @@ const menuItems = [
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    router.push('/login');
+    router.refresh();
+  };
 
   return (
     <Sidebar variant="inset">
@@ -72,8 +80,11 @@ export function AdminSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton>
-              <LogOut className="text-red-500" />{' '}
+            <SidebarMenuButton
+              onClick={handleLogout}
+              className="cursor-pointer"
+            >
+              <LogOut className="text-red-500" />
               <span className="text-red-500">გასვლა</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
