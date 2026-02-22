@@ -22,9 +22,41 @@ interface ProductDetailsProps {
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          source: 'product',
+          productName: product.name,
+        }),
+      });
+
+      if (res.ok) {
+        setIsSuccess(true);
+        setName('');
+        setPhone('');
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Failed to submit:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isSuccess, setIsSuccess] = React.useState(false);
 
   return (
     <section>
@@ -101,24 +133,38 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                             type="text"
                             placeholder="სახელი, გვარი"
                             className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                           />
                           <Input
                             type="tel"
                             placeholder="ტელეფონის ნომერი"
                             className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                           />
                           <Input
                             type="email"
                             placeholder="ელ. ფოსტა"
                             className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <Button
                             type="submit"
                             className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 uppercase"
+                            disabled={isSubmitting}
                           >
-                            მოთხოვნის გაგზავნა
+                            {isSubmitting
+                              ? 'იგზავნება...'
+                              : 'მოთხოვნის გაგზავნა'}
                           </Button>
                         </form>
+                        {isSuccess && (
+                          <p className="mt-4 text-sm text-green-600 font-semibold">
+                            მოთხოვნა წარმატებით გაიგზავნა!
+                          </p>
+                        )}
                       </div>
 
                       {/* Right - Image */}

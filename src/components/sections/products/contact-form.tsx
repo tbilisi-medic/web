@@ -6,11 +6,40 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export function ContactForm() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Will integrate with Supabase later
-    console.log('Form submitted');
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          source: 'contact',
+        }),
+      });
+
+      if (res.ok) {
+        setIsSuccess(true);
+        setName('');
+        setPhone('');
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Failed to submit:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isSuccess, setIsSuccess] = React.useState(false);
 
   return (
     <section>
@@ -45,24 +74,36 @@ export function ContactForm() {
                     type="text"
                     placeholder="სახელი, გვარი"
                     className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <Input
                     type="tel"
                     placeholder="ტელეფონის ნომერი"
                     className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                   <Input
                     type="email"
                     placeholder="ელ. ფოსტა"
                     className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <Button
                     type="submit"
                     className="h-12 text-md cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90 uppercase"
+                    disabled={isSubmitting}
                   >
                     მოთხოვნის გაგზავნა
                   </Button>
                 </form>
+                {isSuccess && (
+                  <p className="mt-4 text-sm text-green-600 font-semibold">
+                    მოთხოვნა წარმატებით გაიგზავნა!
+                  </p>
+                )}
               </div>
             </div>
           </div>
