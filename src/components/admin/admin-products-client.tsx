@@ -19,7 +19,7 @@ import type {
   CategoryWithSubcategories,
 } from '@/types/product';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 interface AdminProductsClientProps {
   products: ProductWithRelations[];

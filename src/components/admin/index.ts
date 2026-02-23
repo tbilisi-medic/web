@@ -12,3 +12,6 @@ export { AdminJobsClient } from './admin-jobs-client';
 export { JobsTable } from './jobs-table';
 export { JobFormModal } from './job-form-modal';
 export { DeleteJobDialog } from './delete-job-dialog';
+export { ContactsTable } from './contacts-table';
+export { DeleteContactDialog } from './delete-contact-dialog';
+export { AdminContactsClient } from './admin-contacts-client';

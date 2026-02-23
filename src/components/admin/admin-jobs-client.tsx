@@ -16,7 +16,7 @@ import { JobsTable } from './jobs-table';
 import { JobFormModal } from './job-form-modal';
 import type { Job } from '@/types/job';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 20;
 
 interface AdminJobsClientProps {
   jobs: Job[];
