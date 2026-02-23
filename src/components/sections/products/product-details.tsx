@@ -11,6 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleCheck, CircleX } from 'lucide-react';
 
 interface ProductDetailsProps {
   product: {
@@ -24,6 +26,20 @@ interface ProductDetailsProps {
 export function ProductDetails({ product }: ProductDetailsProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setIsSuccess(false);
+
+    if (!name.trim() || !phone.trim() || !email.trim()) {
+      setError('გთხოვთ შეავსოთ ყველა ველი');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setError('გთხოვთ შეიყვანოთ სწორი ელ. ფოსტა');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -44,9 +60,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         setName('');
         setPhone('');
         setEmail('');
+      } else {
+        setError('მოთხოვნის გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან');
       }
-    } catch (error) {
-      console.error('Failed to submit:', error);
+    } catch {
+      setError('მოთხოვნის გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან');
     } finally {
       setIsSubmitting(false);
     }
@@ -57,6 +75,17 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   const [email, setEmail] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    if (isSuccess || error) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+        setError('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, error]);
 
   return (
     <section>
@@ -161,9 +190,20 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           </Button>
                         </form>
                         {isSuccess && (
-                          <p className="mt-4 text-sm text-green-600 font-semibold">
-                            მოთხოვნა წარმატებით გაიგზავნა!
-                          </p>
+                          <Alert className="mt-4">
+                            <CircleCheck className="h-4 w-4 !text-primary-light" />
+                            <AlertDescription className="font-semibold !text-primary-light text-md">
+                              მოთხოვნა წარმატებით გაიგზავნა
+                            </AlertDescription>
+                          </Alert>
+                        )}
+                        {error && (
+                          <Alert className="mt-4 text-red-600">
+                            <CircleX className="h-4 w-4 !text-red-600" />
+                            <AlertDescription className="font-semibold text-red-600">
+                              {error}
+                            </AlertDescription>
+                          </Alert>
                         )}
                       </div>
 
