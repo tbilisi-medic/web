@@ -5,23 +5,23 @@ import { getTranslations } from 'next-intl/server';
 const categories = [
   {
     titleKey: 'furniture',
-    href: '/products',
-    image: '/images/categories/1.jpg',
+    href: '/products?category=furniture',
+    image: '/images/categories/furniture.png',
   },
   {
     titleKey: 'consumables',
-    href: '/products',
-    image: '/images/categories/2.jpg',
+    href: '/products?category=consumables',
+    image: '/images/categories/consumables.png',
   },
   {
     titleKey: 'diagnostics',
-    href: '/products',
-    image: '/images/categories/3.jpg',
+    href: '/products?category=laboratory',
+    image: '/images/categories/diagnostics.png',
   },
   {
     titleKey: 'aesthetic',
-    href: '/products',
-    image: '/images/categories/4.jpg',
+    href: '/products?category=aesthetics',
+    image: '/images/categories/aesthetic.png',
   },
 ];
 

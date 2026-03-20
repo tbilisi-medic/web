@@ -24,7 +24,7 @@ export function TechnicalService() {
           <div className="relative mt-16 h-90 overflow-hidden rounded-b-xl lg:mt-18 lg:h-110">
             {/* Image - full card background */}
             <Image
-              src="/images/categories/3.jpg"
+              src="/images/service/service.png"
               alt="ტექნიკური მომსახურება"
               fill
               className="rounded-xl object-cover"

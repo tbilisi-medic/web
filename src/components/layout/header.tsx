@@ -267,7 +267,14 @@ export function Header() {
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">
-              <span className="block h-11 w-32" />
+              <Image
+                src="/images/logo.png"
+                alt="Logo"
+                width={219}
+                height={57}
+                className="h-11 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation Menu */}
