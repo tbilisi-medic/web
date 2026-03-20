@@ -88,7 +88,7 @@ export function Footer() {
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
-                    href="/products"
+                    href="/products?category=equipment"
                     className="hover:text-white transition-colors"
                   >
                     {t('devices')}
@@ -96,7 +96,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/products"
+                    href="/products?category=furniture"
                     className="hover:text-white transition-colors"
                   >
                     {t('furniture')}
@@ -104,7 +104,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/products"
+                    href="/products?category=consumables"
                     className="hover:text-white transition-colors"
                   >
                     {t('consumables')}
@@ -112,7 +112,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/products"
+                    href="/products?category=laboratory"
                     className="hover:text-white transition-colors"
                   >
                     {t('laboratory')}
@@ -120,7 +120,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/products"
+                    href="/products?category=aesthetics"
                     className="hover:text-white transition-colors"
                   >
                     {t('aesthetics')}
