@@ -1,55 +1,51 @@
-'use client';
-
 import Image from 'next/image';
-import { Phone } from 'lucide-react';
-import { ContactDialog } from '@/components/sections/home';
-import { useTranslations } from 'next-intl';
+
+const services = [
+  {
+    icon: '/images/service/calendar.svg',
+    title: 'მოითხოვეთ',
+    description: 'სამედიცინო ინჟინერის ვიზიტი',
+  },
+  {
+    icon: '/images/service/check-up.svg',
+    title: 'შეამოწმეთ',
+    description: 'სამედიცინო პროდუქცია',
+  },
+  {
+    icon: '/images/service/engineer.svg',
+    title: 'მიიღეთ',
+    description: 'ღირსეული მომსახურება',
+  },
+];
 
 export function TechnicalService() {
-  const t = useTranslations('technical-service');
-
   return (
     <section className="relative">
-      {/* Blue background */}
       <div className="absolute inset-x-0 top-0 h-[70%] bg-primary" />
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-7xl pt-16 lg:pt-18">
-          {/* Headline */}
-          <h2 className="text-2xl font-bold text-white sm:text-3xl leading-10 uppercase">
-            {t('title1')} <br />
-            {t('title2')}
-          </h2>
-
-          {/* Card */}
-          <div className="relative mt-16 h-90 overflow-hidden rounded-b-xl lg:mt-18 lg:h-110">
-            {/* Image - full card background */}
-            <Image
-              src="/images/service/service.png"
-              alt="ტექნიკური მომსახურება"
-              fill
-              className="rounded-xl object-cover"
-            />
-
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/60 via-40% to-transparent" />
-
-            {/* Content */}
-            <div className="relative z-10 flex h-full flex-col justify-between p-8 lg:p-12">
-              {/* Title */}
-              <h3 className="text-3xl leading-snug font-bold text-white text-shadow-[0_1px_2px_rgba(0,0,0,0.25)] uppercase">
-                {t('subtitle1')} <br />
-                {t('subtitle2')}
-              </h3>
-
-              {/* Button */}
-              <div>
-                <ContactDialog>
-                  <button className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary uppercase">
-                    {t('cta')}
-                    <Phone size={16} />
-                  </button>
-                </ContactDialog>
-              </div>
+      <div className="relative px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl pt-16 lg:pt-18">
+          <div className="rounded-xl bg-white border border-primary-light/50 p-10 shadow-sm lg:p-14">
+            <div className="grid gap-10 sm:grid-cols-3">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="flex flex-col items-center text-center"
+                >
+                  <Image
+                    src={service.icon}
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="h-18 w-18"
+                  />
+                  <h3 className="mt-6 text-xl font-semibold text-foreground uppercase">
+                    {service.title}
+                  </h3>
+                  <p className="mt-1 text-md text-foreground">
+                    {service.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
