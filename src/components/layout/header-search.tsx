@@ -20,8 +20,12 @@ function SearchInput() {
   }, [searchParams]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && query.trim()) {
-      router.push(`/products?search=${encodeURIComponent(query.trim())}`);
+    if (e.key === 'Enter') {
+      if (query.trim()) {
+        router.push(`/products?search=${encodeURIComponent(query.trim())}`);
+      } else {
+        router.push('/products');
+      }
     }
   };
 

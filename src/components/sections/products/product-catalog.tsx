@@ -41,15 +41,24 @@ function ProductCatalogContent({
 
   const currentCategory = categories.find((c) => c.id === activeCategory);
 
+  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
+
   const filteredProducts = React.useMemo(() => {
     return products.filter((product) => {
+      if (searchQuery) {
+        return (
+          product.name.toLowerCase().includes(searchQuery) ||
+          product.subtitle?.toLowerCase().includes(searchQuery) ||
+          product.description?.toLowerCase().includes(searchQuery)
+        );
+      }
       if (product.categoryId !== activeCategory) return false;
       if (activeSubcategories.length > 0) {
         return activeSubcategories.includes(product.subcategoryId);
       }
       return true;
     });
-  }, [products, activeCategory, activeSubcategories]);
+  }, [products, activeCategory, activeSubcategories, searchQuery]);
 
   const updateURL = (category: string, subcategories: string[]) => {
     const params = new URLSearchParams();
