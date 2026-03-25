@@ -296,8 +296,8 @@ export function Header() {
           <HeaderSearch />
 
           {/* Right side  */}
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher />
+          <div className="flex items-center xl:hidden">
+            {/* <LanguageSwitcher /> */}
             {/* Mobile menu button */}
             <button
               type="button"

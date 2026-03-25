@@ -18,7 +18,7 @@ export default function AboutPage() {
       <Header />
       <PageHeader
         title="მედიკი"
-        description='თბილისი მედიკში ვაერთიანებთ ბაზრისთვის უპრეცედენტო რაოდენობის პროფესიონალებს, რომლებიც სხვადასხვა კარიერული გზით შემოგვიერთდნენ და ჩვენთან სრულფასოვან "მედიკელებად" ჩამოყალიბდნენ.'
+        description="სამედიცინო ინდუსტრიის კვალიფიციური პარტნიორი"
       />
       <div className="pt-16 lg:pt-22">
         <AboutContent />
@@ -26,14 +26,8 @@ export default function AboutPage() {
       <div className="pt-16 lg:pt-22">
         <Mission />
       </div>
-      <div className="pt-16 lg:pt-22">
-        <Achievements />
-      </div>
-      <div className="pt-16 lg:pt-22">
-        <Testimonials />
-      </div>
       <div className="py-16 lg:py-22">
-        <Branches />
+        <Achievements />
       </div>
       <Footer />
     </>

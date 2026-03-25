@@ -42,10 +42,7 @@ export default async function BlogPostPage({
   return (
     <>
       <Header />
-      <PageHeader
-        title="წასაკითხები და მოსასმენები"
-        description="თბილისი მედიკში გარდა იმისა, რომ სამედიცინო პროდუქციის იმპორტით ვართ დაკავებულები, ძალიან გვიყვარს მედიცინა და ვცდილობთ მის გარშემო ყველა სიახლე, ინოვაცია და ამბავი მოგიყვეთ."
-      />
+      <PageHeader title="წასაკითხები და მოსასმენები" />
       <div className="pt-16 lg:pt-22">
         <BlogPostContent
           post={{

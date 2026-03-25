@@ -23,7 +23,7 @@ export default async function ProductsPage() {
       <Header />
       <PageHeader
         title="ციფრული კატალოგი"
-        description="აღმოაჩინეთ თქვენი კლინიკისა თუ ბიზნესის საჭიროებებზე მორგებული, მრავალფეროვანი, მაღალი ხარისხისა და სანდოობის მქონე სამედიცინო პროდუქცია ჩვენს განახლებულ ციფრულ კატალოგში"
+        description="აღმოაჩინეთ მრავალფეროვანი სამედიცინო პროდუქცია თქვენი კლინიკისთვის"
       />
       <div className="pt-16 lg:pt-22">
         <ProductCatalog products={products} categories={categories} />

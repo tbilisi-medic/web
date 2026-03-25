@@ -11,11 +11,10 @@ interface Story {
 
 interface StoriesProps {
   title: string;
-  description: string;
   stories: Story[];
 }
 
-export function Stories({ title, description, stories }: StoriesProps) {
+export function Stories({ title, stories }: StoriesProps) {
   return (
     <section id="stories">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -24,9 +23,6 @@ export function Stories({ title, description, stories }: StoriesProps) {
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
             {title}
           </h2>
-
-          {/* Description */}
-          <p className="mt-6 text-lg text-foreground/80">{description}</p>
 
           {/* Stories */}
           <div className="mt-12 space-y-8">

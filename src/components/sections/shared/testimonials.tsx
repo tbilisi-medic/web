@@ -76,9 +76,6 @@ export function Testimonials() {
             {t('title')}
           </h2>
 
-          {/* Description */}
-          <p className="mt-6 text-lg text-foreground/80">{t('subtitle')}</p>
-
           {/* Carousel */}
           <div className="mt-12">
             <Carousel

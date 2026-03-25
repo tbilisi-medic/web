@@ -36,7 +36,7 @@ export function Footer() {
                 <p>{t('address3')}</p>
               </div>
 
-              <p className="mt-4 text-white/80">info@tbilisimedic.ge</p>
+              <p className="mt-4 text-white/80">info@medic.ge</p>
             </div>
 
             {/* Company */}

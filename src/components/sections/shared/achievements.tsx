@@ -41,9 +41,6 @@ export async function Achievements() {
             {t('title')}
           </h2>
 
-          {/* Description */}
-          <p className="mt-6 text-lg text-foreground/80">{t('subtitle')}</p>
-
           {/* Posts */}
           <div className="mt-12 space-y-8">
             {posts.map((post) => (
