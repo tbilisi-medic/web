@@ -20,7 +20,7 @@ export function Stories({ title, stories }: StoriesProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             {title}
           </h2>
 
@@ -46,10 +46,10 @@ export function Stories({ title, stories }: StoriesProps) {
 
                 {/* Content */}
                 <div className="lg:col-span-8">
-                  <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
+                  <h3 className="text-primary text-xl font-semibold lg:text-2xl uppercase">
                     {story.title}
                   </h3>
-                  <p className="mt-5 text-lg text-foreground/80">
+                  <p className="mt-5 text-md text-primary">
                     {story.description}
                   </p>
                 </div>

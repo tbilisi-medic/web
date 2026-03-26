@@ -18,9 +18,9 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-xl border border-primary-light/50 p-8 lg:p-10">
+          <div className="rounded-xl border bg-white border-primary-light/50 p-8 lg:p-10">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
+            <h2 className="text-primary text-xl font-semibold text-primary sm:text-2xl uppercase">
               შეიძლება დაგაინტერესოთ
             </h2>
 
@@ -50,10 +50,10 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
 
                   {/* Info */}
                   <div className="mt-8">
-                    <h3 className="font-semibold text-lg text-foreground uppercase">
+                    <h3 className="font-semibold text-md text-primary uppercase">
                       {product.name}
                     </h3>
-                    <p className="mt-2 text-md text-foreground/70">
+                    <p className="mt-2 text-md text-primary">
                       {product.description}
                     </p>
                   </div>

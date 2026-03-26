@@ -37,7 +37,7 @@ export async function Achievements() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             {t('title')}
           </h2>
 
@@ -62,10 +62,10 @@ export async function Achievements() {
 
                 {/* Content */}
                 <div className="order-3 lg:order-2 lg:col-span-5">
-                  <h3 className="text-xl font-bold text-primary lg:text-2xl uppercase">
+                  <h3 className="text-primary text-xl font-semibold lg:text-2xl uppercase">
                     {t(post.titleKey)}
                   </h3>
-                  <p className="mt-5 text-lg text-foreground/80">
+                  <p className="mt-5 text-md text-primary">
                     {t(post.descriptionKey)}
                   </p>
                   <div className="mt-8">
@@ -80,7 +80,7 @@ export async function Achievements() {
 
                 {/* Stat */}
                 <div className="order-2 lg:order-3 lg:col-span-3 lg:text-right">
-                  <span className="text-5xl font-bold text-primary lg:text-6xl">
+                  <span className="text-5xl font-bold text-primary lg:text-[60px]">
                     {post.stat}
                   </span>
                 </div>

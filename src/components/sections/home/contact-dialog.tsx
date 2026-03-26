@@ -98,7 +98,7 @@ export function ContactDialog({ children }: ContactDialogProps) {
               მოითხოვე ზარი ბიო-სამედიცინო ინჟინერთან
             </p>
 
-            <p className="mt-15 font-semibold text-foreground">
+            <p className="mt-15 font-semibold text-primary">
               შეიყვანეთ საკონტაქტო ინფორმაცია
             </p>
 

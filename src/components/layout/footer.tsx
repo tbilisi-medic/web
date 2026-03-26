@@ -27,23 +27,21 @@ export function Footer() {
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Left side - Company Info */}
             <div className="lg:col-span-5">
-              <h4 className="text-lg font-semibold uppercase">{t('title')}</h4>
-              <p className="mt-2 text-lg text-white/80">{t('subtitle')}</p>
+              <h4 className="text-md font-bold uppercase">{t('title')}</h4>
+              <p className="mt-2 text-md text-white/80">{t('subtitle')}</p>
 
-              <div className="mt-6 space-y-1 text-lg text-white/80">
+              <div className="mt-6 space-y-1 text-md text-white/80">
                 <p>{t('address1')}</p>
                 <p>{t('address2')}</p>
                 <p>{t('address3')}</p>
               </div>
 
-              <p className="mt-4 text-white/80">info@medic.ge</p>
+              <p className="mt-4 text-white/90">info@medic.ge</p>
             </div>
 
             {/* Company */}
             <div className="lg:col-span-2 lg:col-start-7">
-              <h4 className="text-lg font-semibold uppercase">
-                {t('company')}
-              </h4>
+              <h4 className="text-md font-bold uppercase">{t('company')}</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
@@ -82,9 +80,7 @@ export function Footer() {
 
             {/* For Clinics */}
             <div className="lg:col-span-2">
-              <h4 className="text-lg font-semibold uppercase">
-                {t('forClinics')}
-              </h4>
+              <h4 className="text-md font-bold uppercase">{t('forClinics')}</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link
@@ -131,7 +127,7 @@ export function Footer() {
 
             {/* Careers */}
             <div className="lg:col-span-2">
-              <h4 className="text-lg font-semibold uppercase">{t('career')}</h4>
+              <h4 className="text-md font-bold uppercase">{t('career')}</h4>
               <ul className="mt-5 space-y-3 text-white/80">
                 <li>
                   <Link

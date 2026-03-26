@@ -18,18 +18,9 @@ export function JobListings({ jobs }: JobListingsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             გახდი ჩვენი გუნდის წევრი
           </h2>
-
-          {/* Description */}
-          <p className="mt-6 text-lg text-foreground/80">
-            თბილისი მედიკის გუნდის წევრობა ნიშნავს პროფესიულ გარემოში მუშაობას,
-            სადაც ხარისხი, განვითარება და ადამიანებზე ზრუნვა მთავარი
-            ღირებულებებია. აქ თანამშრომლებს ეძლევათ შესაძლებლობა მუდმივად
-            გაიზარდონ და იყვნენ ერთიანი გუნდის ნაწილი, რომელიც ყოველდღიურად
-            ქმნის ღირებულებას პაციენტებისა და საზოგადოებისათვის.
-          </p>
 
           {/* Tabs */}
           <div className="mt-12">
@@ -45,12 +36,10 @@ export function JobListings({ jobs }: JobListingsProps) {
                     value={job.id}
                     className="flex border border-primary-light cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
                   >
-                    <span className="text-xl font-bold uppercase">
+                    <span className="text-2xl font-semibold uppercase">
                       {job.title}
                     </span>
-                    <span className="mt-2 text-base opacity-80">
-                      {job.location}
-                    </span>
+                    <span className="mt-2 text-base">{job.location}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -65,10 +54,10 @@ export function JobListings({ jobs }: JobListingsProps) {
                   >
                     <ScrollArea className="lg:h-full">
                       <div className="p-7">
-                        <h3 className="text-xl font-bold text-foreground uppercase">
+                        <h3 className="text-2xl font-semibold text-primary uppercase">
                           {job.title}
                         </h3>
-                        <p className="mt-2 text-md text-foreground/70">
+                        <p className="mt-2 text-md text-primary">
                           {job.location} |{' '}
                           {new Date(job.createdAt).toLocaleDateString('ka-GE', {
                             year: 'numeric',
@@ -86,11 +75,11 @@ export function JobListings({ jobs }: JobListingsProps) {
                         </div>
 
                         <div className="mt-8">
-                          <h4 className="text-xl font-bold text-foreground uppercase">
+                          <h4 className="text-md font-semibold text-primary uppercase">
                             ვაკანსიის შესახებ
                           </h4>
                           <div
-                            className="prose prose-lg mt-4 max-w-none text-foreground/80 break-words"
+                            className="prose prose-md mt-4 max-w-none text-primary break-words"
                             dangerouslySetInnerHTML={{
                               __html: job.description,
                             }}

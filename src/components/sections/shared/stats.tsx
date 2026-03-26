@@ -18,7 +18,7 @@ export function Stats({ title, stats }: StatsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             {title}
           </h2>
 
@@ -42,10 +42,10 @@ export function Stats({ title, stats }: StatsProps) {
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 p-6">
-                  <p className="text-5xl font-bold text-white lg:text-7xl">
+                  <p className="text-5xl font-bold text-white lg:text-[60px]">
                     {stat.value}
                   </p>
-                  <p className="mt-1 font-semibold text-white text-lg uppercase">
+                  <p className="mt-2 font-semibold text-white text-2xl uppercase">
                     {stat.label}
                   </p>
                 </div>

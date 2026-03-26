@@ -8,7 +8,7 @@ export function Mission() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             მისია და ხედვა
           </h2>
 

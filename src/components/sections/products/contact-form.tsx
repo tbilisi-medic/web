@@ -76,7 +76,7 @@ export function ContactForm() {
         <div className="mx-auto max-w-7xl">
           <div className="rounded-xl border border-primary-light/50 p-8 lg:p-10">
             {/* Title */}
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
+            <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
               ჩვენ დაგიკავშირდებით
             </h2>
 
@@ -94,7 +94,7 @@ export function ContactForm() {
 
               {/* Right - Form */}
               <div className="flex flex-col justify-end">
-                <p className="text-foreground text-2xl font-bold">
+                <p className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
                   შეიყვანეთ საკონტაქტო ინფორმაცია
                 </p>
 

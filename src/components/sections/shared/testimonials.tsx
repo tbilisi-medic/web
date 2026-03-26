@@ -72,7 +72,7 @@ export function Testimonials() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl leading-10 uppercase">
+          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             {t('title')}
           </h2>
 
@@ -106,15 +106,15 @@ export function Testimonials() {
                       </div>
 
                       {/* Quote */}
-                      <p className="mt-8 flex-grow text-lg text-foreground/80">
+                      <p className="mt-8 flex-grow text-md text-primary">
                         &ldquo;{t(testimonial.textKey)}&rdquo;
                       </p>
 
                       <div className="mt-8 pt-4">
-                        <p className="font-semibold text-foreground text-lg uppercase">
+                        <p className="font-semibold text-primary text-md uppercase">
                           {t(testimonial.nameKey)}
                         </p>
-                        <p className="text-lg text-foreground/70">
+                        <p className="text-md text-primary">
                           {t(testimonial.companyKey)}
                         </p>
                       </div>

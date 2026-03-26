@@ -11,10 +11,10 @@ export async function Hero() {
       <div className="mx-auto max-w-7xl relative overflow-hidden rounded-xl bg-primary">
         <div className="relative z-10 px-8 py-16 lg:px-14 lg:py-20">
           <div className="max-w-2xl">
-            <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-5xl uppercase">
+            <h1 className="text-3xl font-bold leading-tight text-white lg:text-[40px] uppercase">
               {t('title')}
             </h1>
-            <p className="mt-10 text-lg font-semibold text-white sm:text-xl">
+            <p className="mt-10 text-lg font-semibold text-white lg:text-2xl">
               {t('subtitle')}
             </p>
             <div className="mt-15">

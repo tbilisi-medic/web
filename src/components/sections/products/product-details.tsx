@@ -111,19 +111,19 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             {/* Right - Content */}
             <div className="flex flex-col">
               {/* Product Name */}
-              <h1 className="text-2xl font-bold text-primary sm:text-3xl lg:text-4xl uppercase">
+              <h1 className="text-xl font-semibold text-primary sm:text-2xl uppercase">
                 {product.name}
               </h1>
 
               {/* Subtitle */}
-              <h2 className="mt-4 text-xl font-semibold text-primary lg:text-xl">
+              <h2 className="mt-4 text-lg font-semibold text-primary lg:text-lg">
                 {product.subtitle}
               </h2>
 
               {/* Description */}
               <div className="mt-6">
                 <div
-                  className="prose prose-base lg:prose-lg text-foreground/80 break-words"
+                  className="prose prose-base lg:prose-md text-primary break-words"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
@@ -150,7 +150,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           {product.subtitle}
                         </p>
 
-                        <p className="mt-15 font-semibold text-foreground">
+                        <p className="mt-15 font-semibold text-primary">
                           შეიყვანეთ საკონტაქტო ინფორმაცია
                         </p>
 

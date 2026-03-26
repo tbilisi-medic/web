@@ -15,14 +15,12 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Title */}
-          <h1 className="text-2xl max-w-4xl mx-auto text-center font-bold text-foreground sm:text-4xl leading-10 lg:leading-12 uppercase">
+          <h1 className="text-2xl mx-auto text-center font-bold text-primary sm:text-[40px] uppercase">
             {post.title}
           </h1>
 
           {/* Date */}
-          <p className="mt-3 text-center text-md text-foreground/70">
-            {post.date}
-          </p>
+          <p className="mt-3 text-center text-md text-primary">{post.date}</p>
 
           {/* Image */}
           <div className="mt-12 relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-90">
@@ -42,8 +40,8 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
           {/* Content */}
           <div
-            className="prose prose-lg mt-15 max-w-none text-foreground/80 break-words
-              prose-headings:font-bold prose-headings:text-foreground
+            className="prose prose-md mt-15 max-w-none text-primary break-words
+              prose-headings:font-bold prose-headings:text-primary
               prose-h2:mt-10 prose-h2:text-xl lg:prose-h2:text-2xl
               prose-p:leading-relaxed"
             dangerouslySetInnerHTML={{ __html: post.content }}

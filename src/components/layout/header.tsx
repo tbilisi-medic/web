@@ -112,7 +112,7 @@ function DesktopMenuSection({ section }: { section: MenuSection }) {
       <h3 className="text-primary font-semibold mb-4 uppercase">
         {section.title}
       </h3>
-      <ul className="space-y-2.5 text-md text-foreground/80">
+      <ul className="space-y-2.5 text-md text-primary">
         {section.items.map((item) => (
           <li key={item.label}>
             <NavigationMenuPrimitive.Link asChild>
@@ -136,10 +136,10 @@ function MobileMenuSection({
 }) {
   return (
     <div className="mt-7 first:mt-2">
-      <h3 className="text-foreground/60 font-semibold mb-3 text-md uppercase">
+      <h3 className="text-primary font-semibold mb-3 text-md uppercase">
         {section.title}
       </h3>
-      <ul className="space-y-2 text-md text-foreground/90">
+      <ul className="space-y-2 text-md text-primary">
         {section.items.map((item) => (
           <li key={item.label}>
             <Link href={item.href} onClick={onLinkClick}>
@@ -323,7 +323,7 @@ export function Header() {
             <div>
               <button
                 onClick={() => toggleSubmenu('products')}
-                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold uppercase"
+                className="flex w-full items-center justify-between px-6 py-4 text-left text-base text-primary font-semibold uppercase"
               >
                 კლინიკებისთვის
                 <ChevronDown
@@ -355,7 +355,7 @@ export function Header() {
             <div>
               <button
                 onClick={() => toggleSubmenu('about')}
-                className="flex w-full items-center justify-between px-6 py-4 text-left text-base font-semibold uppercase"
+                className="flex w-full items-center justify-between px-6 py-4 text-left text-base text-primary font-semibold uppercase"
               >
                 ჩვენ
                 <ChevronDown

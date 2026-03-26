@@ -23,14 +23,14 @@ export function Quote({
             {/* Left - Content */}
             <div>
               {/* Title */}
-              <h2 className="text-2xl font-bold text-foreground sm:text-3xl uppercase">
+              <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
                 {title}
               </h2>
 
               {/* Quote Text */}
               <div className="mt-6 space-y-4 text-foreground/80">
                 {text.map((paragraph, index) => (
-                  <p key={index} className="text-lg">
+                  <p key={index} className="text-md text-primary">
                     {index === 0 ? `"${paragraph}` : paragraph}
                     {index === text.length - 1 ? '"' : ''}
                   </p>
@@ -39,10 +39,12 @@ export function Quote({
 
               {/* Author */}
               <div className="mt-8">
-                <p className="font-semibold text-lg text-foreground">
+                <p className="font-bold text-primary text-md text-foreground">
                   {authorName}
                 </p>
-                <p className="text-lg text-foreground/80 mt-1">{authorRole}</p>
+                <p className="text-md font-semibold text-primary mt-1">
+                  {authorRole}
+                </p>
               </div>
             </div>
 
