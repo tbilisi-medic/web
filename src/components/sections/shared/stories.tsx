@@ -27,13 +27,14 @@ export function Stories({ title, stories }: StoriesProps) {
           {/* Stories */}
           <div className="mt-12 space-y-8">
             {stories.map((story) => (
-              <div
+              <Link
                 key={story.id}
-                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mt-10"
+                href={story.href}
+                className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 rounded-xl border border-primary-light/50 bg-white p-5 lg:p-6 shadow-sm"
               >
                 {/* Image */}
                 <div className="lg:col-span-4">
-                  <div className="relative h-60 overflow-hidden rounded-xl bg-gray-200">
+                  <div className="relative h-50 overflow-hidden rounded-xl bg-gray-200">
                     <Image
                       src={story.image}
                       alt={story.title}
@@ -51,16 +52,8 @@ export function Stories({ title, stories }: StoriesProps) {
                   <p className="mt-5 text-lg text-foreground/80">
                     {story.description}
                   </p>
-                  <div className="mt-8">
-                    <Link
-                      href={story.href}
-                      className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90 uppercase"
-                    >
-                      სრულად
-                    </Link>
-                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
