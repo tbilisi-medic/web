@@ -103,3 +103,15 @@ model ContactRequest {
   @@index([source])
   @@map("contact_requests")
 }
+
+model JobApplication {
+  id        String   @id @default(uuid())
+  jobId     String   @map("job_id")
+  jobTitle  String   @map("job_title")
+  fileName  String   @map("file_name")
+  fileUrl   String   @map("file_url")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([jobId])
+  @@map("job_applications")
+}

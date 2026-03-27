@@ -134,8 +134,8 @@ export function ContactDialog({ children }: ContactDialogProps) {
             </form>
             {isSuccess && (
               <Alert className="mt-4">
-                <CircleCheck className="h-4 w-4 !text-primary-light" />
-                <AlertDescription className="font-semibold !text-primary-light text-md">
+                <CircleCheck className="h-4 w-4 !text-primary" />
+                <AlertDescription className="!text-primary text-md">
                   მოთხოვნა წარმატებით გაიგზავნა
                 </AlertDescription>
               </Alert>
@@ -143,7 +143,7 @@ export function ContactDialog({ children }: ContactDialogProps) {
             {error && (
               <Alert className="mt-4 text-red-600">
                 <CircleX className="h-4 w-4 !text-red-600" />
-                <AlertDescription className="font-semibold text-red-600">
+                <AlertDescription className="text-red-600">
                   {error}
                 </AlertDescription>
               </Alert>

@@ -1,9 +1,11 @@
 'use client';
 
+import * as React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { CircleCheck, CircleX } from 'lucide-react';
 import type { Job } from '@/types/job';
 
 interface JobListingsProps {
@@ -11,6 +13,62 @@ interface JobListingsProps {
 }
 
 export function JobListings({ jobs }: JobListingsProps) {
+  const fileInputRefs = React.useRef<Record<string, HTMLInputElement | null>>(
+    {},
+  );
+  const [isUploading, setIsUploading] = React.useState(false);
+  const [success, setSuccess] = React.useState('');
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    if (success) {
+      setError('');
+      const timer = setTimeout(() => setSuccess(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
+
+  React.useEffect(() => {
+    if (error) {
+      setSuccess('');
+      const timer = setTimeout(() => setError(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const handleUpload = async (file: File, job: Job) => {
+    setIsUploading(true);
+    setSuccess('');
+    setError('');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('jobId', job.id);
+      formData.append('jobTitle', job.title);
+
+      const res = await fetch('/api/job-application', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        setSuccess('რეზიუმე წარმატებით აიტვირთა!');
+      } else {
+        const data = await res.json();
+        setError(
+          data.error === 'Only PDF and Word documents are allowed'
+            ? 'მხოლოდ PDF და Word ფაილებია დაშვებული.'
+            : 'ატვირთვა ვერ მოხერხდა. სცადეთ თავიდან.',
+        );
+      }
+    } catch {
+      setError('ატვირთვა ვერ მოხერხდა. სცადეთ თავიდან.');
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   if (jobs.length === 0) return null;
 
   return (
@@ -21,6 +79,24 @@ export function JobListings({ jobs }: JobListingsProps) {
           <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
             გახდი ჩვენი გუნდის წევრი
           </h2>
+
+          {/* Alerts */}
+          {success && (
+            <Alert className="mt-4">
+              <CircleCheck className="h-4 w-4 !text-primary" />
+              <AlertDescription className="!text-primary text-md">
+                {success}
+              </AlertDescription>
+            </Alert>
+          )}
+          {error && (
+            <Alert className="mt-4 text-red-600">
+              <CircleX className="h-4 w-4 !text-red-600" />
+              <AlertDescription className="text-red-600">
+                {error}
+              </AlertDescription>
+            </Alert>
+          )}
 
           {/* Tabs */}
           <div className="mt-12">
@@ -67,11 +143,28 @@ export function JobListings({ jobs }: JobListingsProps) {
                         </p>
 
                         <div className="mt-6">
-                          <Link href="">
-                            <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
-                              ატვირთე რეზიუმე
-                            </Button>
-                          </Link>
+                          <input
+                            ref={(el) => {
+                              fileInputRefs.current[job.id] = el;
+                            }}
+                            type="file"
+                            accept=".pdf,.doc,.docx"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleUpload(file, job);
+                              e.target.value = '';
+                            }}
+                          />
+                          <Button
+                            className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase"
+                            disabled={isUploading}
+                            onClick={() =>
+                              fileInputRefs.current[job.id]?.click()
+                            }
+                          >
+                            {isUploading ? 'იტვირთება...' : 'ატვირთე რეზიუმე'}
+                          </Button>
                         </div>
 
                         <div className="mt-8">
