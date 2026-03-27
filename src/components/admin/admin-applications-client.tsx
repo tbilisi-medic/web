@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import {
   Pagination,
@@ -12,40 +11,53 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { Search } from 'lucide-react';
-import { BlogTable } from './blog-table';
-import { BlogFormModal } from './blog-form-modal';
-import type { BlogPost } from '@/types/blog';
+import { ApplicationsTable } from './applications-table';
 
-const ITEMS_PER_PAGE = 20;
-
-interface AdminBlogClientProps {
-  posts: BlogPost[];
+interface JobApplication {
+  id: string;
+  jobId: string;
+  jobTitle: string;
+  fileName: string;
+  fileUrl: string;
+  createdAt: Date;
 }
 
-export function AdminBlogClient({ posts }: AdminBlogClientProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get('search') || '',
-  );
+const ITEMS_PER_PAGE = 10;
+
+interface AdminApplicationsClientProps {
+  applications: JobApplication[];
+}
+
+export function AdminApplicationsClient({
+  applications,
+}: AdminApplicationsClientProps) {
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
+  const filteredApplications = applications.filter((app) => {
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return (
+      app.jobTitle.toLowerCase().includes(query) ||
+      app.fileName.toLowerCase().includes(query)
+    );
+  });
+
+  const totalPages = Math.ceil(filteredApplications.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedPosts = posts.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const paginatedApplications = filteredApplications.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
     setCurrentPage(1);
-
-    const params = new URLSearchParams();
-    if (value) params.set('search', value);
-    router.replace(`/admin/blog?${params.toString()}`);
   };
 
   return (
     <>
-      {/* Actions */}
+      {/* Search */}
       <div className="flex items-center justify-between gap-4">
         <div className="relative w-full max-w-sm">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/60" />
@@ -56,18 +68,17 @@ export function AdminBlogClient({ posts }: AdminBlogClientProps) {
             className="bg-white h-10 pl-9"
           />
         </div>
-        <BlogFormModal mode="add" />
       </div>
 
       {/* Table */}
       <div className="mt-5">
-        <BlogTable posts={paginatedPosts} />
+        <ApplicationsTable applications={paginatedApplications} />
       </div>
 
       {/* Footer */}
       <div className="mt-4 flex items-center justify-between">
         <p className="whitespace-nowrap text-sm text-foreground/60">
-          სულ: {posts.length} პოსტი
+          სულ: {filteredApplications.length} რეზიუმე
         </p>
 
         {totalPages > 1 && (

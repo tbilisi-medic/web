@@ -65,7 +65,7 @@ export function AdminContactsClient({ contacts }: AdminContactsClientProps) {
             placeholder="ძიება..."
             value={searchQuery}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="h-10 pl-9"
+            className="bg-white h-10 pl-9"
           />
         </div>
       </div>

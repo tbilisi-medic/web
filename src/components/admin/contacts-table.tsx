@@ -52,7 +52,7 @@ export function ContactsTable({ contacts }: ContactsTableProps) {
 
   return (
     <>
-      <div className="rounded-lg border shadow-sm">
+      <div className="bg-white rounded-lg border shadow-sm">
         <Table>
           <TableHeader>
             <TableRow className="uppercase">

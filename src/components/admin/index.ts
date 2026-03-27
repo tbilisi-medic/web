@@ -15,3 +15,6 @@ export { DeleteJobDialog } from './delete-job-dialog';
 export { ContactsTable } from './contacts-table';
 export { DeleteContactDialog } from './delete-contact-dialog';
 export { AdminContactsClient } from './admin-contacts-client';
+export { ApplicationsTable } from './applications-table';
+export { DeleteApplicationDialog } from './delete-application-dialog';
+export { AdminApplicationsClient } from './admin-applications-client';
