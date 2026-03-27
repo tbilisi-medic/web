@@ -14,7 +14,6 @@ const testimonials = [
   {
     id: 1,
     nameKey: 'name1',
-    role: 'გაგუას კლინიკის დირექტორი',
     companyKey: 'company1',
     logo: '/images/testimonials/1.png',
     rating: 5,
@@ -23,7 +22,6 @@ const testimonials = [
   {
     id: 2,
     nameKey: 'name2',
-    role: 'გაგუას კლინიკის დირექტორი',
     companyKey: 'company2',
     logo: '/images/testimonials/1.png',
     rating: 5,
@@ -32,7 +30,6 @@ const testimonials = [
   {
     id: 3,
     nameKey: 'name3',
-    role: 'გაგუას კლინიკის დირექტორი',
     companyKey: 'company3',
     logo: '/images/testimonials/1.png',
     rating: 5,
@@ -41,11 +38,50 @@ const testimonials = [
   {
     id: 4,
     nameKey: 'name4',
-    role: 'გაგუას კლინიკის დირექტორი',
     companyKey: 'company4',
     logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text4',
+  },
+  {
+    id: 5,
+    nameKey: 'name5',
+    companyKey: 'company5',
+    logo: '/images/testimonials/1.png',
+    rating: 5,
+    textKey: 'text5',
+  },
+  {
+    id: 6,
+    nameKey: 'name6',
+    companyKey: 'company6',
+    logo: '/images/testimonials/1.png',
+    rating: 5,
+    textKey: 'text6',
+  },
+  {
+    id: 7,
+    nameKey: 'name7',
+    companyKey: 'company7',
+    logo: '/images/testimonials/1.png',
+    rating: 5,
+    textKey: 'text7',
+  },
+  {
+    id: 8,
+    nameKey: 'name8',
+    companyKey: 'company8',
+    logo: '/images/testimonials/1.png',
+    rating: 5,
+    textKey: 'text8',
+  },
+  {
+    id: 9,
+    nameKey: 'name9',
+    companyKey: 'company9',
+    logo: '/images/testimonials/1.png',
+    rating: 5,
+    textKey: 'text9',
   },
 ];
 
@@ -130,10 +166,10 @@ export function Testimonials() {
                     <button
                       key={i}
                       onClick={() => api?.scrollTo(i)}
-                      className={`h-2 cursor-pointer rounded-full transition-all ${
+                      className={`h-3 cursor-pointer rounded-full transition-all ${
                         current === i
-                          ? 'w-8 bg-primary-light'
-                          : 'w-8 bg-primary/15'
+                          ? 'w-4 bg-primary-light'
+                          : 'w-4 bg-primary/15'
                       }`}
                       aria-label={`Go to slide ${i + 1}`}
                     />
