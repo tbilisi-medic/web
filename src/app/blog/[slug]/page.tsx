@@ -62,7 +62,10 @@ export default async function BlogPostPage({
             id: p.id,
             slug: p.slug,
             title: isEn ? p.titleEn! : p.titleKa,
-            description: '',
+            description: (isEn ? p.contentEn! : p.contentKa).replace(
+              /<[^>]*>/g,
+              '',
+            ),
             image: p.imageUrl || '',
           }))}
         />

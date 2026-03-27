@@ -37,3 +37,16 @@ export async function getRelatedBlogPosts(
 
   return posts;
 }
+
+export async function getLatestNewsPosts(limit = 3) {
+  const posts = await prisma.blogPost.findMany({
+    where: {
+      isActive: true,
+      category: 'news',
+    },
+    take: limit,
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return posts;
+}

@@ -43,8 +43,8 @@ export default async function CareersPage() {
     <>
       <Header />
       <PageHeader
-        title="მედიკი"
-        description="მედიკში ვაერთიანებთ მომხმარებლებს, რომლებიც ირჩევენ ნდობას, ხარისხსა და გრძელვადიან ურთიერთობას ჩვენთან."
+        title="კარიერა"
+        description="ვიზრდებით ქართული მედიცინისთვის"
       />
       <div className="pt-16 lg:pt-22">
         <CareersContent />
