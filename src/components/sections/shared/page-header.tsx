@@ -21,12 +21,12 @@ export function PageHeader({ title, description }: PageHeaderProps) {
             </p>
           )}
         </div>
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block">
+        <div className="absolute inset-0 pointer-events-none">
           <Image
-            src="/images/hero/bg.png"
+            src="/images/hero/bg.svg"
             alt=""
             fill
-            className="object-cover object-right-top"
+            className="object-cover sm:object-contain object-right"
           />
         </div>
       </div>
