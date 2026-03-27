@@ -20,6 +20,15 @@ export function Quote({
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            {/* Right - Image */}
+            <div className="relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-full lg:min-h-[400px] lg:order-last">
+              <Image
+                src={image}
+                alt={authorName}
+                fill
+                className="object-cover"
+              />
+            </div>
             {/* Left - Content */}
             <div>
               {/* Title */}
@@ -46,16 +55,6 @@ export function Quote({
                   {authorRole}
                 </p>
               </div>
-            </div>
-
-            {/* Right - Image */}
-            <div className="relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-full lg:min-h-[400px]">
-              <Image
-                src={image}
-                alt={authorName}
-                fill
-                className="object-cover"
-              />
             </div>
           </div>
         </div>
