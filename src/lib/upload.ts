@@ -31,8 +31,8 @@ export async function uploadImage(
   return urlData.publicUrl;
 }
 
-export async function deleteImage(imageUrl: string) {
-  const url = new URL(imageUrl);
+export async function deleteFile(fileUrl: string) {
+  const url = new URL(fileUrl);
   const match = url.pathname.match(
     /\/storage\/v1\/object\/public\/([^/]+)\/(.+)/,
   );

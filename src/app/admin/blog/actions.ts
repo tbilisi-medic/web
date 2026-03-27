@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { generateSlug } from '@/lib/slug';
 import { revalidatePath } from 'next/cache';
-import { deleteImage } from '@/lib/upload';
+import { deleteFile } from '@/lib/upload';
 
 export async function getBlogPosts(search?: string) {
   const posts = await prisma.blogPost.findMany({
@@ -87,7 +87,7 @@ export async function deleteBlogPost(id: string) {
   if (!post) throw new Error('Blog post not found');
 
   if (post.imageUrl) {
-    await deleteImage(post.imageUrl);
+    await deleteFile(post.imageUrl);
   }
 
   await prisma.blogPost.delete({ where: { id } });
