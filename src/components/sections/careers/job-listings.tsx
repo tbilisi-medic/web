@@ -172,7 +172,14 @@ export function JobListings({ jobs }: JobListingsProps) {
                             ვაკანსიის შესახებ
                           </h4>
                           <div
-                            className="prose prose-md mt-4 max-w-none text-primary break-words"
+                            className="prose prose-md mt-4 max-w-none text-primary break-words
+    prose-headings:text-primary
+    prose-strong:text-primary
+    prose-a:text-primary
+    prose-li:text-primary
+    prose-ol:text-primary
+    prose-ul:text-primary
+    prose-blockquote:text-primary"
                             dangerouslySetInnerHTML={{
                               __html: job.description,
                             }}

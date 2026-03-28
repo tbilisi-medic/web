@@ -9,7 +9,7 @@ export default function AdminLayout({
   return (
     <SidebarProvider>
       <AdminSidebar />
-      <SidebarInset>{children}</SidebarInset>
+      <SidebarInset className="bg-white">{children}</SidebarInset>
     </SidebarProvider>
   );
 }

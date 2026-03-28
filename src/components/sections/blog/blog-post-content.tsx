@@ -41,9 +41,15 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           {/* Content */}
           <div
             className="prose prose-md mt-15 max-w-none text-primary break-words
-              prose-headings:font-bold prose-headings:text-primary
-              prose-h2:mt-10 prose-h2:text-xl lg:prose-h2:text-2xl
-              prose-p:leading-relaxed"
+  prose-headings:text-primary
+  prose-strong:text-primary
+  prose-a:text-primary
+  prose-li:text-primary
+  prose-ol:text-primary
+  prose-ul:text-primary
+  prose-blockquote:text-primary
+  prose-h2:mt-10 prose-h2:text-xl lg:prose-h2:text-2xl
+  prose-p:leading-relaxed"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>

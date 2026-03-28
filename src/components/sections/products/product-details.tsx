@@ -123,7 +123,14 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               {/* Description */}
               <div className="mt-6">
                 <div
-                  className="prose prose-base lg:prose-md text-primary break-words"
+                  className="prose prose-base lg:prose-md text-primary break-words
+    prose-headings:text-primary
+    prose-strong:text-primary
+    prose-a:text-primary
+    prose-li:text-primary
+    prose-ol:text-primary
+    prose-ul:text-primary
+    prose-blockquote:text-primary"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
@@ -191,8 +198,8 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                         </form>
                         {isSuccess && (
                           <Alert className="mt-4">
-                            <CircleCheck className="h-4 w-4 !text-primary-light" />
-                            <AlertDescription className="font-semibold !text-primary-light text-md">
+                            <CircleCheck className="h-4 w-4 !text-primary" />
+                            <AlertDescription className="!text-primary text-md">
                               მოთხოვნა წარმატებით გაიგზავნა
                             </AlertDescription>
                           </Alert>
@@ -200,7 +207,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                         {error && (
                           <Alert className="mt-4 text-red-600">
                             <CircleX className="h-4 w-4 !text-red-600" />
-                            <AlertDescription className="font-semibold text-red-600">
+                            <AlertDescription className="text-red-600">
                               {error}
                             </AlertDescription>
                           </Alert>
