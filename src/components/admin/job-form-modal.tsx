@@ -46,6 +46,7 @@ export function JobFormModal({
   const [title, setTitle] = React.useState('');
   const [location, setLocation] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [error, setError] = React.useState('');
 
   React.useEffect(() => {
     if (mode === 'edit' && job && open) {
@@ -62,6 +63,7 @@ export function JobFormModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
     try {
       const data = {
@@ -79,6 +81,7 @@ export function JobFormModal({
       setOpen(false);
     } catch (error) {
       console.error('Failed to save job:', error);
+      setError('შენახვა ვერ მოხერხდა, სცადეთ თავიდან.');
     } finally {
       setIsSubmitting(false);
     }
@@ -170,7 +173,9 @@ export function JobFormModal({
                 className="[&_.ql-container]:min-h-[200px] [&_.ql-editor]:min-h-[200px]"
               />
             </div>
-
+            {error && (
+              <p className="text-sm text-red-500 font-semibold">{error}</p>
+            )}
             {/* Actions */}
             <div className="flex justify-end gap-3 pt-4">
               <Button

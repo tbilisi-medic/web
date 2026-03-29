@@ -60,6 +60,7 @@ export function BlogFormModal({
   const [contentEn, setContentEn] = React.useState('');
   const [imageFile, setImageFile] = React.useState<File | null>(null);
   const [imagePreview, setImagePreview] = React.useState<string | null>(null);
+  const [error, setError] = React.useState('');
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -99,6 +100,7 @@ export function BlogFormModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
     try {
       let imageUrl: string | undefined = undefined;
@@ -129,6 +131,7 @@ export function BlogFormModal({
       setOpen(false);
     } catch (error) {
       console.error('Failed to save blog post:', error);
+      setError('შენახვა ვერ მოხერხდა, სცადეთ თავიდან.');
     } finally {
       setIsSubmitting(false);
     }
@@ -302,7 +305,9 @@ export function BlogFormModal({
                 </label>
               )}
             </div>
-
+            {error && (
+              <p className="text-sm text-red-500 font-semibold">{error}</p>
+            )}
             {/* Actions */}
             <div className="flex justify-end gap-3 pt-4">
               <Button
