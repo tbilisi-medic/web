@@ -38,7 +38,7 @@ export function Stats({ title, stats }: StatsProps) {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/60 via-60% to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/40 via-60% to-transparent" />
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 p-6">

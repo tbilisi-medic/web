@@ -28,6 +28,7 @@ export function Quote({
                 fill
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/40 via-40% to-transparent" />
             </div>
             {/* Left - Content */}
             <div>

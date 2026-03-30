@@ -18,24 +18,18 @@ const partnerStories = [
     title: 'ZÜLFIKAR TUFAN, DIRECTOR',
     description:
       'It is our pleasure to be a partner of Medic. We are glad with their support in the Georgian market as well as with their corporate and visionary approach. We also thank them for their professional support in the workshop events held both in Georgia and Türkiye.',
-    image: '/images/categories/1.jpg',
+    image: '/images/partners/5.png',
     href: '/',
+    imageContain: true,
   },
   {
     id: 2,
     title: 'MASAHIRO WASA, GENERAL MANAGER',
     description:
       'Medic is truly one of our most outstanding partners and I feel genuinely proud and grateful to work with such a dedicated team. The success they have achieved in Georgia, a country with fewer than four million people is not only impressive, but also a clear reflection of their hard work, passion and commitment.',
-    image: '/images/categories/2.jpg',
+    image: '/images/partners/6.png',
     href: '/',
-  },
-  {
-    id: 3,
-    title: 'GANPIETRO MANGONE, PRODUCT SPECIALIST',
-    description:
-      'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/categories/3.jpg',
-    href: '/',
+    imageContain: true,
   },
 ];
 
@@ -66,7 +60,7 @@ export default function PartnersPage() {
           ]}
           authorName="გიორგი მეზვრიშვილი"
           authorRole="პროდუქტის მთავარი ოფიცერი"
-          image="/images/categories/1.jpg"
+          image="/images/partners/1.jpg"
         />
       </div>
       <div className="pt-16 lg:pt-22">
@@ -77,19 +71,19 @@ export default function PartnersPage() {
               id: 1,
               value: '200+',
               label: 'პარტნიორი',
-              image: '/images/categories/1.jpg',
+              image: '/images/partners/2.jpg',
             },
             {
               id: 2,
               value: '55+',
               label: 'მიმართულება',
-              image: '/images/categories/2.jpg',
+              image: '/images/partners/3.jpg',
             },
             {
               id: 3,
               value: '3000+',
               label: 'პროდუქტი',
-              image: '/images/categories/3.jpg',
+              image: '/images/partners/4.jpg',
             },
           ]}
         />

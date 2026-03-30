@@ -7,6 +7,7 @@ interface Story {
   description: string;
   image: string;
   href: string;
+  imageContain?: boolean;
 }
 
 interface StoriesProps {
@@ -34,12 +35,14 @@ export function Stories({ title, stories }: StoriesProps) {
               >
                 {/* Image */}
                 <div className="lg:col-span-4">
-                  <div className="relative h-50 overflow-hidden rounded-xl bg-gray-200">
+                  <div className="relative h-55 overflow-hidden rounded-lg">
                     <Image
                       src={story.image}
                       alt={story.title}
                       fill
-                      className="object-cover"
+                      className={
+                        story.imageContain ? 'object-contain' : 'object-cover'
+                      }
                     />
                   </div>
                 </div>

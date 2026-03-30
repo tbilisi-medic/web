@@ -18,23 +18,23 @@ const employeeStories = [
     title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
     description:
       'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/categories/1.jpg',
+    image: '/images/stories/1.jpg',
     href: '/',
   },
   {
     id: 2,
-    title: 'დავით ჯიშკარიანი | მარკეტინგის გუნდის ხელმძღვანელი',
+    title: 'მარი ბუტულაშვილი | ადამიანური რესურსების მენეჯერი',
     description:
-      'გაიგეთ მეტი თბილისი მედიკის მარკეტინგის ხელმძღვანელის, დავით ჯიშკარიანის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/categories/2.jpg',
+      'გაიგეთ მეტი მედიკის ადამიანური რესურსების მართვის მენეჯერის, ხელმძღვანელის, მარი ბუტულაშვილის მედიკური მოგზაურობის შესახებ.',
+    image: '/images/stories/2.jpg',
     href: '/',
   },
   {
     id: 3,
-    title: 'გოგა მაზიაშვილი | საოპერაციო დირექტორი',
+    title: 'ლელა ჯელაძე | მთავარი ბუღალტერი',
     description:
-      'გაიგეთ მეტი თბილისი მედიკის საოპერაციო დირექტორის, გოგა მაზიაშვილის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/categories/3.jpg',
+      'გაიგეთ მეტი მედიკის მთავარი ბუღალტერის, ლელა ჯელაძის მედიკური მოგზაურობის შესახებ.',
+    image: '/images/stories/3.jpg',
     href: '/',
   },
 ];
@@ -64,7 +64,7 @@ export default function EmployeesPage() {
           ]}
           authorName="ლევან ხომერიკი"
           authorRole="გენერალური დირექტორი"
-          image="/images/categories/1.jpg"
+          image="/images/achievements/employees.jpg"
         />
       </div>
       <div className="pt-16 lg:pt-22">
@@ -75,19 +75,19 @@ export default function EmployeesPage() {
               id: 1,
               value: '85+',
               label: 'თანამშრომელი',
-              image: '/images/categories/1.jpg',
+              image: '/images/employees/1.jpg',
             },
             {
               id: 2,
               value: '10',
               label: 'დამოუკიდებელი გუნდი',
-              image: '/images/categories/2.jpg',
+              image: '/images/employees/2.jpg',
             },
             {
               id: 3,
               value: '92%',
               label: 'ENPS ინდექსი',
-              image: '/images/categories/3.jpg',
+              image: '/images/employees/3.jpg',
             },
           ]}
         />

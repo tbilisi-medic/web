@@ -39,7 +39,7 @@ export default function CustomersPage() {
           ]}
           authorName="დავით ჯიშკარიანი"
           authorRole="მარტკეტინგის მთავარი ოფიცერი"
-          image="/images/categories/1.jpg"
+          image="/images/customers/1.jpg"
         />
       </div>
       <div className="pt-16 lg:pt-22">
@@ -50,19 +50,19 @@ export default function CustomersPage() {
               id: 1,
               value: '350+',
               label: 'მომხმარებელი',
-              image: '/images/categories/1.jpg',
+              image: '/images/customers/2.jpg',
             },
             {
               id: 2,
               value: '92%',
               label: 'შენარჩუნების ინდექსი',
-              image: '/images/categories/2.jpg',
+              image: '/images/customers/3.jpg',
             },
             {
               id: 3,
               value: '95%',
               label: 'NPS ინდექსი',
-              image: '/images/categories/3.jpg',
+              image: '/images/customers/4.jpg',
             },
           ]}
         />

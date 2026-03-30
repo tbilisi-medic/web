@@ -1,28 +1,20 @@
 import Image from 'next/image';
 
-const images = ['/images/categories/1.jpg', '/images/categories/2.jpg'];
-
 export function CareersContent() {
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left: Images */}
-            <div className="flex flex-col gap-4">
-              {images.map((src, i) => (
-                <div
-                  key={i}
-                  className="relative flex-1 min-h-70 overflow-hidden rounded-2xl bg-gray-200"
-                >
-                  <Image
-                    src={src}
-                    alt={`ჩვენს შესახებ ${i + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+            {/* Left: Image */}
+            <div className="relative min-h-70 lg:min-h-full overflow-hidden rounded-2xl bg-gray-200">
+              <Image
+                src="/images/careers/1.jpg"
+                alt="ჩვენს შესახებ"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/40 via-40% to-transparent" />
             </div>
 
             {/* Right: Text content */}

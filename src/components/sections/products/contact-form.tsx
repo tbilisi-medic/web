@@ -74,7 +74,7 @@ export function ContactForm() {
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="rounded-xl border border-primary-light/50 p-8 lg:p-10">
+          <div className="bg-white rounded-xl border border-primary-light/50 p-8 lg:p-10">
             {/* Title */}
             <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
               ჩვენ დაგიკავშირდებით
