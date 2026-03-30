@@ -16,7 +16,13 @@ export default function AboutPage() {
   return (
     <>
       <Header />
-      <PageHeader title="სამედიცინო ინდუსტრიის კვალიფიციური პარტნიორი" />
+      <PageHeader
+        title={
+          <>
+            სამედიცინო ინდუსტრიის <br /> კვალიფიციური პარტნიორი
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <AboutContent />
       </div>

@@ -94,7 +94,7 @@ const aboutMenu: MenuSection[] = [
     title: 'კარიერა',
     items: [
       { label: 'ვაკანსიები', href: '/careers' },
-      { label: 'ადამიანების დღიურები', href: '/careers#stories' },
+      { label: 'ადამიანების დღიურები', href: '/employees#stories' },
     ],
   },
   {

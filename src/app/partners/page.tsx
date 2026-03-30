@@ -43,7 +43,13 @@ export default function PartnersPage() {
   return (
     <>
       <Header />
-      <PageHeader title="პარტნიორები მთელი მსოფლიოს მასშტაბით" />
+      <PageHeader
+        title={
+          <>
+            პარტნიორები მთელი <br /> მსოფლიოს მასშტაბით
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <Quote
           title="პარტნიორებს"

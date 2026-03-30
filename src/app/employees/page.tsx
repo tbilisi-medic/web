@@ -43,7 +43,13 @@ export default function EmployeesPage() {
   return (
     <>
       <Header />
-      <PageHeader title="პროფესიონალები, რომლებიც ქმნიან მედიკს" />
+      <PageHeader
+        title={
+          <>
+            პროფესიონალები, რომლებიც <br /> ქმნიან მედიკს
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <Quote
           title="მედიკელებს"

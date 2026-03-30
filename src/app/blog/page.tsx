@@ -19,7 +19,13 @@ export default async function BlogPage() {
   return (
     <>
       <Header />
-      <PageHeader title="აუცილებლად წასაკითხი და გასაცნობი ამბები" />
+      <PageHeader
+        title={
+          <>
+            აუცილებლად წასაკითხი და <br /> გასაცნობი ამბები
+          </>
+        }
+      />
       <div className="py-16 lg:py-22">
         <BlogPosts posts={posts} locale={locale} />
       </div>

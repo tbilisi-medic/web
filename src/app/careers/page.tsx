@@ -42,7 +42,13 @@ export default async function CareersPage() {
   return (
     <>
       <Header />
-      <PageHeader title="კარიერული ზრდა და შესაძლებლობები" />
+      <PageHeader
+        title={
+          <>
+            კარიერული ზრდა და <br /> შესაძლებლობები
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <CareersContent />
       </div>

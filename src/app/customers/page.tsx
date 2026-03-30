@@ -16,7 +16,13 @@ export default function CustomersPage() {
   return (
     <>
       <Header />
-      <PageHeader title="კმაყოფილი მომხმარებლები მთელ საქართველოში" />
+      <PageHeader
+        title={
+          <>
+            კმაყოფილი მომხმარებლები <br /> მთელ საქართველოში
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <Quote
           title="მომხმარებლებს"

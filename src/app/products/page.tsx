@@ -21,7 +21,13 @@ export default async function ProductsPage() {
   return (
     <>
       <Header />
-      <PageHeader title="მრავალფეროვანი სამედიცინო პროდუქცია" />
+      <PageHeader
+        title={
+          <>
+            მრავალფეროვანი სამედიცინო <br /> პროდუქცია
+          </>
+        }
+      />
       <div className="pt-16 lg:pt-22">
         <ProductCatalog products={products} categories={categories} />
       </div>
