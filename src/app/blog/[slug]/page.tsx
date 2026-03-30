@@ -42,7 +42,7 @@ export default async function BlogPostPage({
   return (
     <>
       <Header />
-      <PageHeader title="წასაკითხები და მოსასმენები" />
+      <PageHeader title="აუცილებლად წასაკითხი და გასაცნობი ამბები" />
       <div className="pt-16 lg:pt-22">
         <BlogPostContent
           post={{

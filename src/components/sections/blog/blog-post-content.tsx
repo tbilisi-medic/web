@@ -23,7 +23,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           <p className="mt-3 text-center text-md text-primary">{post.date}</p>
 
           {/* Image */}
-          <div className="mt-12 relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-90">
+          <div className="mt-12 relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-120">
             {post.image ? (
               <Image
                 src={post.image}

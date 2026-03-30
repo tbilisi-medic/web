@@ -15,23 +15,23 @@ export const metadata: Metadata = {
 const partnerStories = [
   {
     id: 1,
-    title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
+    title: 'ZÜLFIKAR TUFAN, DIRECTOR',
     description:
-      'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
+      'It is our pleasure to be a partner of Medic. We are glad with their support in the Georgian market as well as with their corporate and visionary approach. We also thank them for their professional support in the workshop events held both in Georgia and Türkiye.',
     image: '/images/categories/1.jpg',
     href: '/',
   },
   {
     id: 2,
-    title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
+    title: 'MASAHIRO WASA, GENERAL MANAGER',
     description:
-      'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
+      'Medic is truly one of our most outstanding partners and I feel genuinely proud and grateful to work with such a dedicated team. The success they have achieved in Georgia, a country with fewer than four million people is not only impressive, but also a clear reflection of their hard work, passion and commitment.',
     image: '/images/categories/2.jpg',
     href: '/',
   },
   {
     id: 3,
-    title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
+    title: 'GANPIETRO MANGONE, PRODUCT SPECIALIST',
     description:
       'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
     image: '/images/categories/3.jpg',
@@ -43,18 +43,20 @@ export default function PartnersPage() {
   return (
     <>
       <Header />
-      <PageHeader
-        title="საერთაშორისო პარტნიორები"
-        description="250-ზე მეტი საერთაშორისო პარტნიორი და სამედიცინო მწარმოებელი მსოფლიოს მასშტაბით"
-      />
+      <PageHeader title="პარტნიორები მთელი მსოფლიოს მასშტაბით" />
       <div className="pt-16 lg:pt-22">
         <Quote
           title="პარტნიორებს"
           text={[
             'ჩვენი საერთაშორისო პარტნიორები არიან პროფესიონალები, რომლებმაც აირჩიეს ხარისხი, პასუხისმგებლობა და გრძელვადიანი თანამშრომლობა ყოველდღიურ საქმიანობაში. ეს არის არჩევანი, რომელიც ნათლად იკვეთება ჩვენს საერთო პროექტებში, სტანდარტებში და იმ ნდობაში, რომელსაც ერთმანეთის მიმართ ვაშენებთ.',
-            'გულწრფელად ვაფასებ თითოეულ პარტნიორს - იმ გამოცდილებას და ღირებულებას, რომელსაც ერთად ვქმნით მედიკისთვის და მთლიანად ჯანდაცვის სფეროსთვის.',
-            'მადლობას გიხდით პარტნიორობისთვის, რომელიც სცდება ერთჯერად პროექტებს და გარდაიქმნება მდგრად ურთიერთობად. სწორედ თქვენ ხართ ის ხიდი, რომელიც საერთაშორისო ინოვაციას, საუკეთესო პრაქტიკასა და ხარისხს ქართულ მედიცინასთან აკავშირებს. ',
-            'ჩვენთვის განსაკუთრებით მნიშვნელოვანია, რომ ეს თანამშრომლობა არ შემოიფარგლება მხოლოდ ბიზნეს ურთიერთობით. იგი ეფუძნება საერთო ხედვას, განვითარებაზე ორიენტირებულ მიდგომასა და მუდმივ სწრაფვას უკეთესი შედეგებისკენ. თითოეული ერთობლივი ნაბიჯი აძლიერებს არა მხოლოდ ჩვენს პარტნიორობას, არამედ მთლიანად იმ ეკოსისტემას, რომელსაც ერთად ვაშენებთ.',
+
+            'გულწრფელად ვაფასებ თითოეულ პარტნიორსგან მიღებულ გამოცდილებას და ღირებულებას, რომელსაც ერთად ვქმნით მედიკისა და მთლიანად სამედიცინო ინდუსტრიისთვის.',
+
+            'მადლობას გიხდით პარტნიორობისთვის, რომელიც სცდება ერთჯერად პროექტებს და გარდაიქმნება მდგრად ურთიერთობად. სწორედ თქვენ გვეხმარებით სამედიცინო ეკოსისტემის სრულყოფაში.',
+
+            'განსაკუთრებით მნიშვნელოვანია, რომ ეს თანამშრომლობა არ შემოიფარგლება მხოლოდ ბიზნეს ურთიერთობით. ის ეფუძნება საერთო ხედვას, განვითარებაზე ორიენტირებულ მიდგომასა და მუდმივ სწრაფვას უკეთესი შედეგებისკენ.',
+
+            'თითოეული ერთობლივი ნაბიჯი გვაქცევს სამედიცინო ინდუსტრიის კვალიფიციურ პარტნიორად.',
           ]}
           authorName="გიორგი მეზვრიშვილი"
           authorRole="პროდუქტის მთავარი ოფიცერი"
@@ -67,19 +69,19 @@ export default function PartnersPage() {
           stats={[
             {
               id: 1,
-              value: '200',
+              value: '200+',
               label: 'პარტნიორი',
               image: '/images/categories/1.jpg',
             },
             {
               id: 2,
-              value: '30',
+              value: '55+',
               label: 'მიმართულება',
               image: '/images/categories/2.jpg',
             },
             {
               id: 3,
-              value: '5000',
+              value: '3000+',
               label: 'პროდუქტი',
               image: '/images/categories/3.jpg',
             },

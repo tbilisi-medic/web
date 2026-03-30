@@ -8,7 +8,7 @@ const posts = [
     titleKey: 'employees',
     descriptionKey: 'employeesDescription',
     image: '/images/categories/4.jpg',
-    stat: '80+',
+    stat: '85+',
     href: '/employees',
   },
   {
@@ -16,7 +16,7 @@ const posts = [
     titleKey: 'partners',
     descriptionKey: 'partnersDescription',
     image: '/images/categories/2.jpg',
-    stat: '250+',
+    stat: '200+',
     href: '/partners',
   },
   {
@@ -24,7 +24,7 @@ const posts = [
     titleKey: 'customers',
     descriptionKey: 'customersDescription',
     image: '/images/categories/3.jpg',
-    stat: '300+',
+    stat: '350+',
     href: '/customers',
   },
 ];
@@ -71,7 +71,7 @@ export async function Achievements() {
                   <div className="mt-8">
                     <Link
                       href={post.href}
-                      className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary/90 uppercase"
+                      className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold text-white transition-opacity uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
                     >
                       {t('cta')}
                     </Link>

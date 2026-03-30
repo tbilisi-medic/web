@@ -42,7 +42,7 @@ export function Stats({ title, stats }: StatsProps) {
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 p-6">
-                  <p className="text-5xl font-bold text-white lg:text-[60px]">
+                  <p className="text-5xl font-semibold text-white lg:text-[60px]">
                     {stat.value}
                   </p>
                   <p className="mt-2 font-semibold text-white text-2xl uppercase">

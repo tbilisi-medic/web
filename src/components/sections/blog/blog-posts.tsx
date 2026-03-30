@@ -95,7 +95,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                     />
                     <div className="mt-6">
                       <Link href={`/blog/${post.slug}`}>
-                        <Button className="h-12 cursor-pointer rounded-lg bg-primary px-8 text-base font-semibold text-white hover:bg-primary/90 uppercase">
+                        <Button className="h-12 cursor-pointer rounded-lg px-8 text-base font-semibold text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95">
                           {isEn ? 'Read more' : 'სრულად'}
                         </Button>
                       </Link>

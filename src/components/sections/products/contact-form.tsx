@@ -122,7 +122,7 @@ export function ContactForm() {
                   />
                   <Button
                     type="submit"
-                    className="h-12 text-md cursor-pointer w-full font-semibold rounded-lg bg-primary text-white hover:bg-primary/90 uppercase"
+                    className="h-12 text-md cursor-pointer w-full font-semibold rounded-lg text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
                     disabled={isSubmitting}
                   >
                     მოთხოვნის გაგზავნა

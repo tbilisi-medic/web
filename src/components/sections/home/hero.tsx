@@ -8,7 +8,7 @@ export async function Hero() {
 
   return (
     <section className="pt-28 lg:pt-30 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl relative overflow-hidden rounded-xl bg-gradient-to-b from-[#281D5C] to-[#10073D]">
+      <div className="mx-auto max-w-7xl relative overflow-hidden rounded-xl bg-gradient-to-b from-primary to-primary-dark">
         <div className="relative z-10 px-8 py-16 lg:px-14 lg:py-20">
           <div className="max-w-2xl">
             <h1 className="text-3xl font-bold leading-tight text-white lg:text-[40px] uppercase">

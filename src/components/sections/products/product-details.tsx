@@ -139,7 +139,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               <div className="mt-auto pt-8">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 lg:w-auto lg:px-12 uppercase">
+                    <Button className="h-13 w-full cursor-pointer rounded-lg text-base font-semibold text-white lg:w-auto lg:px-12 uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95">
                       დაინტერესებული ვარ
                     </Button>
                   </DialogTrigger>
@@ -188,7 +188,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           />
                           <Button
                             type="submit"
-                            className="h-13 w-full cursor-pointer rounded-lg bg-primary text-base font-semibold text-white hover:bg-primary/90 uppercase"
+                            className="h-13 w-full cursor-pointer rounded-lg text-base font-semibold text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
                             disabled={isSubmitting}
                           >
                             {isSubmitting

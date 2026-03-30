@@ -42,10 +42,7 @@ export default async function CareersPage() {
   return (
     <>
       <Header />
-      <PageHeader
-        title="კარიერა"
-        description="ვიზრდებით ქართული მედიცინისთვის"
-      />
+      <PageHeader title="კარიერული ზრდა და შესაძლებლობები" />
       <div className="pt-16 lg:pt-22">
         <CareersContent />
       </div>
