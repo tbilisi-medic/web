@@ -52,13 +52,13 @@ export default async function BlogPostPage({
       <div className="pt-16 lg:pt-22">
         <BlogPostContent
           post={{
-            title: isEn ? post.titleEn! : post.titleKa,
+            title: isEn ? post.titleEn : post.titleKa,
             date: new Date(post.createdAt).toLocaleDateString(
               isEn ? 'en-US' : 'ka-GE',
               { year: 'numeric', month: 'long', day: 'numeric' },
             ),
-            image: post.imageUrl || '',
-            content: isEn ? post.contentEn! : post.contentKa,
+            image: post.imageUrl,
+            content: isEn ? post.contentEn : post.contentKa,
           }}
         />
       </div>
@@ -67,12 +67,12 @@ export default async function BlogPostPage({
           posts={relatedPosts.map((p) => ({
             id: p.id,
             slug: p.slug,
-            title: isEn ? p.titleEn! : p.titleKa,
-            description: (isEn ? p.contentEn! : p.contentKa).replace(
+            title: isEn ? p.titleEn : p.titleKa,
+            description: (isEn ? p.contentEn : p.contentKa).replace(
               /<[^>]*>/g,
               '',
             ),
-            image: p.imageUrl || '',
+            image: p.imageUrl,
           }))}
         />
       </div>

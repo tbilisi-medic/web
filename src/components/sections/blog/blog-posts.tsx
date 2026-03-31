@@ -70,7 +70,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                       {post.imageUrl ? (
                         <Image
                           src={post.imageUrl}
-                          alt={isEn ? post.titleEn! : post.titleKa}
+                          alt={isEn ? post.titleEn : post.titleKa}
                           fill
                           className="object-cover"
                         />
@@ -85,7 +85,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                   {/* Content */}
                   <div className="lg:col-span-8">
                     <h3 className="text-xl font-semibold text-dark lg:text-2xl uppercase">
-                      {isEn ? post.titleEn! : post.titleKa}
+                      {isEn ? post.titleEn : post.titleKa}
                     </h3>
                     <div
                       className="mt-4 text-md text-dark line-clamp-3 [&_*]:inline"

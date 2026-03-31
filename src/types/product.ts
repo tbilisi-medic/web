@@ -2,9 +2,9 @@ export type ProductWithRelations = {
   id: string;
   name: string;
   slug: string;
-  subtitle: string | null;
-  description: string | null;
-  imageUrl: string | null;
+  subtitle: string;
+  description: string;
+  imageUrl: string;
   categoryId: string;
   subcategoryId: string;
   isActive: boolean;

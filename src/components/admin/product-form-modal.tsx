@@ -116,7 +116,7 @@ export function ProductFormModal({
     setError('');
 
     try {
-      let imageUrl: string | undefined = undefined;
+      let imageUrl = '';
 
       // Upload new image if selected
       if (imageFile) {
@@ -124,16 +124,13 @@ export function ProductFormModal({
         formData.append('file', imageFile);
         imageUrl = await uploadImage(formData);
       } else if (mode === 'edit' && imagePreview) {
-        // Keep existing image
-        imageUrl = product?.imageUrl || undefined;
+        imageUrl = product?.imageUrl || '';
       }
 
       const data = {
         name,
-        subtitle: subtitle || undefined,
-        description: description
-          ? description.replace(/&nbsp;/g, ' ')
-          : undefined,
+        subtitle,
+        description: description.replace(/&nbsp;/g, ' '),
         categoryId: selectedCategory,
         subcategoryId: selectedSubcategory,
         imageUrl,
@@ -172,9 +169,11 @@ export function ProductFormModal({
 
   const isFormValid =
     name.trim() &&
+    subtitle.trim() &&
     selectedCategory &&
     selectedSubcategory &&
-    !isQuillEmpty(description);
+    !isQuillEmpty(description) &&
+    (imageFile || imagePreview);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

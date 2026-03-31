@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   return {
     title: product.name,
-    description: product.subtitle || product.description || '',
+    description: product.subtitle || product.description,
   };
 }
 
@@ -53,9 +53,9 @@ export default async function ProductPage({
         <ProductDetails
           product={{
             name: product.name,
-            subtitle: product.subtitle || '',
-            description: product.description || '',
-            image: product.imageUrl || '',
+            subtitle: product.subtitle,
+            description: product.description,
+            image: product.imageUrl,
           }}
         />
       </div>
@@ -65,8 +65,8 @@ export default async function ProductPage({
             id: p.id,
             slug: p.slug,
             name: p.name,
-            description: p.subtitle || '',
-            image: p.imageUrl || '',
+            description: p.subtitle,
+            image: p.imageUrl,
           }))}
         />
       </div>

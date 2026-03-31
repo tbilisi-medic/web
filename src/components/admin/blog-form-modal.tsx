@@ -109,14 +109,14 @@ export function BlogFormModal({
     setError('');
 
     try {
-      let imageUrl: string | undefined = undefined;
+      let imageUrl = '';
 
       if (imageFile) {
         const formData = new FormData();
         formData.append('file', imageFile);
         imageUrl = await uploadImage(formData, 'blog');
       } else if (mode === 'edit' && imagePreview) {
-        imageUrl = post?.imageUrl || undefined;
+        imageUrl = post?.imageUrl || '';
       }
 
       const data = {
@@ -169,7 +169,8 @@ export function BlogFormModal({
     !isQuillEmpty(subtitleEn) &&
     selectedCategory &&
     !isQuillEmpty(contentKa) &&
-    !isQuillEmpty(contentEn);
+    !isQuillEmpty(contentEn) &&
+    (imageFile || imagePreview);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

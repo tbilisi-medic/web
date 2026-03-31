@@ -2,13 +2,13 @@ export type BlogPost = {
   id: string;
   slug: string;
   titleKa: string;
-  titleEn: string | null;
+  titleEn: string;
   subtitleKa: string;
   subtitleEn: string;
   contentKa: string;
-  contentEn: string | null;
+  contentEn: string;
   category: string;
-  imageUrl: string | null;
+  imageUrl: string;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;

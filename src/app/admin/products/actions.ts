@@ -31,11 +31,11 @@ export async function getCategories() {
 
 export async function createProduct(data: {
   name: string;
-  subtitle?: string;
-  description?: string;
+  subtitle: string;
+  description: string;
   categoryId: string;
   subcategoryId: string;
-  imageUrl?: string;
+  imageUrl: string;
 }) {
   let slug = generateSlug(data.name);
 
@@ -59,11 +59,11 @@ export async function updateProduct(
   id: string,
   data: {
     name: string;
-    subtitle?: string;
-    description?: string;
+    subtitle: string;
+    description: string;
     categoryId: string;
     subcategoryId: string;
-    imageUrl?: string;
+    imageUrl: string;
   },
 ) {
   const product = await prisma.product.findUnique({ where: { id } });

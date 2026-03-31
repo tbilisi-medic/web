@@ -29,7 +29,7 @@ export async function createBlogPost(data: {
   contentKa: string;
   contentEn: string;
   category: string;
-  imageUrl?: string;
+  imageUrl: string;
 }) {
   let slug = generateSlug(data.titleEn || data.titleKa);
 
@@ -58,7 +58,7 @@ export async function updateBlogPost(
     contentKa: string;
     contentEn: string;
     category: string;
-    imageUrl?: string;
+    imageUrl: string;
   },
 ) {
   const post = await prisma.blogPost.findUnique({ where: { id } });
