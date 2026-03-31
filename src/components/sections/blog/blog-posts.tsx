@@ -88,9 +88,10 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                       {isEn ? post.titleEn! : post.titleKa}
                     </h3>
                     <div
-                      className="mt-4 text-md text-dark line-clamp-3"
+                      className="mt-4 text-md text-dark line-clamp-3 [&_*]:inline"
                       dangerouslySetInnerHTML={{
-                        __html: isEn ? post.contentEn! : post.contentKa,
+                        __html:
+                          (isEn ? post.subtitleEn : post.subtitleKa) || '',
                       }}
                     />
                     <div className="mt-6">

@@ -48,10 +48,12 @@ export function LatestNews({ posts }: LatestNewsProps) {
                   <h3 className="font-semibold text-2xl text-dark uppercase">
                     {post.titleKa}
                   </h3>
-                  <div
-                    className="mt-3 text-md text-dark line-clamp-3 [&_*]:inline"
-                    dangerouslySetInnerHTML={{ __html: post.contentKa }}
-                  />
+                  {post.subtitleKa ? (
+                    <div
+                      className="mt-3 text-md text-dark line-clamp-3 [&_*]:inline"
+                      dangerouslySetInnerHTML={{ __html: post.subtitleKa }}
+                    />
+                  ) : null}
                   <p className="mt-4 text-sm text-foreground/60">
                     {new Date(post.createdAt).toLocaleDateString('ka-GE', {
                       year: 'numeric',

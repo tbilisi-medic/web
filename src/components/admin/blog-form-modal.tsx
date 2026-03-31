@@ -55,6 +55,8 @@ export function BlogFormModal({
 
   const [titleKa, setTitleKa] = React.useState('');
   const [titleEn, setTitleEn] = React.useState('');
+  const [subtitleKa, setSubtitleKa] = React.useState('');
+  const [subtitleEn, setSubtitleEn] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState('');
   const [contentKa, setContentKa] = React.useState('');
   const [contentEn, setContentEn] = React.useState('');
@@ -68,6 +70,8 @@ export function BlogFormModal({
     if (mode === 'edit' && post && open) {
       setTitleKa(post.titleKa);
       setTitleEn(post.titleEn || '');
+      setSubtitleKa(post.subtitleKa);
+      setSubtitleEn(post.subtitleEn);
       setSelectedCategory(post.category);
       setContentKa(post.contentKa);
       setContentEn(post.contentEn || '');
@@ -76,6 +80,8 @@ export function BlogFormModal({
     } else if (mode === 'add' && open) {
       setTitleKa('');
       setTitleEn('');
+      setSubtitleKa('');
+      setSubtitleEn('');
       setSelectedCategory('');
       setContentKa('');
       setContentEn('');
@@ -116,6 +122,8 @@ export function BlogFormModal({
       const data = {
         titleKa,
         titleEn,
+        subtitleKa: subtitleKa.replace(/&nbsp;/g, ' '),
+        subtitleEn: subtitleEn.replace(/&nbsp;/g, ' '),
         contentKa: contentKa.replace(/&nbsp;/g, ' '),
         contentEn: contentEn.replace(/&nbsp;/g, ' '),
         category: selectedCategory,
@@ -157,6 +165,8 @@ export function BlogFormModal({
   const isFormValid =
     titleKa.trim() &&
     titleEn.trim() &&
+    !isQuillEmpty(subtitleKa) &&
+    !isQuillEmpty(subtitleEn) &&
     selectedCategory &&
     !isQuillEmpty(contentKa) &&
     !isQuillEmpty(contentEn);
@@ -230,6 +240,18 @@ export function BlogFormModal({
                   />
                 </div>
 
+                {/* Subtitle KA */}
+                <div className="space-y-3">
+                  <Label className="uppercase">ქვესათაური (ქართული)</Label>
+                  <ReactQuill
+                    theme="snow"
+                    value={subtitleKa}
+                    onChange={setSubtitleKa}
+                    modules={quillModules}
+                    className="[&_.ql-container]:min-h-[100px] [&_.ql-editor]:min-h-[100px]"
+                  />
+                </div>
+
                 {/* Content KA */}
                 <div className="space-y-3">
                   <Label className="uppercase">კონტენტი (ქართული)</Label>
@@ -253,6 +275,18 @@ export function BlogFormModal({
                     value={titleEn}
                     onChange={(e) => setTitleEn(e.target.value)}
                     required
+                  />
+                </div>
+
+                {/* Subtitle EN */}
+                <div className="space-y-3">
+                  <Label className="uppercase">ქვესათაური (English)</Label>
+                  <ReactQuill
+                    theme="snow"
+                    value={subtitleEn}
+                    onChange={setSubtitleEn}
+                    modules={quillModules}
+                    className="[&_.ql-container]:min-h-[100px] [&_.ql-editor]:min-h-[100px]"
                   />
                 </div>
 

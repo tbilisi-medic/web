@@ -3,6 +3,8 @@ export type BlogPost = {
   slug: string;
   titleKa: string;
   titleEn: string | null;
+  subtitleKa: string;
+  subtitleEn: string;
   contentKa: string;
   contentEn: string | null;
   category: string;
