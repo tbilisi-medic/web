@@ -45,11 +45,11 @@ export function LatestNews({ posts }: LatestNewsProps) {
 
                 {/* Info */}
                 <div className="mt-5">
-                  <h3 className="font-semibold text-2xl text-primary uppercase">
+                  <h3 className="font-semibold text-2xl text-dark uppercase">
                     {post.titleKa}
                   </h3>
                   <div
-                    className="mt-3 text-md text-primary line-clamp-3 [&_*]:inline"
+                    className="mt-3 text-md text-dark line-clamp-3 [&_*]:inline"
                     dangerouslySetInnerHTML={{ __html: post.contentKa }}
                   />
                   <p className="mt-4 text-sm text-foreground/60">

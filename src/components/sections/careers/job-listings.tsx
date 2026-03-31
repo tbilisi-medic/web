@@ -76,15 +76,15 @@ export function JobListings({ jobs }: JobListingsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
             გახდი ჩვენი გუნდის წევრი
           </h2>
 
           {/* Alerts */}
           {success && (
             <Alert className="mt-4">
-              <CircleCheck className="h-4 w-4 !text-primary" />
-              <AlertDescription className="!text-primary text-md">
+              <CircleCheck className="h-4 w-4 !text-dark" />
+              <AlertDescription className="!text-dark text-md">
                 {success}
               </AlertDescription>
             </Alert>
@@ -130,10 +130,10 @@ export function JobListings({ jobs }: JobListingsProps) {
                   >
                     <ScrollArea className="lg:h-full">
                       <div className="p-7">
-                        <h3 className="text-2xl font-semibold text-primary uppercase">
+                        <h3 className="text-2xl font-semibold text-dark uppercase">
                           {job.title}
                         </h3>
-                        <p className="mt-2 text-md text-primary">
+                        <p className="mt-2 text-md text-dark">
                           {job.location} |{' '}
                           {new Date(job.createdAt).toLocaleDateString('ka-GE', {
                             year: 'numeric',
@@ -168,18 +168,18 @@ export function JobListings({ jobs }: JobListingsProps) {
                         </div>
 
                         <div className="mt-8">
-                          <h4 className="text-md font-semibold text-primary uppercase">
+                          <h4 className="text-md font-semibold text-dark uppercase">
                             ვაკანსიის შესახებ
                           </h4>
                           <div
-                            className="prose prose-md mt-4 max-w-none text-primary break-words
-    prose-headings:text-primary
-    prose-strong:text-primary
-    prose-a:text-primary
-    prose-li:text-primary
-    prose-ol:text-primary
-    prose-ul:text-primary
-    prose-blockquote:text-primary"
+                            className="prose prose-md mt-4 max-w-none text-dark break-words
+    prose-headings:text-dark
+    prose-strong:text-dark
+    prose-a:text-dark
+    prose-li:text-dark
+    prose-ol:text-dark
+    prose-ul:text-dark
+    prose-blockquote:text-dark"
                             dangerouslySetInnerHTML={{
                               __html: job.description,
                             }}

@@ -38,10 +38,10 @@ export function TechnicalService() {
                     height={56}
                     className="h-18 w-18"
                   />
-                  <h3 className="mt-6 text-xl text-primary lg:text-2xl font-semibold text-foreground uppercase">
+                  <h3 className="mt-6 text-xl lg:text-2xl font-semibold text-dark uppercase">
                     {service.title}
                   </h3>
-                  <p className="mt-2 font-semibold text-primary text-md text-foreground">
+                  <p className="mt-2 font-semibold text-dark text-md">
                     {service.description}
                   </p>
                 </div>

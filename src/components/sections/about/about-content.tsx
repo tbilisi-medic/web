@@ -18,11 +18,11 @@ export function AboutContent() {
 
             {/* Right: Text content */}
             <div>
-              <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
+              <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
                 ჩვენს შესახებ
               </h2>
 
-              <div className="mt-8 space-y-6 text-md text-primary">
+              <div className="mt-8 space-y-6 text-md text-dark">
                 <p>
                   მედიკი წარმოადგენს ქართული სამედიცინო ინდუსტრიის კვალიფიციურ
                   პარტნიორსა და ერთ-ერთ უმსხვილეს კონტრიბუტორს სამედიცინო

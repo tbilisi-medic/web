@@ -85,9 +85,9 @@ const aboutMenu: MenuSection[] = [
   {
     title: 'ფილიალები',
     items: [
-      { label: 'თბილისი', href: '/about#tbilisi' },
-      { label: 'ქუთაისი', href: '/about#kutaisi' },
-      { label: 'ბათუმი', href: '/about#batumi' },
+      { label: 'თბილისი', href: 'https://maps.app.goo.gl/sCnE8im7cpqqqMPN7' },
+      { label: 'ქუთაისი', href: 'https://maps.app.goo.gl/9XyqougUS5m2MeBG9' },
+      { label: 'ბათუმი', href: 'https://maps.app.goo.gl/i7etAHxX6BJXPJvU9' },
     ],
   },
   {
@@ -116,9 +116,20 @@ function DesktopMenuSection({ section }: { section: MenuSection }) {
         {section.items.map((item) => (
           <li key={item.label}>
             <NavigationMenuPrimitive.Link asChild>
-              <Link href={item.href} className="hover:text-primary">
-                {item.label}
-              </Link>
+              {item.href.startsWith('http') ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link href={item.href} className="hover:text-primary">
+                  {item.label}
+                </Link>
+              )}
             </NavigationMenuPrimitive.Link>
           </li>
         ))}
@@ -142,9 +153,20 @@ function MobileMenuSection({
       <ul className="space-y-2 text-md text-primary">
         {section.items.map((item) => (
           <li key={item.label}>
-            <Link href={item.href} onClick={onLinkClick}>
-              {item.label}
-            </Link>
+            {item.href.startsWith('http') ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onLinkClick}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link href={item.href} onClick={onLinkClick}>
+                {item.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

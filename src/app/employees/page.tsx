@@ -64,7 +64,7 @@ export default function EmployeesPage() {
           ]}
           authorName="ლევან ხომერიკი"
           authorRole="გენერალური დირექტორი"
-          image="/images/achievements/employees.jpg"
+          image="/images/achievements/1.jpg"
         />
       </div>
       <div className="pt-16 lg:pt-22">

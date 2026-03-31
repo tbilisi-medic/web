@@ -102,7 +102,7 @@ function ProductCatalogContent({
                   className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
-                      : 'bg-white border border-primary/15 text-primary hover:bg-primary/5'
+                      : 'bg-white border border-primary/15 text-dark hover:bg-primary/5'
                   }`}
                 >
                   {category.nameKa}
@@ -129,8 +129,8 @@ function ProductCatalogContent({
                       <span
                         className={`text-md transition-colors ${
                           activeSubcategories.includes(sub.id)
-                            ? 'font-semibold text-primary'
-                            : 'text-foreground/70 hover:text-primary'
+                            ? 'font-semibold text-dark'
+                            : 'text-foreground/70 hover:text-dark'
                         }`}
                       >
                         {sub.nameKa}
@@ -174,11 +174,11 @@ function ProductCatalogContent({
 
                       {/* Info */}
                       <div className="mt-8">
-                        <h3 className="font-semibold text-md text-primary uppercase">
+                        <h3 className="font-semibold text-md text-dark uppercase">
                           {product.name}
                         </h3>
                         {product.subtitle && (
-                          <p className="mt-2 text-md text-primary">
+                          <p className="mt-2 text-md text-dark">
                             {product.subtitle}
                           </p>
                         )}

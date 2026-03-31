@@ -15,7 +15,6 @@ const testimonials = [
     id: 1,
     nameKey: 'name1',
     companyKey: 'company1',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text1',
   },
@@ -23,7 +22,6 @@ const testimonials = [
     id: 2,
     nameKey: 'name2',
     companyKey: 'company2',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text2',
   },
@@ -31,7 +29,6 @@ const testimonials = [
     id: 3,
     nameKey: 'name3',
     companyKey: 'company3',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text3',
   },
@@ -39,7 +36,6 @@ const testimonials = [
     id: 4,
     nameKey: 'name4',
     companyKey: 'company4',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text4',
   },
@@ -47,7 +43,6 @@ const testimonials = [
     id: 5,
     nameKey: 'name5',
     companyKey: 'company5',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text5',
   },
@@ -55,7 +50,6 @@ const testimonials = [
     id: 6,
     nameKey: 'name6',
     companyKey: 'company6',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text6',
   },
@@ -63,7 +57,6 @@ const testimonials = [
     id: 7,
     nameKey: 'name7',
     companyKey: 'company7',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text7',
   },
@@ -71,7 +64,6 @@ const testimonials = [
     id: 8,
     nameKey: 'name8',
     companyKey: 'company8',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text8',
   },
@@ -79,9 +71,15 @@ const testimonials = [
     id: 9,
     nameKey: 'name9',
     companyKey: 'company9',
-    logo: '/images/testimonials/1.png',
     rating: 5,
     textKey: 'text9',
+  },
+  {
+    id: 10,
+    nameKey: 'name10',
+    companyKey: 'company10',
+    rating: 5,
+    textKey: 'text10',
   },
 ];
 
@@ -108,7 +106,7 @@ export function Testimonials() {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
             {t('title')}
           </h2>
 
@@ -142,15 +140,15 @@ export function Testimonials() {
                       </div>
 
                       {/* Quote */}
-                      <p className="mt-8 flex-grow text-md text-primary">
+                      <p className="mt-8 flex-grow text-md text-dark">
                         &ldquo;{t(testimonial.textKey)}&rdquo;
                       </p>
 
                       <div className="mt-8 pt-4">
-                        <p className="font-semibold text-primary text-md uppercase">
+                        <p className="font-semibold text-dark text-md uppercase">
                           {t(testimonial.nameKey)}
                         </p>
-                        <p className="text-md text-primary">
+                        <p className="text-md text-dark">
                           {t(testimonial.companyKey)}
                         </p>
                       </div>

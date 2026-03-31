@@ -43,7 +43,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                   className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
                       ? 'bg-primary border border-primary text-white'
-                      : 'bg-white border border-primary/15 text-primary hover:bg-primary/5'
+                      : 'bg-white border border-primary/15 text-dark hover:bg-primary/5'
                   }`}
                 >
                   {isEn ? category.nameEn : category.nameKa}
@@ -84,11 +84,11 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
 
                   {/* Content */}
                   <div className="lg:col-span-8">
-                    <h3 className="text-xl font-semibold text-primary lg:text-2xl uppercase">
+                    <h3 className="text-xl font-semibold text-dark lg:text-2xl uppercase">
                       {isEn ? post.titleEn! : post.titleKa}
                     </h3>
                     <div
-                      className="mt-4 text-md text-primary line-clamp-3"
+                      className="mt-4 text-md text-dark line-clamp-3"
                       dangerouslySetInnerHTML={{
                         __html: isEn ? post.contentEn! : post.contentKa,
                       }}

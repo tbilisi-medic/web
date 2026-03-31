@@ -15,12 +15,12 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           {/* Title */}
-          <h1 className="text-2xl mx-auto text-center font-bold text-primary sm:text-[40px] uppercase">
+          <h1 className="text-2xl mx-auto text-center font-bold text-dark sm:text-[40px] uppercase">
             {post.title}
           </h1>
 
           {/* Date */}
-          <p className="mt-3 text-center text-md text-primary">{post.date}</p>
+          <p className="mt-3 text-center text-md text-dark">{post.date}</p>
 
           {/* Image */}
           <div className="mt-12 relative h-64 overflow-hidden rounded-xl bg-gray-200 sm:h-80 lg:h-120">
@@ -40,14 +40,14 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
           {/* Content */}
           <div
-            className="prose prose-md mt-15 max-w-none text-primary break-words
-  prose-headings:text-primary
-  prose-strong:text-primary
-  prose-a:text-primary
-  prose-li:text-primary
-  prose-ol:text-primary
-  prose-ul:text-primary
-  prose-blockquote:text-primary
+            className="prose prose-md mt-15 max-w-none text-dark break-words
+  prose-headings:text-dark
+  prose-strong:text-dark
+  prose-a:text-dark
+  prose-li:text-dark
+  prose-ol:text-dark
+  prose-ul:text-dark
+  prose-blockquote:text-dark
   prose-h2:mt-10 prose-h2:text-xl lg:prose-h2:text-2xl
   prose-p:leading-relaxed"
             dangerouslySetInnerHTML={{ __html: post.content }}

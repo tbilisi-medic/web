@@ -21,7 +21,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
             აუცილებლად წასაკითხი
           </h2>
 
@@ -51,10 +51,10 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
 
                 {/* Info */}
                 <div className="mt-5">
-                  <h3 className="font-semibold text-2xl text-primary uppercase">
+                  <h3 className="font-semibold text-2xl text-dark uppercase">
                     {post.title}
                   </h3>
-                  <p className="mt-3 text-md text-primary line-clamp-3">
+                  <p className="mt-3 text-md text-dark line-clamp-3">
                     {post.description}
                   </p>
                 </div>
