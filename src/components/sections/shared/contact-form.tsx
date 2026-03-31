@@ -85,7 +85,7 @@ export function ContactForm() {
               {/* Left - Image */}
               <div className="relative h-64 overflow-hidden rounded-xl sm:h-80 lg:h-full lg:min-h-[370px]">
                 <Image
-                  src="/images/categories/1.jpg"
+                  src="/images/contact/2.jpg"
                   alt="დაგვიკავშირდით"
                   fill
                   className="object-cover"

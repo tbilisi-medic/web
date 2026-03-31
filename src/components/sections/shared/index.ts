@@ -4,3 +4,4 @@ export { PageHeader } from './page-header';
 export { Quote } from './quote';
 export { Stats } from './stats';
 export { Stories } from './stories';
+export { ContactForm } from './contact-form';

@@ -154,7 +154,7 @@ export function ContactDialog({ children }: ContactDialogProps) {
           <div className="hidden lg:flex lg:items-center">
             <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-gray-100">
               <Image
-                src="/images/categories/1.jpg"
+                src="/images/contact/1.jpg"
                 alt="ტექნიკური მომსახურება"
                 fill
                 className="object-cover"

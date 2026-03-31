@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { PageHeader } from '@/components/sections/shared';
-import { ProductCatalog, ContactForm } from '@/components/sections/products';
+import { ProductCatalog } from '@/components/sections/products';
+import { ContactForm } from '@/components/sections/shared';
 import { Header, Footer } from '@/components/layout';
 import {
   getPublicProducts,
