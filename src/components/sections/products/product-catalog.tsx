@@ -10,6 +10,17 @@ import type {
   ProductWithRelations,
   CategoryWithSubcategories,
 } from '@/types/product';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from '@/components/ui/pagination';
+
+const ITEMS_PER_PAGE = 9;
 
 interface ProductCatalogContentProps {
   products: ProductWithRelations[];
@@ -28,6 +39,7 @@ function ProductCatalogContent({
   const [activeSubcategories, setActiveSubcategories] = React.useState<
     string[]
   >(searchParams.getAll('sub'));
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   React.useEffect(() => {
     const categoryFromUrl = searchParams.get('category');
@@ -60,6 +72,17 @@ function ProductCatalogContent({
     });
   }, [products, activeCategory, activeSubcategories, searchQuery]);
 
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   const updateURL = (category: string, subcategories: string[]) => {
     const params = new URLSearchParams();
     params.set('category', category);
@@ -76,6 +99,7 @@ function ProductCatalogContent({
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
     setActiveSubcategories([]);
+    setCurrentPage(1);
     updateURL(categoryId, []);
   };
 
@@ -85,7 +109,28 @@ function ProductCatalogContent({
       : activeSubcategories.filter((s) => s !== subcategoryId);
 
     setActiveSubcategories(newSubcategories);
+    setCurrentPage(1);
     updateURL(activeCategory, newSubcategories);
+  };
+
+  const getPageNumbers = () => {
+    const pages: (number | 'ellipsis')[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push('ellipsis');
+      for (
+        let i = Math.max(2, currentPage - 1);
+        i <= Math.min(totalPages - 1, currentPage + 1);
+        i++
+      ) {
+        pages.push(i);
+      }
+      if (currentPage < totalPages - 2) pages.push('ellipsis');
+      pages.push(totalPages);
+    }
+    return pages;
   };
 
   return (
@@ -150,7 +195,7 @@ function ProductCatalogContent({
                 </p>
               ) : (
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredProducts.map((product) => (
+                  {paginatedProducts.map((product) => (
                     <Link
                       key={product.id}
                       href={`/products/${product.slug}`}
@@ -186,6 +231,64 @@ function ProductCatalogContent({
                     </Link>
                   ))}
                 </div>
+              )}
+              {totalPages > 1 && (
+                <Pagination className="mt-20">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (currentPage > 1) setCurrentPage(currentPage - 1);
+                        }}
+                        className={
+                          currentPage === 1
+                            ? 'pointer-events-none opacity-50'
+                            : 'cursor-pointer'
+                        }
+                      />
+                    </PaginationItem>
+
+                    {getPageNumbers().map((page, idx) =>
+                      page === 'ellipsis' ? (
+                        <PaginationItem key={`ellipsis-${idx}`}>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                      ) : (
+                        <PaginationItem key={page}>
+                          <PaginationLink
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setCurrentPage(page);
+                            }}
+                            isActive={currentPage === page}
+                            className="cursor-pointer"
+                          >
+                            {page}
+                          </PaginationLink>
+                        </PaginationItem>
+                      ),
+                    )}
+
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (currentPage < totalPages)
+                            setCurrentPage(currentPage + 1);
+                        }}
+                        className={
+                          currentPage === totalPages
+                            ? 'pointer-events-none opacity-50'
+                            : 'cursor-pointer'
+                        }
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
               )}
             </div>
           </div>
