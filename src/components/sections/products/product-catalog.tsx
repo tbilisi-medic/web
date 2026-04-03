@@ -133,6 +133,29 @@ function ProductCatalogContent({
     return pages;
   };
 
+  const smoothScrollTo = (targetY: number, duration = 400) => {
+    return new Promise<void>((resolve) => {
+      const startY = window.scrollY;
+      const difference = targetY - startY;
+      const startTime = performance.now();
+
+      const step = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        window.scrollTo(0, startY + difference * ease);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          resolve();
+        }
+      };
+
+      requestAnimationFrame(step);
+    });
+  };
+
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -238,11 +261,11 @@ function ProductCatalogContent({
                     <PaginationItem>
                       <PaginationPrevious
                         href="#"
-                        onClick={(e) => {
+                        onClick={async (e) => {
                           e.preventDefault();
                           if (currentPage > 1) {
+                            await smoothScrollTo(0);
                             setCurrentPage(currentPage - 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
                           }
                         }}
                         className={
@@ -262,10 +285,10 @@ function ProductCatalogContent({
                         <PaginationItem key={page}>
                           <PaginationLink
                             href="#"
-                            onClick={(e) => {
+                            onClick={async (e) => {
                               e.preventDefault();
+                              await smoothScrollTo(0);
                               setCurrentPage(page);
-                              window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                             isActive={currentPage === page}
                             className="cursor-pointer"
@@ -279,11 +302,11 @@ function ProductCatalogContent({
                     <PaginationItem>
                       <PaginationNext
                         href="#"
-                        onClick={(e) => {
+                        onClick={async (e) => {
                           e.preventDefault();
                           if (currentPage < totalPages) {
+                            await smoothScrollTo(0);
                             setCurrentPage(currentPage + 1);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
                           }
                         }}
                         className={
