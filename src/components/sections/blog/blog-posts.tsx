@@ -17,7 +17,7 @@ import {
   PaginationEllipsis,
 } from '@/components/ui/pagination';
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 12;
 
 interface BlogPostsContentProps {
   posts: BlogPost[];
@@ -155,7 +155,10 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      if (currentPage > 1) setCurrentPage(currentPage - 1);
+                      if (currentPage > 1) {
+                        setCurrentPage(currentPage - 1);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
                     }}
                     className={
                       currentPage === 1
@@ -177,6 +180,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                         onClick={(e) => {
                           e.preventDefault();
                           setCurrentPage(page);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                         }}
                         isActive={currentPage === page}
                         className="cursor-pointer"
@@ -192,8 +196,10 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      if (currentPage < totalPages)
+                      if (currentPage < totalPages) {
                         setCurrentPage(currentPage + 1);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
                     }}
                     className={
                       currentPage === totalPages
