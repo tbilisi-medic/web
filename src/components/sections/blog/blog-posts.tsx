@@ -7,6 +7,17 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Suspense } from 'react';
 import { blogCategories, type BlogPost } from '@/types/blog';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from '@/components/ui/pagination';
+
+const ITEMS_PER_PAGE = 9;
 
 interface BlogPostsContentProps {
   posts: BlogPost[];
@@ -18,8 +29,10 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
   const searchParams = useSearchParams();
 
   const activeCategory = searchParams.get('category') || blogCategories[0].id;
+  const [currentPage, setCurrentPage] = React.useState(1);
 
   const handleCategoryChange = (categoryId: string) => {
+    setCurrentPage(1);
     router.push(`/blog?category=${categoryId}`, { scroll: false });
   };
 
@@ -27,7 +40,34 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
     (post) => post.category === activeCategory,
   );
 
+  const totalPages = Math.ceil(filteredPosts.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedPosts = filteredPosts.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
   const isEn = locale === 'en';
+
+  const getPageNumbers = () => {
+    const pages: (number | 'ellipsis')[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push('ellipsis');
+      for (
+        let i = Math.max(2, currentPage - 1);
+        i <= Math.min(totalPages - 1, currentPage + 1);
+        i++
+      ) {
+        pages.push(i);
+      }
+      if (currentPage < totalPages - 2) pages.push('ellipsis');
+      pages.push(totalPages);
+    }
+    return pages;
+  };
 
   return (
     <section>
@@ -59,7 +99,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                 {isEn ? 'No posts found' : 'პოსტები არ მოიძებნა'}
               </p>
             ) : (
-              filteredPosts.map((post) => (
+              paginatedPosts.map((post) => (
                 <div
                   key={post.id}
                   className="grid items-center gap-6 lg:grid-cols-12 lg:gap-10 mb-10"
@@ -106,6 +146,65 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
               ))
             )}
           </div>
+
+          {totalPages > 1 && (
+            <Pagination className="mt-10 mx-0 justify-start">
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (currentPage > 1) setCurrentPage(currentPage - 1);
+                    }}
+                    className={
+                      currentPage === 1
+                        ? 'pointer-events-none opacity-50'
+                        : 'cursor-pointer'
+                    }
+                  />
+                </PaginationItem>
+
+                {getPageNumbers().map((page, idx) =>
+                  page === 'ellipsis' ? (
+                    <PaginationItem key={`ellipsis-${idx}`}>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  ) : (
+                    <PaginationItem key={page}>
+                      <PaginationLink
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentPage(page);
+                        }}
+                        isActive={currentPage === page}
+                        className="cursor-pointer"
+                      >
+                        {page}
+                      </PaginationLink>
+                    </PaginationItem>
+                  ),
+                )}
+
+                <PaginationItem>
+                  <PaginationNext
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (currentPage < totalPages)
+                        setCurrentPage(currentPage + 1);
+                    }}
+                    className={
+                      currentPage === totalPages
+                        ? 'pointer-events-none opacity-50'
+                        : 'cursor-pointer'
+                    }
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
+          )}
         </div>
       </div>
     </section>

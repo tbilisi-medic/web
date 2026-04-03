@@ -13,7 +13,7 @@ export function LatestNews({ posts }: LatestNewsProps) {
     <section className="relative">
       <div className="absolute inset-x-0 top-0 h-[25%] lg:h-[45%] bg-primary" />
       <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl pt-16 lg:pt-18">
+        <div className="mx-auto max-w-7xl pt-14">
           {/* Headline */}
           <h2 className="text-primary text-xl font-semibold text-white sm:text-2xl uppercase">
             სიახლეები
@@ -45,7 +45,7 @@ export function LatestNews({ posts }: LatestNewsProps) {
 
                 {/* Info */}
                 <div className="mt-5">
-                  <h3 className="font-semibold text-2xl text-dark uppercase">
+                  <h3 className="font-semibold text-xl sm:text-2xl text-dark uppercase">
                     {post.titleKa}
                   </h3>
                   {post.subtitleKa ? (
