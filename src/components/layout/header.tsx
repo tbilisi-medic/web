@@ -24,50 +24,110 @@ const productsMenu: MenuSection[] = [
   {
     title: 'აპარატურა',
     items: [
-      { label: 'ენდოსკოპია', href: '/products?category=equipment' },
-      { label: 'ექოსკოპია', href: '/products?category=equipment' },
-      { label: 'ლაპაროსკოპია', href: '/products?category=equipment' },
-      { label: 'მსხვილი აპარატურა', href: '/products?category=equipment' },
+      {
+        label: 'ენდოსკოპია',
+        href: '/products?category=equipment&sub=endoscopy',
+      },
+      {
+        label: 'ექოსკოპია',
+        href: '/products?category=equipment&sub=ultrasound',
+      },
+      {
+        label: 'ლაპაროსკოპია',
+        href: '/products?category=equipment&sub=laparoscopy',
+      },
+      {
+        label: 'მსხვილი აპარატურა',
+        href: '/products?category=equipment&sub=large-equipment',
+      },
       { label: 'სხვა', href: '/products?category=equipment' },
     ],
   },
   {
     title: 'ავეჯი',
     items: [
-      { label: 'პაციენტის საწოლები', href: '/products?category=furniture' },
-      { label: 'საოპერაციო ავეჯი', href: '/products?category=furniture' },
-      { label: 'სამედიცინო ურიკები', href: '/products?category=furniture' },
-      { label: 'აქსესუარები', href: '/products?category=furniture' },
+      {
+        label: 'პაციენტის საწოლები',
+        href: '/products?category=furniture&sub=patient-beds',
+      },
+      {
+        label: 'საოპერაციო ავეჯი',
+        href: '/products?category=furniture&sub=operating-room-furniture',
+      },
+      {
+        label: 'სამედიცინო ურიკები',
+        href: '/products?category=furniture&sub=medical-trolleys',
+      },
+      {
+        label: 'აქსესუარები',
+        href: '/products?category=furniture&sub=additional-accessories',
+      },
       { label: 'სხვა', href: '/products?category=furniture' },
     ],
   },
   {
     title: 'სახარჯი მასალები',
     items: [
-      { label: 'ბინტები და მარლები', href: '/products?category=consumables' },
-      { label: 'სტერილიზაცია', href: '/products?category=consumables' },
-      { label: 'ინსტრუმენტები', href: '/products?category=consumables' },
-      { label: 'სასუნთქი სისტემები', href: '/products?category=consumables' },
+      {
+        label: 'ბინტები და მარლები',
+        href: '/products?category=consumables&sub=bandages-gauze',
+      },
+      {
+        label: 'სტერილიზაცია',
+        href: '/products?category=consumables&sub=disinfection-sterilization',
+      },
+      {
+        label: 'ინსტრუმენტები',
+        href: '/products?category=consumables&sub=instruments',
+      },
+      {
+        label: 'სასუნთქი სისტემები',
+        href: '/products?category=consumables&sub=respiratory-systems',
+      },
       { label: 'სხვა', href: '/products?category=consumables' },
     ],
   },
   {
     title: 'ლაბორატორია',
     items: [
-      { label: 'ბიოქიმია', href: '/products?category=laboratory' },
-      { label: 'იმუნოლოგია', href: '/products?category=laboratory' },
-      { label: 'კოაგულაცია', href: '/products?category=laboratory' },
-      { label: 'ჰემატოლოგია', href: '/products?category=laboratory' },
+      {
+        label: 'ბიოქიმია',
+        href: '/products?category=laboratory&sub=biochemistry',
+      },
+      {
+        label: 'იმუნოლოგია',
+        href: '/products?category=laboratory&sub=immunology',
+      },
+      {
+        label: 'კოაგულაცია',
+        href: '/products?category=laboratory&sub=coagulation',
+      },
+      {
+        label: 'ჰემატოლოგია',
+        href: '/products?category=laboratory&sub=hematology',
+      },
       { label: 'სხვა', href: '/products?category=laboratory' },
     ],
   },
   {
     title: 'ესთეტიკა',
     items: [
-      { label: 'ეგზოსომები', href: '/products?category=aesthetics' },
-      { label: 'თვალის ბუსტერები', href: '/products?category=aesthetics' },
-      { label: 'სახის ბუსტერები', href: '/products?category=aesthetics' },
-      { label: 'ტანის ფილერები', href: '/products?category=aesthetics' },
+      {
+        label: 'ეგზოსომები',
+        href: '/products?category=aesthetics&sub=exosomes',
+      },
+      {
+        label: 'თვალის ბუსტერები',
+        href: '/products?category=aesthetics&sub=eye-boosters',
+      },
+      {
+        label: 'სახის ბუსტერები',
+        href: '/products?category=aesthetics&sub=face-boosters',
+      },
+      {
+        label: 'ტანის ფილერები',
+        href: '/products?category=aesthetics&sub=body-fillers',
+      },
       { label: 'სხვა', href: '/products?category=aesthetics' },
     ],
   },
