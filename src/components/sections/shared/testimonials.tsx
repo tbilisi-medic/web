@@ -9,6 +9,7 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 import { useTranslations } from 'next-intl';
+import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
   {
@@ -84,6 +85,10 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
+
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -118,6 +123,7 @@ export function Testimonials() {
                 align: 'start',
                 loop: true,
               }}
+              plugins={[plugin.current]}
               className="w-full"
             >
               <CarouselContent className="-ml-4">
