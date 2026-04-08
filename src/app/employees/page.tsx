@@ -15,27 +15,11 @@ export const metadata: Metadata = {
 const employeeStories = [
   {
     id: 1,
-    title: 'ელენე ბუაჩიძე | მთავარი იურისტი',
-    description:
-      'გაიგეთ მეტი თბილისი მედიკის მთავარი იურისტის, ელენე ბუაჩიძის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/stories/1.jpg',
-    href: '/',
-  },
-  {
-    id: 2,
     title: 'მარი ბუტულაშვილი | ადამიანური რესურსების მენეჯერი',
     description:
       'გაიგეთ მეტი მედიკის ადამიანური რესურსების მართვის მენეჯერის, ხელმძღვანელის, მარი ბუტულაშვილის მედიკური მოგზაურობის შესახებ.',
     image: '/images/stories/2.jpg',
-    href: '/',
-  },
-  {
-    id: 3,
-    title: 'ლელა ჯელაძე | მთავარი ბუღალტერი',
-    description:
-      'გაიგეთ მეტი მედიკის მთავარი ბუღალტერის, ლელა ჯელაძის მედიკური მოგზაურობის შესახებ.',
-    image: '/images/stories/3.jpg',
-    href: '/',
+    href: '/blog/mari-butulashvili-chief-human-resources-officer',
   },
 ];
 
@@ -93,7 +77,11 @@ export default function EmployeesPage() {
         />
       </div>
       <div className="py-16 lg:py-22">
-        <Stories title="ადამიანების დღიურები" stories={employeeStories} />
+        <Stories
+          title="ადამიანების დღიურები"
+          stories={employeeStories}
+          showMoreHref="/blog?category=diaries"
+        />
       </div>
 
       <Footer />

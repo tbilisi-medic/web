@@ -89,7 +89,11 @@ export default function PartnersPage() {
         />
       </div>
       <div className="py-16 lg:py-22">
-        <Stories title="პარტნიორები ჩვენზე" stories={partnerStories} />
+        <Stories
+          title="პარტნიორები ჩვენზე"
+          stories={partnerStories}
+          showMoreHref="/"
+        />
       </div>
 
       <Footer />

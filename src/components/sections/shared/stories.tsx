@@ -13,9 +13,10 @@ interface Story {
 interface StoriesProps {
   title: string;
   stories: Story[];
+  showMoreHref: string;
 }
 
-export function Stories({ title, stories }: StoriesProps) {
+export function Stories({ title, stories, showMoreHref }: StoriesProps) {
   return (
     <section id="stories">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -56,6 +57,14 @@ export function Stories({ title, stories }: StoriesProps) {
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="mt-12 border-t border-primary/15 pt-8 flex justify-center">
+            <Link
+              href={showMoreHref}
+              className="text-md font-semibold text-primary uppercase hover:opacity-90 transition-opacity"
+            >
+              მაჩვენე მეტი
+            </Link>
           </div>
         </div>
       </div>
