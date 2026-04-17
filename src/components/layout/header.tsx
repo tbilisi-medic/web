@@ -292,7 +292,7 @@ export function Header() {
           isScrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
-        <div className="flex h-18 items-center justify-between gap-7 px-6">
+        <div className="flex h-18 items-center justify-between gap-7 px-8">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">

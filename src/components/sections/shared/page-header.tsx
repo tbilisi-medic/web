@@ -9,9 +9,9 @@ export function PageHeader({ title, description }: PageHeaderProps) {
   return (
     <section className="pt-28 lg:pt-30 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl relative overflow-hidden rounded-xl bg-gradient-to-b from-primary to-primary-dark">
-        <div className="relative z-10 px-8 py-14 lg:px-14 lg:py-16">
+        <div className="relative z-10 px-8 py-10 lg:px-8 lg:py-10">
           {title && (
-            <h1 className="text-3xl font-bold leading-tight text-white lg:text-[40px] uppercase">
+            <h1 className="text-3xl font-bold leading-tight text-white lg:text-[32px] uppercase">
               {title}
             </h1>
           )}
@@ -23,7 +23,7 @@ export function PageHeader({ title, description }: PageHeaderProps) {
         </div>
         <div className="absolute inset-0 pointer-events-none">
           <Image
-            src="/images/hero/bg.svg"
+            src="/images/pageheader/pattern.svg"
             alt=""
             fill
             className="object-cover sm:object-contain object-right"

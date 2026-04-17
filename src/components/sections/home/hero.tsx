@@ -10,7 +10,7 @@ export async function Hero() {
   return (
     <section className="pt-28 lg:pt-30 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl relative overflow-hidden rounded-xl bg-gradient-to-b from-primary to-primary-dark">
-        <div className="relative z-10 px-8 py-15 lg:px-15 lg:py-15">
+        <div className="relative z-10 px-8 py-12 lg:px-8 lg:py-12">
           <div className="max-w-2xl">
             <Image
               src="/images/slogan.svg"
