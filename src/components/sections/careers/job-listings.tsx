@@ -76,7 +76,7 @@ export function JobListings({ jobs }: JobListingsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-bold sm:text-2xl uppercase">
             გახდი ჩვენი გუნდის წევრი
           </h2>
 
@@ -112,7 +112,7 @@ export function JobListings({ jobs }: JobListingsProps) {
                     value={job.id}
                     className="flex border border-primary-light cursor-pointer flex-col items-start rounded-xl bg-primary p-6 text-left text-white data-[state=active]:bg-primary data-[state=active]:border-primary data-[state=inactive]:bg-white data-[state=inactive]:text-foreground"
                   >
-                    <span className="text-2xl font-semibold uppercase">
+                    <span className="text-2xl font-bold uppercase">
                       {job.title}
                     </span>
                     <span className="mt-2 text-base">{job.location}</span>
@@ -130,7 +130,7 @@ export function JobListings({ jobs }: JobListingsProps) {
                   >
                     <ScrollArea className="lg:h-full">
                       <div className="p-7">
-                        <h3 className="text-2xl font-semibold text-dark uppercase">
+                        <h3 className="text-2xl font-bold text-dark uppercase">
                           {job.title}
                         </h3>
                         <p className="mt-2 text-md text-dark">

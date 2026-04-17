@@ -147,7 +147,7 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
 
                   {/* Content */}
                   <div className="lg:col-span-8">
-                    <h3 className="text-xl font-semibold text-dark lg:text-2xl uppercase">
+                    <h3 className="text-xl text-dark lg:text-2xl uppercase">
                       {isEn ? post.titleEn : post.titleKa}
                     </h3>
                     <div

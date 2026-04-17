@@ -22,7 +22,7 @@ export function Stories({ title, stories, showMoreHref }: StoriesProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-bold sm:text-2xl uppercase">
             {title}
           </h2>
 

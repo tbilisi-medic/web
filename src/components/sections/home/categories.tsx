@@ -32,7 +32,7 @@ export async function Categories() {
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+          <h2 className="text-dark text-xl font-bold sm:text-2xl uppercase">
             {t('title1')} <br />
             {t('title2')}
           </h2>
@@ -50,7 +50,7 @@ export async function Categories() {
                   height={40}
                   className="h-10 w-10 shrink-0"
                 />
-                <span className="text-md text-dark font-semibold">
+                <span className="text-md text-dark">
                   {t(category.titleKey)}
                 </span>
               </Link>

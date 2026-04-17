@@ -33,7 +33,7 @@ export function Quote({
             {/* Left - Content */}
             <div>
               {/* Title */}
-              <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+              <h2 className="text-dark text-xl font-bold sm:text-2xl uppercase">
                 {title}
               </h2>
 

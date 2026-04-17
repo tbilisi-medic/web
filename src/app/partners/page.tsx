@@ -31,6 +31,15 @@ const partnerStories = [
     href: '/',
     imageContain: true,
   },
+
+  {
+    id: 3,
+    title: 'GANPIETRO MANGONE, PRODUCT SPECIALIST',
+    description: '',
+    image: '/images/partners/7.png',
+    href: '/',
+    imageContain: true,
+  },
 ];
 
 export default function PartnersPage() {

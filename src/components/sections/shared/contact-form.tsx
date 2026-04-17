@@ -167,7 +167,7 @@ export function ContactForm({ products }: ContactFormProps) {
                     )}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-primary text-md uppercase">
+                    <h3 className="font-bold text-primary text-md uppercase">
                       {product.name}
                     </h3>
                     {product.subtitle && (

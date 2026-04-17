@@ -15,7 +15,7 @@ export function LatestNews({ posts }: LatestNewsProps) {
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
           <div className="flex items-center justify-between">
-            <h2 className="text-primary text-xl font-semibold sm:text-2xl uppercase">
+            <h2 className="text-primary text-xl font-bold sm:text-2xl uppercase">
               სიახლეები
             </h2>
             <Link

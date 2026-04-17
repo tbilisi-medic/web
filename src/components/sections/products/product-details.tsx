@@ -111,12 +111,12 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             {/* Right - Content */}
             <div className="flex flex-col">
               {/* Product Name */}
-              <h1 className="text-xl font-semibold text-primary sm:text-2xl uppercase">
+              <h1 className="text-xl font-bold text-primary sm:text-2xl uppercase">
                 {product.name}
               </h1>
 
               {/* Subtitle */}
-              <h2 className="mt-4 text-lg font-semibold text-primary lg:text-lg">
+              <h2 className="mt-3 text-md text-primary lg:text-md">
                 {product.subtitle}
               </h2>
 
@@ -144,20 +144,20 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[1100px] p-15 [&>button]:top-7 [&>button]:right-7">
-                    <div className="grid gap-20 lg:grid-cols-2">
+                    <div className="grid gap-20 lg:grid-cols-2 items-center">
                       {/* Left - Form */}
                       <div>
                         <DialogHeader>
-                          <DialogTitle className="text-2xl font-bold text-primary text-left sm:text-3xl lg:text-4xl uppercase">
+                          <DialogTitle className="text-xl font-bold text-primary sm:text-2xl uppercase">
                             {product.name}
                           </DialogTitle>
                         </DialogHeader>
 
-                        <p className="mt-4 text-xl font-semibold text-primary lg:text-xl">
+                        <p className="mt-2 text-md text-primary">
                           {product.subtitle}
                         </p>
 
-                        <p className="mt-15 font-semibold text-primary">
+                        <p className="mt-15 text-primary">
                           შეიყვანეთ საკონტაქტო ინფორმაცია
                         </p>
 

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChevronUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -27,6 +28,13 @@ export function Footer() {
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Left side - Company Info */}
             <div className="lg:col-span-5">
+              <Image
+                src="/images/multilingual-logo.svg"
+                alt="მედიკი - Medic"
+                width={406}
+                height={50}
+                className="mb-12"
+              />
               <h4 className="text-md font-bold uppercase">{t('title')}</h4>
               <p className="mt-2 text-md text-white/80">{t('subtitle')}</p>
 

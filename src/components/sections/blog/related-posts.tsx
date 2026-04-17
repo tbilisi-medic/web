@@ -22,7 +22,7 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
         <div className="mx-auto max-w-7xl">
           {/* Title */}
           <div className="flex items-center justify-between">
-            <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+            <h2 className="text-dark text-xl font-bold sm:text-2xl uppercase">
               აუცილებლად წასაკითხი
             </h2>
             <Link
