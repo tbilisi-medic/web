@@ -5,8 +5,8 @@ interface Post {
   id: string;
   slug: string;
   title: string;
-  description: string;
   image: string;
+  createdAt: Date;
 }
 
 interface RelatedPostsProps {
@@ -21,9 +21,17 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}
-          <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
-            აუცილებლად წასაკითხი
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-dark text-xl font-semibold sm:text-2xl uppercase">
+              აუცილებლად წასაკითხი
+            </h2>
+            <Link
+              href="/blog"
+              className="text-md text-primary-dark hover:opacity-90 transition-opacity"
+            >
+              ყველა სტატიის ნახვა
+            </Link>
+          </div>
 
           {/* Posts Grid */}
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,10 +39,10 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group block"
+                className="group block overflow-hidden rounded-xl border border-primary-light/50 bg-white shadow-sm"
               >
                 {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+                <div className="relative aspect-[3/2] lg:aspect-[4/3] overflow-hidden">
                   {post.image ? (
                     <Image
                       src={post.image}
@@ -43,19 +51,22 @@ export function RelatedPosts({ posts }: RelatedPostsProps) {
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full items-center justify-center text-foreground/30">
+                    <div className="flex h-full items-center justify-center bg-gray-100 text-foreground/30">
                       სურათი არ მოიძებნა
                     </div>
                   )}
                 </div>
-
                 {/* Info */}
-                <div className="mt-5">
-                  <h3 className="font-semibold text-2xl text-dark uppercase">
+                <div className="p-5">
+                  <h3 className="text-2xl text-primary uppercase">
                     {post.title}
                   </h3>
-                  <p className="mt-3 text-md text-dark line-clamp-3">
-                    {post.description}
+                  <p className="mt-5 text-md text-primary">
+                    {new Date(post.createdAt).toLocaleDateString('ka-GE', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
                   </p>
                 </div>
               </Link>

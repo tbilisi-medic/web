@@ -87,7 +87,7 @@ export function ContactForm({ products }: ContactFormProps) {
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="grid gap-8 lg:grid-cols-2">
             <div className="rounded-xl border border-primary-light/50 bg-white p-6 lg:p-8 shadow-sm">
               <h2 className="text-primary text-xl sm:text-2xl uppercase">
                 ჩვენ დაგიკავშირდებით
@@ -99,14 +99,14 @@ export function ContactForm({ products }: ContactFormProps) {
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <Input
                   type="text"
-                  placeholder="სახელი, გვარი*"
+                  placeholder="სახელი, გვარი"
                   className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
                 <Input
                   type="tel"
-                  placeholder="ტელეფონის ნომერი*"
+                  placeholder="ტელეფონის ნომერი"
                   className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}

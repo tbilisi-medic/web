@@ -168,21 +168,21 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           <Input
                             type="text"
                             placeholder="სახელი, გვარი"
-                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                           />
                           <Input
                             type="tel"
                             placeholder="ტელეფონის ნომერი"
-                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                           />
                           <Input
                             type="email"
                             placeholder="ელ. ფოსტა"
-                            className="h-13 rounded-lg border border-gray-300 px-4 !text-base text-foreground placeholder:!text-base placeholder:text-foreground/50"
+                            className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />

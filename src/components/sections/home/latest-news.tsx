@@ -14,9 +14,17 @@ export function LatestNews({ posts }: LatestNewsProps) {
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-primary text-xl font-semibold sm:text-2xl uppercase">
-            სიახლეები
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-primary text-xl font-semibold sm:text-2xl uppercase">
+              სიახლეები
+            </h2>
+            <Link
+              href="/blog"
+              className="text-md text-primary-dark hover:opacity-90 transition-opacity"
+            >
+              ყველა სტატიის ნახვა
+            </Link>
+          </div>
 
           {/* Cards */}
           <div className="mt-10 grid gap-8 grid-cols-1 lg:grid-cols-3">
@@ -24,10 +32,10 @@ export function LatestNews({ posts }: LatestNewsProps) {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group block"
+                className="group block overflow-hidden rounded-xl border border-primary-light/50 bg-white shadow-sm"
               >
                 {/* Image */}
-                <div className="relative aspect-[3/2] lg:aspect-[4/3] overflow-hidden rounded-xl">
+                <div className="relative aspect-[3/2] lg:aspect-[4/3] overflow-hidden">
                   {post.imageUrl ? (
                     <Image
                       src={post.imageUrl}
@@ -36,24 +44,17 @@ export function LatestNews({ posts }: LatestNewsProps) {
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full items-center justify-center text-foreground/30">
+                    <div className="flex h-full items-center justify-center bg-gray-100 text-foreground/30">
                       სურათი არ მოიძებნა
                     </div>
                   )}
                 </div>
-
                 {/* Info */}
-                <div className="mt-5">
-                  <h3 className="font-semibold text-xl sm:text-2xl text-dark uppercase">
+                <div className="p-5">
+                  <h3 className="text-2xl text-primary uppercase">
                     {post.titleKa}
                   </h3>
-                  {post.subtitleKa ? (
-                    <div
-                      className="mt-3 text-md text-dark line-clamp-3 [&_*]:inline"
-                      dangerouslySetInnerHTML={{ __html: post.subtitleKa }}
-                    />
-                  ) : null}
-                  <p className="mt-4 text-sm text-foreground/60">
+                  <p className="mt-5 text-md text-primary">
                     {new Date(post.createdAt).toLocaleDateString('ka-GE', {
                       year: 'numeric',
                       month: 'long',
