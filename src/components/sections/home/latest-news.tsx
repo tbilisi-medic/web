@@ -11,11 +11,10 @@ export function LatestNews({ posts }: LatestNewsProps) {
 
   return (
     <section className="relative">
-      <div className="absolute inset-x-0 top-0 h-[25%] lg:h-[45%] bg-primary" />
       <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl pt-14">
+        <div className="mx-auto max-w-7xl">
           {/* Headline */}
-          <h2 className="text-primary text-xl font-semibold text-white sm:text-2xl uppercase">
+          <h2 className="text-primary text-xl font-semibold sm:text-2xl uppercase">
             სიახლეები
           </h2>
 

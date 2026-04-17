@@ -5,7 +5,7 @@ import {
 } from '@/components/sections/home';
 import {
   Achievements,
-  ContactForm,
+  ContactSection,
   Testimonials,
 } from '@/components/sections/shared';
 import { Header, Footer } from '@/components/layout';
@@ -23,19 +23,19 @@ export default async function Home() {
         <Categories />
       </div>
       <div className="pt-16 lg:pt-22">
-        <TechnicalService />
-      </div>
-      <div className="pt-16 lg:pt-22">
         <Achievements />
       </div>
       <div className="pt-16 lg:pt-22">
         <Testimonials />
       </div>
       <div className="pt-16 lg:pt-22">
-        <LatestNews posts={latestNews} />
+        <TechnicalService />
+      </div>
+      <div className="pt-16 lg:pt-22">
+        <ContactSection />
       </div>
       <div className="py-16 lg:py-22">
-        <ContactForm />
+        <LatestNews posts={latestNews} />
       </div>
       <Footer />
     </>

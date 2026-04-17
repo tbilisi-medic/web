@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-import { PageHeader } from '@/components/sections/shared';
+import { ContactSection, PageHeader } from '@/components/sections/shared';
 import { ProductCatalog } from '@/components/sections/products';
-import { ContactForm } from '@/components/sections/shared';
 import { Header, Footer } from '@/components/layout';
 import {
   getPublicProducts,
@@ -33,7 +32,7 @@ export default async function ProductsPage() {
         <ProductCatalog products={products} categories={categories} />
       </div>
       <div className="py-16 lg:py-22">
-        <ContactForm />
+        <ContactSection />
       </div>
       <Footer />
     </>

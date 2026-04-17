@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const images = ['/images/categories/3.jpg', '/images/categories/4.jpg'];
+const images = ['/images/mission/1.png', '/images/mission/2.png'];
 
 export function Mission() {
   return (

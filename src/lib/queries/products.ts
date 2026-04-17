@@ -62,3 +62,20 @@ export async function getRelatedProducts(
 
   return products;
 }
+
+export async function getRandomProducts(limit = 3) {
+  const products = await prisma.product.findMany({
+    where: { isActive: true },
+    select: {
+      id: true,
+      name: true,
+      subtitle: true,
+      slug: true,
+      imageUrl: true,
+    },
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+  });
+
+  return products;
+}

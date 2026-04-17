@@ -2,12 +2,42 @@
 
 import * as React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CircleCheck, CircleX } from 'lucide-react';
 
-export function ContactForm() {
+interface RandomProduct {
+  id: string;
+  name: string;
+  subtitle: string | null;
+  slug: string;
+  imageUrl: string | null;
+}
+
+interface ContactFormProps {
+  products: RandomProduct[];
+}
+
+export function ContactForm({ products }: ContactFormProps) {
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isSuccess, setIsSuccess] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    if (isSuccess || error) {
+      const timer = setTimeout(() => {
+        setIsSuccess(false);
+        setError('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess, error]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -53,98 +83,101 @@ export function ContactForm() {
     }
   };
 
-  const [name, setName] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [isSuccess, setIsSuccess] = React.useState(false);
-  const [error, setError] = React.useState('');
-
-  React.useEffect(() => {
-    if (isSuccess || error) {
-      const timer = setTimeout(() => {
-        setIsSuccess(false);
-        setError('');
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [isSuccess, error]);
-
   return (
     <section>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="bg-white rounded-xl border border-primary-light/50 p-8 lg:p-10">
-            {/* Title */}
-            <h2 className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
-              ჩვენ დაგიკავშირდებით
-            </h2>
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+            <div className="rounded-xl border border-primary-light/50 bg-white p-6 lg:p-8 shadow-sm">
+              <h2 className="text-primary text-xl sm:text-2xl uppercase">
+                ჩვენ დაგიკავშირდებით
+              </h2>
+              <p className="mt-6 text-md text-primary">
+                შეიყვანეთ საკონტაქტო ინფორმაცია
+              </p>
 
-            {/* Content */}
-            <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
-              {/* Left - Image */}
-              <div className="relative h-64 overflow-hidden rounded-xl sm:h-80 lg:h-full lg:min-h-[370px]">
-                <Image
-                  src="/images/contact/2.jpg"
-                  alt="დაგვიკავშირდით"
-                  fill
-                  className="object-cover"
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <Input
+                  type="text"
+                  placeholder="სახელი, გვარი*"
+                  className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
-              </div>
+                <Input
+                  type="tel"
+                  placeholder="ტელეფონის ნომერი*"
+                  className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <Input
+                  type="email"
+                  placeholder="ელ. ფოსტა"
+                  className="h-10 rounded-[10px] border border-primary-light/50 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base shadow-sm"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Button
+                  type="submit"
+                  className="cursor-pointer w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'იგზავნება...' : 'მოთხოვნის გაგზავნა'}
+                </Button>
+              </form>
 
-              {/* Right - Form */}
-              <div className="flex flex-col justify-end">
-                <p className="text-primary text-xl font-semibold text-foreground sm:text-2xl uppercase">
-                  შეიყვანეთ საკონტაქტო ინფორმაცია
-                </p>
+              {isSuccess && (
+                <Alert className="mt-4">
+                  <CircleCheck className="h-4 w-4 !text-primary-light" />
+                  <AlertDescription className="!text-primary-light text-md">
+                    მოთხოვნა წარმატებით გაიგზავნა
+                  </AlertDescription>
+                </Alert>
+              )}
+              {error && (
+                <Alert className="mt-4 text-red-600">
+                  <CircleX className="h-4 w-4 !text-red-600" />
+                  <AlertDescription className="text-red-600">
+                    {error}
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
 
-                <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-                  <Input
-                    type="text"
-                    placeholder="სახელი, გვარი"
-                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-md placeholder:text-foreground/50 !text-base placeholder:!text-base"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <Input
-                    type="tel"
-                    placeholder="ტელეფონის ნომერი"
-                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                  <Input
-                    type="email"
-                    placeholder="ელ. ფოსტა"
-                    className="h-13 rounded-lg border border-gray-300 bg-white px-4 text-foreground placeholder:text-foreground/50 !text-base placeholder:!text-base"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <Button
-                    type="submit"
-                    className="w-full cursor-pointer"
-                    disabled={isSubmitting}
-                  >
-                    მოთხოვნის გაგზავნა
-                  </Button>
-                </form>
-                {isSuccess && (
-                  <Alert className="mt-4">
-                    <CircleCheck className="h-4 w-4 !text-primary-light " />
-                    <AlertDescription className="font-semibold !text-primary-light  text-md">
-                      მოთხოვნა წარმატებით გაიგზავნა
-                    </AlertDescription>
-                  </Alert>
-                )}
-                {error && (
-                  <Alert className="mt-4 text-red-600">
-                    <CircleX className="h-4 w-4 !text-red-600" />
-                    <AlertDescription className="font-semibold text-red-600">
-                      {error}
-                    </AlertDescription>
-                  </Alert>
-                )}
-              </div>
+            <div className="rounded-xl border border-primary-light/50 bg-white p-6 lg:p-8 flex flex-col justify-center divide-y divide-primary-light/30 shadow-sm">
+              {products.map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/products/${product.slug}`}
+                  className="flex items-center gap-5 py-4 first:pt-0 last:pb-0 transition-opacity hover:opacity-85"
+                >
+                  <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-lg">
+                    {product.imageUrl ? (
+                      <Image
+                        src={product.imageUrl}
+                        alt={product.name}
+                        fill
+                        className="object-contain"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gray-100 text-foreground/30 text-xs">
+                        სურათი
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-primary text-md uppercase">
+                      {product.name}
+                    </h3>
+                    {product.subtitle && (
+                      <p className="mt-1 text-md text-primary">
+                        {product.subtitle}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
