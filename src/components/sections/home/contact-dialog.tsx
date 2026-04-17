@@ -126,7 +126,7 @@ export function ContactDialog({ children }: ContactDialogProps) {
               />
               <Button
                 type="submit"
-                className="h-13 w-full cursor-pointer rounded-lg text-base font-semibold text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
+                className="w-full cursor-pointer"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'იგზავნება...' : 'მოთხოვნის გაგზავნა'}

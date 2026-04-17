@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { Button } from '@/components/ui/button';
 
 const posts = [
   {
@@ -69,12 +70,9 @@ export async function Achievements() {
                     {t(post.descriptionKey)}
                   </p>
                   <div className="mt-8">
-                    <Link
-                      href={post.href}
-                      className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold text-white transition-opacity uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
-                    >
-                      {t('cta')}
-                    </Link>
+                    <Button asChild>
+                      <Link href={post.href}>{t('cta')}</Link>
+                    </Button>
                   </div>
                 </div>
 

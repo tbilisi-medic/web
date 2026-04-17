@@ -167,10 +167,10 @@ function ProductCatalogContent({
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
+                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-[10px] px-5 py-2 text-md font-base transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
-                      ? 'bg-primary border border-primary text-white'
-                      : 'bg-white border border-primary/15 text-dark hover:bg-primary/5'
+                      ? 'bg-primary-light border border-primary-light text-white shadow-md'
+                      : 'bg-white border border-primary-light text-dark hover:bg-primary-light/5 shadow-sm'
                   }`}
                 >
                   {category.nameKa}

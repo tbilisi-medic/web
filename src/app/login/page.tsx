@@ -96,7 +96,7 @@ export default function AdminLoginPage() {
 
             <Button
               type="submit"
-              className="h-11 w-full cursor-pointer uppercase"
+              className="w-full cursor-pointer"
               disabled={isLoading}
             >
               {isLoading ? 'იტვირთება...' : 'შესვლა'}

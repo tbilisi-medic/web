@@ -157,7 +157,7 @@ export function JobListings({ jobs }: JobListingsProps) {
                             }}
                           />
                           <Button
-                            className="h-12 cursor-pointer rounded-lg px-8 text-base font-semibold text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95"
+                            className="cursor-pointer"
                             disabled={isUploading}
                             onClick={() =>
                               fileInputRefs.current[job.id]?.click()

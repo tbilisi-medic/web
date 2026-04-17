@@ -16,7 +16,7 @@ export function Footer() {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className="flex w-full cursor-pointer items-center justify-center bg-primary-light py-3 hover:brightness-110 transition-all"
+        className="flex w-full cursor-pointer items-center justify-center bg-primary-light py-[9.5px] hover:brightness-110 transition-all"
         aria-label="Scroll to top"
       >
         <ChevronUp size={21} />

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { Button } from '@/components/ui/button';
 
 export async function Hero() {
   const t = await getTranslations('hero');
@@ -18,13 +19,9 @@ export async function Hero() {
               {t('subtitle')}
             </p>
             <div className="mt-15">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 rounded-lg bg-transparent border border-white px-5 py-3 text-md font-semibold text-white transition-colors hover:bg-white/90 hover:text-primary uppercase"
-              >
-                {t('cta')}
-                <ArrowRight size={16} />
-              </Link>
+              <Button asChild>
+                <Link href="/about">{t('cta')}</Link>
+              </Button>
             </div>
           </div>
         </div>

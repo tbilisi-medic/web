@@ -98,15 +98,15 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
         <div className="mx-auto max-w-7xl">
           {/* Category Tabs */}
           <div>
-            <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto pb-4">
+            <div className="mx-auto flex max-w-7xl gap-3 overflow-x-auto pb-4">
               {blogCategories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-lg px-5 py-3 text-md font-semibold transition-colors lg:shrink uppercase ${
+                  className={`shrink-0 flex-1 cursor-pointer whitespace-nowrap rounded-[10px] px-5 py-2 text-md font-base transition-colors lg:shrink uppercase ${
                     activeCategory === category.id
-                      ? 'bg-primary border border-primary text-white'
-                      : 'bg-white border border-primary/15 text-dark hover:bg-primary/5'
+                      ? 'bg-primary-light border border-primary-light text-white shadow-md'
+                      : 'bg-white border border-primary-light text-dark hover:bg-primary-light/5 shadow-sm'
                   }`}
                 >
                   {isEn ? category.nameEn : category.nameKa}
@@ -158,11 +158,11 @@ function BlogPostsContent({ posts, locale }: BlogPostsContentProps) {
                       }}
                     />
                     <div className="mt-6">
-                      <Link href={`/blog/${post.slug}`}>
-                        <Button className="h-12 cursor-pointer rounded-lg px-8 text-base font-semibold text-white uppercase bg-gradient-to-r from-primary-dark to-primary hover:opacity-95">
+                      <Button asChild>
+                        <Link href={`/blog/${post.slug}`}>
                           {isEn ? 'Read more' : 'სრულად'}
-                        </Button>
-                      </Link>
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>

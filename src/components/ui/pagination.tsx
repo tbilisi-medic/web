@@ -55,7 +55,7 @@ function PaginationLink({
       data-active={isActive}
       className={cn(
         isActive
-          ? 'bg-gradient-to-r from-primary-dark to-primary text-white rounded-md size-9 inline-flex items-center justify-center'
+          ? 'bg-primary-light text-white rounded-lg size-9 inline-flex items-center justify-center'
           : buttonVariants({ variant: 'ghost', size }),
         className,
       )}

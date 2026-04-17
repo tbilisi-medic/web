@@ -27,8 +27,6 @@ import { createBlogPost, updateBlogPost } from '@/app/admin/blog/actions';
 import { uploadImage } from '@/lib/upload';
 import { blogCategories, type BlogPost } from '@/types/blog';
 
-import 'react-quill-new/dist/quill.snow.css';
-
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 interface BlogFormModalProps {
