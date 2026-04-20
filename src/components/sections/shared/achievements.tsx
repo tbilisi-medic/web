@@ -30,11 +30,20 @@ const posts = [
   },
 ];
 
-export async function Achievements() {
+interface AchievementsProps {
+  withBackground?: boolean;
+}
+
+export async function Achievements({
+  withBackground = false,
+}: AchievementsProps) {
   const t = await getTranslations('achievements');
 
   return (
-    <section id="achievements">
+    <section
+      id="achievements"
+      className={withBackground ? 'bg-light py-16 lg:py-22' : ''}
+    >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Headline */}

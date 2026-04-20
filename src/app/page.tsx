@@ -23,7 +23,7 @@ export default async function Home() {
         <Categories />
       </div>
       <div className="pt-16 lg:pt-22">
-        <Achievements />
+        <Achievements withBackground />
       </div>
       <div className="pt-16 lg:pt-22">
         <Testimonials />

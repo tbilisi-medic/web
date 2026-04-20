@@ -2,9 +2,16 @@ import Image from 'next/image';
 
 const images = ['/images/mission/1.png', '/images/mission/2.png'];
 
-export function Mission() {
+interface MissionProps {
+  withBackground?: boolean;
+}
+
+export function Mission({ withBackground = false }: MissionProps) {
   return (
-    <section id="mission">
+    <section
+      id="mission"
+      className={withBackground ? 'bg-light py-16 lg:py-22' : ''}
+    >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}

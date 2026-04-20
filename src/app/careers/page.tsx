@@ -45,7 +45,7 @@ export default async function CareersPage() {
       <PageHeader
         title={
           <>
-            კარიერული ზრდა და <br /> შესაძლებლობები
+            სამედიცინო ინდუსტრიის <br /> შესაძლებლობები
           </>
         }
       />

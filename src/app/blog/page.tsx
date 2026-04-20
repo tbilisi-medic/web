@@ -22,7 +22,7 @@ export default async function BlogPage() {
       <PageHeader
         title={
           <>
-            აუცილებლად წასაკითხი და <br /> გასაცნობი ამბები
+            სამედიცინო ინდუსტრიის <br /> სიახლეები და ბლოგები
           </>
         }
       />

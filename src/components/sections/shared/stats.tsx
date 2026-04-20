@@ -10,11 +10,12 @@ interface Stat {
 interface StatsProps {
   title: string;
   stats: Stat[];
+  withBackground?: boolean;
 }
 
-export function Stats({ title, stats }: StatsProps) {
+export function Stats({ title, stats, withBackground = false }: StatsProps) {
   return (
-    <section>
+    <section className={withBackground ? 'bg-light py-16 lg:py-22' : ''}>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           {/* Title */}

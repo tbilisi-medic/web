@@ -24,7 +24,7 @@ export default async function ProductsPage() {
       <PageHeader
         title={
           <>
-            მრავალფეროვანი სამედიცინო <br /> პროდუქცია
+            სამედიცინო ინდუსტრიის <br /> კვალიფიციური პარტნიორი
           </>
         }
       />

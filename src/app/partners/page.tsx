@@ -49,7 +49,7 @@ export default function PartnersPage() {
       <PageHeader
         title={
           <>
-            პარტნიორები მთელი <br /> მსოფლიოს მასშტაბით
+            სამედიცინო ინდუსტრიის <br /> კვალიფიციური პარტნიორი
           </>
         }
       />
@@ -95,6 +95,7 @@ export default function PartnersPage() {
               image: '/images/partners/4.jpg',
             },
           ]}
+          withBackground
         />
       </div>
       <div className="py-16 lg:py-22">

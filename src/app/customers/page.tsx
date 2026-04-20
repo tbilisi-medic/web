@@ -19,7 +19,7 @@ export default function CustomersPage() {
       <PageHeader
         title={
           <>
-            კმაყოფილი მომხმარებლები <br /> მთელ საქართველოში
+            სამედიცინო ინდუსტრიის <br /> კვალიფიციური პარტნიორი
           </>
         }
       />
@@ -65,6 +65,7 @@ export default function CustomersPage() {
               image: '/images/customers/4.jpg',
             },
           ]}
+          withBackground
         />
       </div>
       <div className="py-16 lg:py-22">

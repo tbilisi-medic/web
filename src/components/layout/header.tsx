@@ -288,20 +288,20 @@ export function Header() {
       }`}
     >
       <header
-        className={`relative mx-auto max-w-7xl rounded-xl bg-white shadow-sm transition-shadow duration-300 ${
-          isScrolled ? 'shadow-md' : 'shadow-sm'
+        className={`relative mx-auto max-w-7xl rounded-xl bg-white transition-shadow duration-300 ${
+          isScrolled ? 'shadow-sm' : ''
         }`}
       >
-        <div className="flex h-18 items-center justify-between gap-7 px-8">
+        <div className="flex h-18 items-center justify-between gap-7 px-5 xl:px-8">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <Link href="/" className="block">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.svg"
                 alt="Logo"
                 width={219}
-                height={57}
-                className="h-11 w-auto"
+                height={40}
+                className="h-9 sm:h-10 w-auto"
                 priority
               />
             </Link>
@@ -384,10 +384,10 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 xl:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-light text-white hover:opacity-90 transition-opacity xl:hidden"
               aria-label="მენიუს გახსნა"
             >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={17} />}
             </button>
           </div>
         </div>
@@ -401,6 +401,10 @@ export function Header() {
           }`}
         >
           <nav className="divide-y">
+            {/* Mobile Search */}
+            <div className="px-4 py-3">
+              <HeaderSearch mobile />
+            </div>
             {/* For Clinics */}
             <div>
               <button

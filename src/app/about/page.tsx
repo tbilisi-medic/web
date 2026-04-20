@@ -27,7 +27,7 @@ export default function AboutPage() {
         <AboutContent />
       </div>
       <div className="pt-16 lg:pt-22">
-        <Mission />
+        <Mission withBackground />
       </div>
       <div className="py-16 lg:py-22">
         <Achievements />

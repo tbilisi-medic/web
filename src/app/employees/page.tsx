@@ -30,7 +30,7 @@ export default function EmployeesPage() {
       <PageHeader
         title={
           <>
-            პროფესიონალები, რომლებიც <br /> ქმნიან მედიკს
+            სამედიცინო ინდუსტრიის <br /> კვალიფიციური პარტნიორი
           </>
         }
       />
@@ -74,6 +74,7 @@ export default function EmployeesPage() {
               image: '/images/employees/3.jpg',
             },
           ]}
+          withBackground
         />
       </div>
       <div className="py-16 lg:py-22">
